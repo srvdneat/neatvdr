@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SrvdNeat Business Plan - Protected Document</title>
+    <style>
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: #ffffff;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      /* Login Screen Styles */
+      .login-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+      }
+
+      .login-form {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        margin: 1rem;
+      }
+
+      .login-form h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #1f2937;
+        font-weight: 600;
+      }
+
+      .login-form p {
+        text-align: center;
+        color: #6b7280;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+      }
+
+      .input-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #374151;
+        font-weight: 500;
+        font-size: 0.9rem;
+      }
+
+      .input-group input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #e5e7eb;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: border-color 0.2s;
+      }
+
+      .input-group input:focus {
+        outline: none;
+        border-color: #4f46e5;
+      }
+
+      .login-btn {
+        width: 100%;
+        background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+        color: white;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: transform 0.2s;
+      }
+
+      .login-btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .error-message {
+        color: #ef4444;
+        font-size: 0.9rem;
+        margin-top: 1rem;
+        text-align: center;
+      }
+
+      .access-info {
+        background: #f3f4f6;
+        padding: 1rem;
+        border-radius: 8px;
+        margin-top: 1.5rem;
+        font-size: 0.8rem;
+        color: #6b7280;
+      }
+
+      /* Document Container Styles */
+      .document-container {
+        display: none;
+        background: #ffffff;
+        min-height: 100vh;
+      }
+
+      /* Control Bar */
+      .control-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid #e5e7eb;
+        padding: 0.75rem 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 1000;
+      }
+
+      .control-buttons {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .control-btn {
+        background: #4f46e5;
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+
+      .control-btn:hover {
+        background: #4338ca;
+      }
+
+      .control-btn.success {
+        background: #10b981;
+      }
+
+      .control-btn.success:hover {
+        background: #059669;
+      }
+
+      /* Status Indicators */
+      .status-indicators {
+        display: flex;
+        gap: 1rem;
+        font-size: 0.8rem;
+        color: #6b7280;
+      }
+
+      .status-item {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #10b981;
+      }
+
+      /* Content Area */
+      .content-area {
+        padding-top: 4rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      /* Watermark */
+      .watermark {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        opacity: 0.03;
+        font-size: 4rem;
+        font-weight: bold;
+        color: #4f46e5;
+        pointer-events: none;
+        z-index: 1;
+        white-space: nowrap;
+      }
+
+      /* Business Plan Content Styles */
+      #businessPlanContent h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 0.5rem;
+        text-align: center;
+      }
+
+      #businessPlanContent h2 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: #374151;
+        margin: 2rem 0 1rem 0;
+        border-bottom: 2px solid #e5e7eb;
+        padding-bottom: 0.5rem;
+      }
+
+      #businessPlanContent h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #4f46e5;
+        margin: 1.5rem 0 1rem 0;
+      }
+
+      #businessPlanContent h4 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #6b7280;
+        margin: 1rem 0 0.5rem 0;
+      }
+
+      #businessPlanContent p {
+        margin-bottom: 1rem;
+        color: #4b5563;
+        line-height: 1.7;
+      }
+
+      #businessPlanContent ul,
+      #businessPlanContent ol {
+        margin: 1rem 0;
+        padding-left: 2rem;
+      }
+
+      #businessPlanContent li {
+        margin-bottom: 0.5rem;
+        color: #4b5563;
+      }
+
+      #businessPlanContent table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        background: white;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      #businessPlanContent th,
+      #businessPlanContent td {
+        padding: 1rem;
+        text-align: left;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      #businessPlanContent th {
+        background: #f9fafb;
+        font-weight: 600;
+        color: #374151;
+      }
+
+      #businessPlanContent blockquote {
+        border-left: 4px solid #4f46e5;
+        padding-left: 1rem;
+        margin: 1.5rem 0;
+        font-style: italic;
+        color: #6b7280;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .control-bar {
+          flex-direction: column;
+          gap: 0.5rem;
+          padding: 1rem;
+        }
+
+        .content-area {
+          padding-top: 6rem;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        #businessPlanContent h1 {
+          font-size: 2rem;
+        }
+
+        #businessPlanContent h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+      /* Loading State */
+      .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        color: #6b7280;
+      }
+
+      .spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #e5e7eb;
+        border-top: 4px solid #4f46e5;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-right: 1rem;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-container">
+      <div class="login-form">
+        <h2>🔒 Protected Document Access</h2>
+        <p>Enter your credentials to view the SrvdNeat Business Plan</p>
+
+        <div class="input-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            placeholder="Enter username"
+            autocomplete="username"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter password"
+            autocomplete="current-password"
+          />
+        </div>
+
+        <button class="login-btn" onclick="authenticate()">
+          Access Document
+        </button>
+
+        <div
+          id="errorMessage"
+          class="error-message"
+          style="display: none"
+        ></div>
+
+        <div class="access-info">
+          <strong>Access Information:</strong><br />
+          • This document is protected and access is logged<br />
+          • Session expires automatically after 2 hours<br />
+          • Unauthorized sharing is prohibited<br />
+          • All interactions are monitored
+        </div>
+      </div>
+    </div>
+
+    <!-- Document Container -->
+    <div id="documentContainer" class="document-container">
+      <!-- Control Bar -->
+      <div class="control-bar">
+        <div class="control-buttons">
+          <button class="control-btn" onclick="viewPDF()">📄 View PDF</button>
+          <button class="control-btn success" onclick="downloadPDF()">
+            📥 Download PDF
+          </button>
+        </div>
+
+        <div class="status-indicators">
+          <div class="status-item">
+            <div class="status-dot"></div>
+            <span>Protected</span>
+          </div>
+          <div class="status-item" id="sessionStatus">
+            <div class="status-dot"></div>
+            <span>Session Active</span>
+          </div>
+          <div class="status-item">
+            <div class="status-dot"></div>
+            <span>Logged</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Watermark -->
+      <div class="watermark">SrvdNeat Confidential</div>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <div id="businessPlanContent">
+          <div class="loading">
+            <div class="spinner"></div>
+            Loading business plan content...
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Configuration
+      const CONFIG = {
+        validCredentials: {
+          admin: "srvdneat2025",
+          investor: "investor2025",
+          partner: "partner2025",
+        },
+        sessionTimeout: 2 * 60 * 60 * 1000, // 2 hours
+        accessLog: [],
+        documentId: "srvdneat-bp-" + Date.now(),
+      };
+
+      // Utility Functions
+      function logAccess(username, action) {
+        const logEntry = {
+          timestamp: new Date().toISOString(),
+          username: username,
+          action: action,
+          ip: "tracked",
+          userAgent: navigator.userAgent,
+          documentId: CONFIG.documentId,
+        };
+
+        CONFIG.accessLog.push(logEntry);
+        console.log("Access Logged:", logEntry);
+        localStorage.setItem(
+          "srvdneat_access_log",
+          JSON.stringify(CONFIG.accessLog)
+        );
+      }
+
+      function getCurrentUser() {
+        return localStorage.getItem("currentUser") || "guest";
+      }
+
+      function getCurrentSessionId() {
+        return localStorage.getItem("currentSessionId") || "demo_session";
+      }
+
+      // Authentication
+      async function authenticate() {
+        console.log("authenticate() called");
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value;
+        const errorMessage = document.getElementById("errorMessage");
+
+        console.log("Username:", username, "Password length:", password.length);
+
+        if (!username || !password) {
+          console.log("Missing username or password");
+          errorMessage.textContent = "Please enter both username and password.";
+          errorMessage.style.display = "block";
+          return;
+        }
+
+        try {
+          console.log("Trying server authentication...");
+          // Try server-side authentication first
+          const response = await fetch("/api/auth", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password }),
+          });
+
+          const data = await response.json();
+          console.log("Server response:", data);
+
+          if (data.success) {
+            localStorage.setItem("currentUser", username);
+            localStorage.setItem("currentSessionId", data.sessionId);
+            localStorage.setItem("userRole", data.role);
+
+            logAccess(username, "login_success");
+            showDocument(username);
+          } else {
+            logAccess(username, "login_failed");
+            errorMessage.textContent = data.message || "Invalid credentials.";
+            errorMessage.style.display = "block";
+          }
+        } catch (error) {
+          console.log("Server error, trying fallback:", error);
+          // Fallback to client-side authentication
+          console.log(
+            "Checking credentials:",
+            CONFIG.validCredentials[username],
+            "vs",
+            password
+          );
+          if (CONFIG.validCredentials[username] === password) {
+            console.log("Fallback auth successful");
+            localStorage.setItem("currentUser", username);
+            localStorage.setItem("currentSessionId", "demo_session");
+            localStorage.setItem("userRole", "demo");
+
+            logAccess(username, "login_success");
+            showDocument(username);
+          } else {
+            console.log("Fallback auth failed");
+            logAccess(username, "login_failed");
+            errorMessage.textContent = "Invalid credentials. Please try again.";
+            errorMessage.style.display = "block";
+          }
+        }
+      }
+
+      // Show Document
+      function showDocument(username) {
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("documentContainer").style.display = "block";
+
+        loadBusinessPlanContent();
+        startSessionTimer(username);
+        logAccess(username, "document_opened");
+      }
+
+      // Session Management
+      function startSessionTimer(username) {
+        const sessionStart = Date.now();
+        const sessionStatus = document.getElementById("sessionStatus");
+
+        const updateTimer = () => {
+          const elapsed = Date.now() - sessionStart;
+          const remaining = CONFIG.sessionTimeout - elapsed;
+
+          if (remaining <= 0) {
+            logAccess(username, "session_expired");
+            alert("Session expired. Please log in again.");
+            location.reload();
+            return;
+          }
+
+          const minutes = Math.floor(remaining / 60000);
+          const seconds = Math.floor((remaining % 60000) / 1000);
+          sessionStatus.innerHTML = `
+                  <div class="status-dot"></div>
+                  <span>Session: ${minutes}:${seconds
+            .toString()
+            .padStart(2, "0")}</span>
+              `;
+        };
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+      }
+
+      // Load Business Plan Content
+      async function loadBusinessPlanContent() {
+        const content = document.getElementById("businessPlanContent");
+
+        // Display your actual business plan content
+        content.innerHTML = `
+            <div style="text-align: center; margin-bottom: 3rem; padding: 2rem; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); border-radius: 12px;">
+                <h1 style="font-size: 3rem; margin: 0; color: #1e293b; font-weight: 700;">SrvdNeat</h1>
+                <h2 style="font-size: 1.5rem; margin: 0.5rem 0; color: #64748b; font-weight: 400;">Business Plan (Jul 2025)</h2>
+                <div style="display: inline-block; background: #4f46e5; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; margin-top: 1rem;">
+                    🔒 Confidential Document
+                </div>
+            </div>
+
+            <h2>Executive Summary</h2>
+            <p>Australia's 2.6 million SMEs are hemorrhaging <strong>$38.6 billion annually</strong> to operational friction—manual handoffs, fragmented systems, and workflow chaos that turns promising businesses into administrative nightmares. While 80% of these businesses recognize AI as essential for survival, a devastating 70% of AI implementations fail within six months. The culprit isn't AI capability—it's deployment into operational chaos.</p>
+            
+            <div style="background: #1e293b; color: white; padding: 2rem; border-radius: 12px; margin: 2rem 0;">
+                <h3 style="color: white; margin-top: 0;">SrvdNeat solves the problem everyone else ignores: you can't automate carnage. Fix it first</h3>
+                <p style="margin-bottom: 0;">Our friction-first approach is a total reconsideration of the stagnant AI adoption model. Instead of layering intelligent tools onto broken workflows, we diagnose operational friction within five minutes, stabilize the underlying systems, then deploy AI that actually sticks. This isn't consulting—it's infrastructure.</p>
+            </div>
+
+            <p>Our proprietary NeatAudit diagnostic captures behavioral patterns across six friction dimensions, feeding our orchestration engine (NeatLM) with the contextual intelligence needed to deploy precision solutions rather than generic automation. The result: <strong>24-hour time-to-value, 251% ROI, and 95% implementation success rate</strong> across paying pilots.</p>
+
+            <div style="background: #f0fdf4; border-left: 4px solid #22c55e; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;">
+                <p style="margin: 0;"><strong>The market timing is exceptional.</strong> OpenAI's July 2025 announcement of a $185B Australian AI initiative validates our exact framework—that successful AI adoption requires foundational operational intelligence, not just access to models.</p>
+            </div>
+
+            <div style="background: #eff6ff; border-left: 4px solid #3b82f6; padding: 1.5rem; margin: 2rem 0; border-radius: 0 8px 8px 0;">
+                <p style="margin: 0 0 1rem 0;"><strong>Proven traction speaks louder than projections.</strong> We've already made $75,000—no launch, no funnel, no sales team. Just one person who heard the model was in development. She paid. Then told two others. That's it. Three conversations, $75K.</p>
+                <p style="margin: 0; font-weight: 600;"><strong>We anticipate revenue may grow slightly now that we've decided to inform people on purpose.</strong></p>
+            </div>
+
+            <h3>Market Opportunity</h3>
+            <ul>
+                <li><strong>Total Addressable Market (TAM):</strong> 2.6 million Australian SMEs, representing $38.6 billion in lost productivity</li>
+                <li><strong>Serviceable Available Market (SAM):</strong> 1.2 million high-friction SMEs, particularly in legal, finance, and administrative-heavy sectors</li>
+                <li><strong>Serviceable Obtainable Market (SOM):</strong> 420,000 SMEs with specific needs in legal and finance functions, indicating a potential capture of $10-15 billion</li>
+            </ul>
+
+            <h2>2. Company Overview</h2>
+            
+            <h3>Vision & Mission</h3>
+            <ul>
+                <li><strong>Vision:</strong> To power Australia's next era of SME productivity by eliminating operational friction and enabling intelligent automation at scale</li>
+                <li><strong>Mission:</strong> To help every SME deploy AI that actually works—by diagnosing friction, orchestrating execution, and embedding intelligence into everyday workflows to achieve the ~70% productivity gains that effective AI integration projects achieve</li>
+            </ul>
+
+            <h3>Core Philosophy & Values</h3>
+            <ul>
+                <li><strong>Friction is the real barrier to AI.</strong> Not access to tools—but the chaos between them</li>
+                <li><strong>Infrastructure beats tooling.</strong> We don't just layer AI on top; we rebuild the foundations that make it effective</li>
+                <li><strong>Behavior reveals opportunity.</strong> Operational inefficiency isn't random—it's patterned, predictable, and solvable</li>
+                <li><strong>Adoption is a design problem.</strong> Intelligence must adapt to the user, not the other way around</li>
+                <li><strong>SMEs deserve better.</strong> They power half the workforce but operate with duct tape and PDFs. We're here to fix that</li>
+            </ul>
+
+            <h2>3. Market Context</h2>
+            
+            <h3>Market Timing & Adoption Gap</h3>
+            <p>AI is rapidly emerging in the SME market, yet its adoption is stalling. This isn't due to the complexity of AI itself, but rather the inherent messiness of existing operational workflows. Key observations include:</p>
+            <ul>
+                <li>65% of Australian SMEs report failed or stalled AI initiatives</li>
+                <li>80% of owners view AI as essential for reaching new customers and meeting expectations</li>
+                <li>63% use AI tools weekly, but primarily in isolation (e.g., ChatGPT for administration, Canva for design) without proper operational integration</li>
+            </ul>
+
+            <h3>The Friction Economy</h3>
+            <p>Australia's SMEs collectively lose over $38.6 billion annually due to operational friction. This friction is primarily driven by:</p>
+            <ul>
+                <li><strong>Manual load:</strong> Excessive data entry, filing, and cross-system handoffs</li>
+                <li><strong>Lost context:</strong> Inefficient communication through email chains, siloed information, and reliance on PDF-based workflows</li>
+                <li><strong>Reactive processes:</strong> Inefficient handling of compliance, client onboarding, and billing</li>
+                <li><strong>Scalability blockers:</strong> Non-standardized operations, reliance on tribal knowledge, and over-dependence on key individuals</li>
+            </ul>
+
+            <h2>4. Problem Framing</h2>
+            
+            <h3>Root Causes of AI Failure</h3>
+            <p>AI solutions often fail not because they lack intelligence, but because they are introduced into chaotic operational environments. Most SME operations are characterized by:</p>
+            <ul>
+                <li><strong>Unstructured:</strong> Lacking clear process ownership and relying on ad hoc tasks</li>
+                <li><strong>Overloaded:</strong> Burdened by manual workflows and constant reactive firefighting</li>
+                <li><strong>Siloed:</strong> Information and data are scattered across emails, PDFs, and legacy systems</li>
+            </ul>
+
+            <p>Australian SMEs lose $14,857 and 541 hours a year to friction—manual handoffs, lost context, fractured data. Furthermore, Friction derails 70% of digital projects; locking 2.6M SMEs out of AI's transformative potential.</p>
+
+            <h3>Friction Patterns in SMEs</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th><strong>Friction Type</strong></th>
+                        <th><strong>Description</strong></th>
+                        <th><strong>SME Examples</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Manual Load</td>
+                        <td>High-volume, low-leverage work</td>
+                        <td>Intake forms, duplicate data entry</td>
+                    </tr>
+                    <tr>
+                        <td>Data Fracture</td>
+                        <td>Information spread across tools, no single source of truth</td>
+                        <td>Client info in Gmail + Xero + Excel</td>
+                    </tr>
+                    <tr>
+                        <td>Process Clarity</td>
+                        <td>No clear workflow ownership or visibility</td>
+                        <td>Legal onboarding varies per employee</td>
+                    </tr>
+                    <tr>
+                        <td>Reactive Pings</td>
+                        <td>Teams operate by inbox, not logic</td>
+                        <td>Email → invoice manually, no sync</td>
+                    </tr>
+                    <tr>
+                        <td>Scalability</td>
+                        <td>Inability to standardize due to founder dependence</td>
+                        <td>Everything lives in someone's head</td>
+                    </tr>
+                    <tr>
+                        <td>Knowledge Silos</td>
+                        <td>Critical knowledge not captured or shared</td>
+                        <td>Lost context when a staff member leaves</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2>5. Market Analysis</h2>
+            
+            <h3>TAM / SAM / SOM</h3>
+            <ul>
+                <li><strong>Total Addressable Market (TAM):</strong> 2.6 million Australian SMEs lose <strong>$38.6B annually</strong> to operational friction—manual handoffs, lost context, fragmented systems</li>
+                <li><strong>Serviceable Available Market (SAM):</strong> 1.2 million SMEs in friction-heavy sectors: legal, finance, healthcare, NDIS, and compliance-led services. These are process-reliant businesses with clear stakes in efficiency and accuracy</li>
+                <li><strong>Serviceable Obtainable Market (SOM):</strong> 420,000 digitally ready firms with clear, quantified admin pain. We qualify them by a friction index: >30% of team time spent on non-billable work. This unlocks a <strong>$10–15B immediate revenue opportunity</strong> for outcome-led AI deployment</li>
+            </ul>
+
+            <h3>Segmentation</h3>
+            <p>SrvdNeat targets SMEs that are willing but blocked. We call them:</p>
+            <p><strong>AI-Curious but Stuck</strong></p>
+            <p>They exhibit three core traits:</p>
+            <ul>
+                <li><strong>Mindset:</strong> Want automation, but distrust generic consultants or freelance builders</li>
+                <li><strong>Behavior:</strong> Have tried AI tools (e.g. chatbots, Zapier) and quit due to complexity or low ROI</li>
+                <li><strong>Conditions:</strong> Founder-led ops, regulatory complexity, and manual workflows that break at scale</li>
+            </ul>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                  <div style="background: #fef3c7; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #f59e0b;">
+                      <h4 style="color: #92400e; margin: 0 0 0.5rem 0;">💡 Innovation</h4>
+                      <p style="color: #78350f; margin: 0; font-size: 0.9rem;">Cutting-edge AI orchestration technology</p>
+                  </div>
+                  <div style="background: #dcfce7; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #22c55e;">
+                      <h4 style="color: #166534; margin: 0 0 0.5rem 0;">🎯 Market Focus</h4>
+                      <p style="color: #15803d; margin: 0; font-size: 0.9rem;">Specifically designed for SMEs</p>
+                  </div>
+                  <div style="background: #dbeafe; padding: 1.5rem; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                      <h4 style="color: #1e40af; margin: 0 0 0.5rem 0;">🚀 Growth</h4>
+                      <p style="color: #1d4ed8; margin: 0; font-size: 0.9rem;">Scalable SaaS business model</p>
+                  </div>
+              </div>
+
+              <h2>Executive Summary</h2>
+              <p>SrvdNeat is an innovative AI orchestration platform designed specifically for Small and Medium Enterprises (SMEs). Our platform streamlines AI implementation, reduces costs, and democratizes access to advanced AI capabilities through an intuitive no-code interface.</p>
+
+              <div style="background: #f1f5f9; padding: 2rem; border-radius: 8px; margin: 2rem 0; border-left: 4px solid #4f46e5;">
+                  <h3 style="color: #4f46e5; margin-top: 0;">Key Value Propositions</h3>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                      <div style="background: white; padding: 1rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                          <strong style="color: #1e293b;">🚀 No-Code AI Workflows</strong>
+                          <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #64748b;">Create complex AI automations without programming</p>
+                      </div>
+                      <div style="background: white; padding: 1rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                          <strong style="color: #1e293b;">🎯 Pre-Built Templates</strong>
+                          <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #64748b;">Industry-specific AI solutions ready to deploy</p>
+                      </div>
+                      <div style="background: white; padding: 1rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                          <strong style="color: #1e293b;">🔄 Multi-LLM Orchestration</strong>
+                          <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #64748b;">Leverage multiple AI models seamlessly</p>
+                      </div>
+                      <div style="background: white; padding: 1rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                          <strong style="color: #1e293b;">📊 Real-Time Analytics</strong>
+                          <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #64748b;">Monitor AI performance and ROI</p>
+                      </div>
+                      <div style="background: white; padding: 1rem; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+                          <strong style="color: #1e293b;">🛡️ Enterprise Security</strong>
+                          <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; color: #64748b;">Bank-grade security and compliance</p>
+                      </div>
+                  </div>
+              </div>
+
+              <h2>Market Analysis</h2>
+              <p>The global AI market is experiencing unprecedented growth, with SMEs representing a significant untapped opportunity. The current market size of $150B is projected to reach $1.3T by 2030, representing a massive opportunity for specialized SME solutions.</p>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                  <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-top: 4px solid #10b981;">
+                      <h3 style="color: #10b981; margin-top: 0;">🎯 Target Market</h3>
+                      <ul style="list-style: none; padding: 0;">
+                          <li style="margin: 0.5rem 0; padding: 0.5rem; background: #f0fdf4; border-radius: 4px;">• Small businesses (10-50 employees)</li>
+                          <li style="margin: 0.5rem 0; padding: 0.5rem; background: #f0fdf4; border-radius: 4px;">• Medium enterprises (51-250 employees)</li>
+                          <li style="margin: 0.5rem 0; padding: 0.5rem; background: #f0fdf4; border-radius: 4px;">• Growing companies seeking AI adoption</li>
+                          <li style="margin: 0.5rem 0; padding: 0.5rem; background: #f0fdf4; border-radius: 4px;">• Organizations with limited technical expertise</li>
+                      </ul>
+                  </div>
+
+                  <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-top: 4px solid #f59e0b; text-align: center;">
+                      <h3 style="color: #f59e0b; margin-top: 0;">💰 Market Opportunity</h3>
+                      <div style="font-size: 3rem; font-weight: bold; color: #f59e0b; margin: 1rem 0;">$45B</div>
+                      <p style="color: #78350f; margin: 0; font-weight: 500;">Addressable market for SME AI solutions by 2027</p>
+                      <div style="background: #fef3c7; padding: 1rem; border-radius: 6px; margin-top: 1rem;">
+                          <p style="margin: 0; font-size: 0.9rem; color: #92400e;">Growing at 35% CAGR</p>
+                      </div>
+                  </div>
+              </div>
+
+              <h2>Business Model</h2>
+              <p>Our revenue model is built on a subscription-based SaaS platform with tiered pricing designed to scale with customer growth and usage patterns.</p>
+
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                  <div style="background: white; border: 2px solid #e2e8f0; border-radius: 12px; overflow: hidden; transition: transform 0.2s; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                      <div style="background: #4f46e5; color: white; padding: 1.5rem; text-align: center;">
+                          <h3 style="margin: 0; font-size: 1.25rem;">Starter</h3>
+                          <div style="font-size: 2.5rem; font-weight: bold; margin: 0.5rem 0;">$99</div>
+                          <div style="opacity: 0.9;">/month</div>
+                      </div>
+                      <div style="padding: 1.5rem;">
+                          <ul style="list-style: none; padding: 0; margin: 0;">
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ Up to 5 AI workflows</li>
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ Basic templates</li>
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ Email support</li>
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ 10,000 API calls/month</li>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <div style="background: white; border: 2px solid #10b981; border-radius: 12px; overflow: hidden; transform: scale(1.05); box-shadow: 0 8px 16px rgba(0,0,0,0.15); position: relative;">
+                      <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 0.25rem 1rem; border-radius: 12px; font-size: 0.8rem; font-weight: bold;">POPULAR</div>
+                      <div style="background: #10b981; color: white; padding: 1.5rem; text-align: center;">
+                          <h3 style="margin: 0; font-size: 1.25rem;">Professional</h3>
+                          <div style="font-size: 2.5rem; font-weight: bold; margin: 0.5rem 0;">$299</div>
+                          <div style="opacity: 0.9;">/month</div>
+                      </div>
+                      <div style="padding: 1.5rem;">
+                          <ul style="list-style: none; padding: 0; margin: 0;">
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ Unlimited workflows</li>
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ Premium templates</li>
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ Priority support</li>
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ 100,000 API calls/month</li>
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ Advanced analytics</li>
+                          </ul>
+                      </div>
+                  </div>
+
+                  <div style="background: white; border: 2px solid #8b5cf6; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                      <div style="background: #8b5cf6; color: white; padding: 1.5rem; text-align: center;">
+                          <h3 style="margin: 0; font-size: 1.25rem;">Enterprise</h3>
+                          <div style="font-size: 2.5rem; font-weight: bold; margin: 0.5rem 0;">Custom</div>
+                          <div style="opacity: 0.9;">pricing</div>
+                      </div>
+                      <div style="padding: 1.5rem;">
+                          <ul style="list-style: none; padding: 0; margin: 0;">
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ Custom integrations</li>
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ Dedicated support</li>
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ SLA guarantees</li>
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ Unlimited usage</li>
+                              <li style="margin: 0.75rem 0; color: #10b981;">✓ White-label options</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+
+              <h2>Financial Projections</h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                  <div style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                      <h3 style="margin: 0 0 1rem 0; opacity: 0.9;">Year 1</h3>
+                      <div style="font-size: 2.5rem; font-weight: bold; margin: 0.5rem 0;">$500K</div>
+                      <p style="margin: 0; opacity: 0.8;">Revenue Target</p>
+                  </div>
+
+                  <div style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                      <h3 style="margin: 0 0 1rem 0; opacity: 0.9;">Year 2</h3>
+                      <div style="font-size: 2.5rem; font-weight: bold; margin: 0.5rem 0;">$2M</div>
+                      <p style="margin: 0; opacity: 0.8;">Revenue Target</p>
+                  </div>
+
+                  <div style="background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; padding: 2rem; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+                      <h3 style="margin: 0 0 1rem 0; opacity: 0.9;">Year 3</h3>
+                      <div style="font-size: 2.5rem; font-weight: bold; margin: 0.5rem 0;">$5M</div>
+                      <p style="margin: 0; opacity: 0.8;">Revenue Target</p>
+                  </div>
+              </div>
+
+              <div style="background: #f8fafc; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
+                  <h3 style="color: #1e293b; margin-top: 0;">📊 Key Metrics & Assumptions</h3>
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                      <div style="background: white; padding: 1rem; border-radius: 6px;">
+                          <strong style="color: #4f46e5;">Customer Acquisition Cost</strong>
+                          <div style="font-size: 1.5rem; font-weight: bold; color: #1e293b;">$150</div>
+                      </div>
+                      <div style="background: white; padding: 1rem; border-radius: 6px;">
+                          <strong style="color: #4f46e5;">Monthly Churn Rate</strong>
+                          <div style="font-size: 1.5rem; font-weight: bold; color: #1e293b;">5%</div>
+                      </div>
+                      <div style="background: white; padding: 1rem; border-radius: 6px;">
+                          <strong style="color: #4f46e5;">Average Revenue Per User</strong>
+                          <div style="font-size: 1.5rem; font-weight: bold; color: #1e293b;">$180/mo</div>
+                      </div>
+                      <div style="background: white; padding: 1rem; border-radius: 6px;">
+                          <strong style="color: #4f46e5;">Gross Margin</strong>
+                          <div style="font-size: 1.5rem; font-weight: bold; color: #1e293b;">85%</div>
+                      </div>
+                  </div>
+              </div>
+
+              <h2>Risk Assessment & Mitigation</h2>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                  <div style="background: #fef3c7; border-left: 4px solid #f59e0b; padding: 1.5rem; border-radius: 6px;">
+                      <h3 style="color: #92400e; margin-top: 0;">⚠️ Market Risks</h3>
+                      <ul style="color: #78350f; margin: 0; padding-left: 1.5rem;">
+                          <li>Intense competition from tech giants</li>
+                          <li>Rapid technology evolution</li>
+                          <li>Economic downturn affecting SME spending</li>
+                      </ul>
+                  </div>
+
+                  <div style="background: #fee2e2; border-left: 4px solid #ef4444; padding: 1.5rem; border-radius: 6px;">
+                      <h3 style="color: #991b1b; margin-top: 0;">🚨 Technical Risks</h3>
+                      <ul style="color: #7f1d1d; margin: 0; padding-left: 1.5rem;">
+                          <li>AI model reliability and accuracy</li>
+                          <li>Scalability challenges</li>
+                          <li>Data privacy and security concerns</li>
+                      </ul>
+                  </div>
+
+                  <div style="background: #dbeafe; border-left: 4px solid #3b82f6; padding: 1.5rem; border-radius: 6px;">
+                      <h3 style="color: #1e40af; margin-top: 0;">🛡️ Mitigation Strategies</h3>
+                      <ul style="color: #1e3a8a; margin: 0; padding-left: 1.5rem;">
+                          <li>Continuous innovation and R&D investment</li>
+                          <li>Strategic partnerships with AI providers</li>
+                          <li>Robust security framework and compliance</li>
+                          <li>Diversified revenue streams</li>
+                      </ul>
+                  </div>
+              </div>
+
+              <div style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%); color: white; padding: 3rem; border-radius: 12px; margin: 3rem 0; text-align: center;">
+                  <h2 style="margin: 0 0 1rem 0; color: white;">🎯 Investment Opportunity</h2>
+                  <p style="font-size: 1.1rem; margin: 0 0 2rem 0; opacity: 0.9;">Join us in revolutionizing AI accessibility for SMEs worldwide</p>
+
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                      <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px;">
+                          <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚀</div>
+                          <strong>Scalable Technology</strong>
+                          <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; opacity: 0.8;">Built for rapid growth</p>
+                      </div>
+                      <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px;">
+                          <div style="font-size: 2rem; margin-bottom: 0.5rem;">💰</div>
+                          <strong>Proven Market</strong>
+                          <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; opacity: 0.8;">$45B opportunity</p>
+                      </div>
+                      <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px;">
+                          <div style="font-size: 2rem; margin-bottom: 0.5rem;">👥</div>
+                          <strong>Experienced Team</strong>
+                          <p style="margin: 0.5rem 0 0 0; font-size: 0.9rem; opacity: 0.8;">AI & SaaS expertise</p>
+                      </div>
+                  </div>
+              </div>
+
+              <div style="background: #f1f5f9; padding: 2rem; border-radius: 8px; margin: 2rem 0; border: 1px solid #e2e8f0;">
+                  <p style="margin: 0; text-align: center; color: #64748b; font-style: italic;">
+                      <strong>Confidentiality Notice:</strong> This document contains confidential and proprietary information of SrvdNeat.
+                      Unauthorized distribution, reproduction, or disclosure is strictly prohibited.
+                  </p>
+              </div>
+          `;
+
+        logAccess(getCurrentUser(), "content_loaded_successfully");
+      }
+
+      // PDF Functions
+      async function viewPDF() {
+        const currentUser = getCurrentUser();
+        logAccess(currentUser, "pdf_view_attempted");
+
+        try {
+          const response = await fetch("/api/generate-pdf", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              username: currentUser,
+              sessionId: getCurrentSessionId(),
+            }),
+          });
+
+          if (response.ok) {
+            const blob = await response.blob();
+            const url = URL.createObjectURL(blob);
+            window.open(url, "_blank");
+            logAccess(currentUser, "pdf_viewed_successfully");
+          } else {
+            const error = await response.json();
+            alert("PDF generation failed: " + (error.error || "Unknown error"));
+          }
+        } catch (error) {
+          console.error("PDF view error:", error);
+          alert("PDF view failed. Please try again.");
+        }
+      }
+
+      async function downloadPDF() {
+        const currentUser = getCurrentUser();
+        logAccess(currentUser, "pdf_download_attempted");
+
+        try {
+          const response = await fetch("/api/generate-pdf", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              username: currentUser,
+              sessionId: getCurrentSessionId(),
+            }),
+          });
+
+          if (response.ok) {
+            const blob = await response.blob();
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `SrvdNeat_Business_Plan_${currentUser}_${Date.now()}.pdf`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            logAccess(currentUser, "pdf_downloaded_successfully");
+          } else {
+            const error = await response.json();
+            alert("PDF generation failed: " + (error.error || "Unknown error"));
+          }
+        } catch (error) {
+          console.error("PDF download error:", error);
+          alert("PDF download failed. Please try again.");
+        }
+      }
+
+      // Security Protection
+      document.addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        logAccess(getCurrentUser(), "right_click_blocked");
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (
+          (e.ctrlKey || e.metaKey) &&
+          ["c", "x", "v", "a", "s"].includes(e.key)
+        ) {
+          e.preventDefault();
+          logAccess(getCurrentUser(), "copy_shortcut_blocked");
+        }
+        if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key === "I")) {
+          e.preventDefault();
+          logAccess(getCurrentUser(), "dev_tools_blocked");
+        }
+      });
+
+      document.addEventListener("dragstart", (e) => {
+        e.preventDefault();
+        logAccess(getCurrentUser(), "drag_blocked");
+      });
+
+      // Initialize
+      document.addEventListener("DOMContentLoaded", () => {
+        logAccess("system", "document_loaded");
+
+        // Allow Enter key to submit login
+        document.addEventListener("keypress", (e) => {
+          if (
+            e.key === "Enter" &&
+            document.getElementById("loginScreen").style.display !== "none"
+          ) {
+            authenticate();
+          }
+        });
+      });
+
+      window.addEventListener("beforeunload", () => {
+        logAccess(getCurrentUser(), "session_ended");
+      });
+    </script>
+  </body>
+</html>

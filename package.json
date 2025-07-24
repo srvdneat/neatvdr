@@ -1,0 +1,34 @@
+{
+  "name": "srvdneat-business-plan-protection",
+  "version": "1.0.0",
+  "description": "Enhanced protection system for SrvdNeat Business Plan",
+  "main": "server_protection.js",
+  "scripts": {
+    "start": "node server_protection.js",
+    "dev": "nodemon server_protection.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "business-plan",
+    "protection",
+    "authentication",
+    "pdf-generation",
+    "access-control"
+  ],
+  "author": "SrvdNeat",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-rate-limit": "^7.1.5",
+    "puppeteer": "^21.5.2",
+    "crypto": "^1.0.1",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+} 

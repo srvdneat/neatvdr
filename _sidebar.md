@@ -1,0 +1,15 @@
+# SrvdNeat VDR
+
+- [Executive Summary](executive-summary.md)
+- [Team & Advisors](team-advisors.md)
+- [Vision, Mission & Brand](vision-mission-brand.md)
+- [Market Analysis](market-analysis.md)
+- [Problem Framing](problem-framing.md)
+- [Product Architecture](product-architecture.md)
+- [Differentiation & Moat](differentiation-moat.md)
+- [Go-To-Market Strategy](go-to-market.md)
+- [Competitive Landscape](competitive-landscape.md)
+- [Business Model & Economics](business-model-economics.md)
+- [Team & Execution Plan](team-execution-plan.md)
+- [Financials](financials.md)
+- [Appendices](appendices.md) 

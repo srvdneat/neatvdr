@@ -1,0 +1,900 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<!-- COPYRIGHT AND CONFIDENTIALITY NOTICE -->
+<style>
+/* Copyright and Protection Styles */
+.copyright-notice {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    opacity: 0.1;
+    font-size: 48px;
+    color: #333;
+    pointer-events: none;
+    z-index: 999;
+    user-select: none;
+}
+
+/* Disable text selection and right-click */
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Disable context menu */
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+</style>
+
+<script>
+// Disable right-click context menu
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// Disable keyboard shortcuts for copy/paste
+document.addEventListener('keydown', function(e) {
+    // Disable Ctrl+C, Ctrl+X, Ctrl+V, Ctrl+A
+    if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'x' || e.key === 'v' || e.key === 'a')) {
+        e.preventDefault();
+        return false;
+    }
+    // Disable F12 (developer tools)
+    if (e.key === 'F12') {
+        e.preventDefault();
+        return false;
+    }
+});
+
+// Disable drag and drop
+document.addEventListener('dragstart', function(e) {
+    e.preventDefault();
+    return false;
+});
+
+// Add watermark
+window.addEventListener('load', function() {
+    const watermark = document.createElement('div');
+    watermark.className = 'watermark';
+    watermark.textContent = 'SrvdNeat Confidential';
+    document.body.appendChild(watermark);
+    
+    const copyright = document.createElement('div');
+    copyright.className = 'copyright-notice';
+    copyright.innerHTML = '© 2025 SrvdNeat. Confidential & Proprietary.';
+    document.body.appendChild(copyright);
+});
+</script>
+
+<style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-width: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left-width: 0.25em; border-left-style: solid; border-left-color: rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+
+/* FONTS */
+/* VARIABLES */
+:root {
+  /* COLORS */
+  --v-white-100: #ffffff;
+  --v-white-200: #fafafa;
+  --v-gray-1000: #171717;
+  --v-gray-900: #666666;
+  --v-gray-800: #7d7d7d;
+  --v-gray-700: #8f8f8f;
+  --v-gray-600: #a8a8a8;
+  --v-gray-500: #c9c9c9;
+  --v-gray-400: #eaeaea;
+  --v-purple-700: #8e4ec6;
+  --v-purple-900: #7820bc;
+  --v-red-700: #e5484d;
+  --v-red-900: #cb2a2f;
+  --v-amber-700: #f5b047;
+  --v-amber-900: #a35200;
+  --v-green-700: #45a557;
+  --v-green-900: #297a3a;
+  --v-blue-600: #52aeff;
+  --v-blue-700: #0072f5;
+  --v-blue-900: #0068d6;
+  --v-background: #282c34;
+
+  --monospace: "GeistMono", "LXGWWenKaiMono";
+}
+
+/* PRINT */
+@media print {
+  html {
+    font-size: 14px;
+  }
+  pre {
+    page-break-inside: avoid;
+    word-wrap: break-word;
+  }
+  blockquote p {
+    margin-left: 30px;
+  }
+}
+
+/* THEME CUSTOM */
+html {
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--v-white-100);
+  color: var(--v-gray-1000);
+  line-height: 1.6;
+}
+
+#write {
+  margin: 0 auto;
+  padding: 30px;
+  max-width: 860px;
+  font-family: "Geist", "LXGWWenKai";
+}
+
+@media only screen and (min-width: 1400px) {
+  #write {
+    max-width: 1024px;
+  }
+}
+
+@media only screen and (min-width: 1800px) {
+  #write {
+    max-width: 1200px;
+  }
+}
+
+/* YAML */
+pre.md-meta-block {
+  margin: 20px 0px;
+  padding: 10px;
+  font-family: "Geist", "LXGWWenKai";
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--v-gray-900);
+  background-color: var(--v-white-100);
+  border-bottom: 1px dashed var(--v-gray-900);
+}
+
+/* HEADING */
+h1 {
+  font-size: 2.5rem;
+  line-height: 3.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+  line-height: 2.5rem;
+}
+
+h3 {
+  font-size: 1.5em;
+  line-height: 2rem;
+}
+
+h4 {
+  font-size: 1.25em;
+}
+
+h5 {
+  font-size: 1em;
+}
+
+h6 {
+  font-size: 1em;
+  color: var(--v-gray-900);
+}
+
+/* BLOCKQUOTE */
+blockquote {
+  position: relative;
+  padding: 12px;
+  border: 1px solid var(--v-gray-500);
+  line-height: 1.4;
+  border-radius: 8px;
+  color: var(--v-gray-900);
+}
+
+#write blockquote::before {
+  position: absolute;
+  top: 50%;
+
+  transform: translateY(-55%) translateX(5%);
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e826";
+}
+
+#write blockquote > p.md-end-block {
+  margin-left: 30px;
+}
+
+.md-alert {
+  position: relative;
+  padding: 15px;
+  line-height: 1.4;
+}
+
+.md-alert > p:first-child {
+  display: none;
+}
+
+.md-alert > p {
+  margin: 0px 0px 0px 30px;
+  padding: 0px;
+}
+
+.md-alert[mdtype="blockquote"] {
+  padding: 12px;
+}
+
+.md-alert.md-alert-important {
+  border: 1px solid var(--v-purple-700);
+  border-radius: 8px;
+  color: var(--v-purple-900);
+}
+
+.md-alert.md-alert-important::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-55%);
+  font-family: "iconfont" !important;
+  font-size: 18px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e643";
+}
+
+.md-alert.md-alert-caution {
+  border: 1px solid var(--v-red-700);
+  border-radius: 8px;
+  color: var(--v-red-900);
+}
+
+.md-alert.md-alert-caution::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "iconfont" !important;
+  font-size: 18px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e62c";
+}
+
+.md-alert.md-alert-warning {
+  border: 1px solid var(--v-amber-700);
+  border-radius: 8px;
+  color: var(--v-amber-900);
+}
+
+.md-alert.md-alert-warning::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-60%);
+  font-family: "iconfont" !important;
+  font-size: 18px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e612";
+}
+
+.md-alert.md-alert-tip {
+  border: 1px solid var(--v-green-700);
+  border-radius: 8px;
+  color: var(--v-green-900);
+}
+
+.md-alert.md-alert-tip::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e600";
+}
+
+.md-alert.md-alert-note {
+  border: 1px solid var(--v-blue-700);
+  border-radius: 8px;
+  color: var(--v-blue-900);
+}
+
+.md-alert.md-alert-note::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "iconfont" !important;
+  font-size: 18px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  content: "\e63c";
+}
+
+/* COMMENT */
+.md-comment {
+  color: var(--v-gray-900);
+  font-family: "GeistMono", "LXGWWenKai";
+}
+
+/* LINK */
+#write a {
+  font-weight: 500;
+  color: var(--v-blue-700);
+  text-decoration: none;
+}
+
+#write a:hover {
+  background-image: linear-gradient(var(--v-blue-700), var(--v-blue-700));
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+}
+
+/* KBD */
+kbd {
+  font-family: "GeistMono", "LXGWWenKai";
+  padding: 2px 8px;
+  vertical-align: baseline;
+  font-size: 0.9rem;
+  color: var(--v-white-100);
+  border: none;
+  box-shadow: none;
+  border-radius: 4px;
+  background-color: var(--v-gray-800);
+}
+
+/* HIGHTLIGHT */
+#write mark {
+  background-color: var(--v-blue-600);
+  border-radius: 3px;
+}
+
+/* HORIZON */
+hr {
+  margin: 10px 0px;
+  border: none;
+  border-bottom: 1px solid var(--v-gray-500);
+}
+
+/* FOOTNOTE */
+sup.md-footnote {
+  font-family: "GeistMono", "LXGWWenKai";
+  color: var(--v-gray-800);
+}
+
+.md-def-name {
+  padding: 0px 8px;
+  font-family: "GeistMono";
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.md-def-footnote .md-def-name::before {
+  content: "[";
+}
+
+.md-def-name::after {
+  right: -17px;
+}
+
+.md-def-content {
+  font-size: 1rem;
+  color: var(--v-gray-1000);
+}
+
+/* FORMULA */
+.md-inline-math {
+  color: var(--v-blue-800);
+}
+
+/* INLINE CODE */
+#write code {
+  padding: 2px 4px;
+  font-family: "GeistMono", "LXGWWenKai";
+  font-size: 0.9rem;
+  background-color: var(--v-gray-500);
+  border-radius: 4px;
+}
+
+/* LIST */
+ul {
+  list-style: none;
+}
+
+#write ul li::before {
+  content: "";
+  position: absolute;
+  left: -16px;
+  top: 11.5px;
+  width: 9px;
+  height: 2px;
+  background-color: #3d3d3d;
+}
+
+#write ul li.md-task-list-item::before {
+  content: "";
+  background-color: transparent;
+}
+
+/* IMAGE */
+img {
+  color: transparent;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* TABLE */
+#write table {
+  margin: 15px auto;
+  line-height: 1.6em;
+  font-size: 0.875rem;
+  color: var(--v-gray-1000);
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+table td {
+  padding: 10px 10px;
+}
+
+thead th {
+  padding: 10px 10px;
+  margin-bottom: 2px;
+  font-weight: 400;
+  color: var(--v-gray-900);
+  border-top: 1px solid var(--v-gray-400);
+  border-bottom: 1px solid var(--v-gray-400) !important;
+  background-color: var(--v-white-200);
+}
+
+thead th:first-child {
+  border-left: 1px solid var(--v-gray-400);
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+
+thead th:last-child {
+  border-right: 1px solid var(--v-gray-400);
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+tbody tr:hover td {
+  background-color: var(--v-gray-400);
+}
+
+tbody tr:hover td:first-child {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+tbody tr:hover td:last-child {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+thead::after {
+  content: "";
+  display: block;
+  height: 5px;
+  width: 100%;
+}
+
+/* TOC */
+#write .md-toc-h1 a.md-toc-inner {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #000 !important;
+}
+
+#write a.md-toc-inner {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--v-gray-900);
+}
+
+#write a.md-toc-inner:hover {
+  color: var(--v-gray-1000);
+  background: none;
+}
+
+/* CODE BLOCK */
+.md-fences {
+  padding-top: 34px;
+  padding-left: 10px;
+  background-color: var(--v-background);
+  border-radius: 7px;
+}
+.md-fences::before {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  content: "";
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #ff5f56;
+  box-shadow: 22px 0px #ffbd2e, 44px 0px #27c93f;
+}
+
+#write .CodeMirror {
+  font-family: "GeistMono", "LXGWWenKai";
+  font-size: 0.9rem;
+  font-weight: 400;
+  line-height: 1.4rem;
+  color: var(--v-gray-400);
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.CodeMirror-gutters {
+  border-right: none;
+}
+
+#write .CodeMirror-cursors .CodeMirror-cursor {
+  border-left: 2px solid #528bff !important;
+}
+
+.md-fences .code-tooltip {
+  font-family: "GeistMono", "LXGWWenKai";
+  border-radius: 4px;
+  border: 1px solid var(--v-gray-500);
+  background-color: var(--v-white-200);
+}
+.code-tooltip .ty-input {
+  border: none;
+}
+.code-tooltip .ty-input:focus {
+  border: none;
+}
+
+#write .CodeMirror-activeline-background {
+  background: #2c313c;
+}
+
+#write .md-mathblock-panel .CodeMirror-activeline-background {
+  background: var(--v-gray-400);
+}
+
+.cm-s-inner .CodeMirror-selected {
+  border-radius: 2px;
+  background-color: #404859 !important;
+}
+
+.cm-s-inner .CodeMirror-selectedtext {
+  background-color: transparent !important;
+}
+
+.CodeMirror-cursor {
+  border-left: 1px solid #528bff !important;
+}
+
+.CodeMirror-linenumbers {
+  color: #394051 !important;
+}
+
+.cm-comment {
+  color: #5c6370 !important;
+}
+.cm-string {
+  color: #98c379 !important;
+}
+.cm-variable {
+  color: #e06c75 !important;
+}
+.cm-variable-2 {
+  color: #e5aa69 !important;
+}
+.cm-variable-3 {
+  color: #61afef !important;
+}
+.cm-number {
+  color: #d19a66 !important;
+}
+.cm-property {
+  color: #61afef !important;
+}
+.cm-atom {
+  color: #c678dd !important;
+}
+.cm-keyword {
+  color: #c678dd !important;
+}
+.cm-builtin {
+  color: #56b6c2 !important;
+}
+.cm-def {
+  color: #61afef !important;
+}
+.cm-operator {
+  color: #56b6c2 !important;
+}
+.cm-meta {
+  color: #abb2bf !important;
+}
+.cm-tag {
+  color: #e06c75 !important;
+}
+.cm-attribute {
+  color: #61afef !important;
+}
+.cm-regexp {
+  color: #98c379 !important;
+}
+.cm-link {
+  color: #61afef !important;
+}
+
+.cm-header {
+  color: #e06c63 !important;
+}
+
+/* SOURCE MODE */
+#typora-source .CodeMirror-lines {
+  font-family: "GeistMono", "LXGWWenKaiMono";
+}
+
+
+ @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}
+</style><title></title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='srvdneat-business-plan-jul-2025'><span>SrvdNeat: Business Plan (Jul 2025)</span></h1><div class='md-toc' mdtype='toc'><p class="md-toc-content" role="list"><span role="listitem" class="md-toc-item md-toc-h1" data-ref="n7"><a class="md-toc-inner" style="" href="#srvdneat-business-plan-jul-2025">SrvdNeat: Business Plan (Jul 2025)</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n1032"><a class="md-toc-inner" style="" href="#executive-summary">Executive Summary</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n21"><a class="md-toc-inner" style="" href="#2-company-overview">2. Company Overview</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n22"><a class="md-toc-inner" style="" href="#vision--mission">Vision &amp; Mission</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n28"><a class="md-toc-inner" style="" href="#core-philosophy--values">Core Philosophy &amp; Values</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n2761"><a class="md-toc-inner" style="" href="#3-market-context">3. Market Context</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n42"><a class="md-toc-inner" style="" href="#market-timing--adoption-gap">Market Timing &amp; Adoption Gap</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n52"><a class="md-toc-inner" style="" href="#timing-tailwinds">Timing Tailwinds</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n63"><a class="md-toc-inner" style="" href="#the-friction-economy">The Friction Economy</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n76"><a class="md-toc-inner" style="" href="#4-problem-framing">4. Problem Framing</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n77"><a class="md-toc-inner" style="" href="#root-causes-of-ai-failure">Root Causes of AI Failure</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n88"><a class="md-toc-inner" style="" href="#friction-patterns-in-smes">Friction Patterns in SMEs</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n119"><a class="md-toc-inner" style="" href="#5-market-analysis">5. Market Analysis</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n120"><a class="md-toc-inner" style="" href="#tam--sam--som">TAM / SAM / SOM</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n128"><a class="md-toc-inner" style="" href="#segmentation">Segmentation</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n140"><a class="md-toc-inner" style="" href="#sector-growth-tailwinds">Sector Growth Tailwinds</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n149"><a class="md-toc-inner" style="" href="#6-solution-overview">6. Solution Overview</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3573"><a class="md-toc-inner" style="" href="#the-srvdneat-stack">The SrvdNeat Stack</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n3581"><a class="md-toc-inner" style="" href="#1-neataudit-----friction-diagnostic-free">1. NeatAudit — Friction Diagnostic (Free)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n3606"><a class="md-toc-inner" style="" href="#2-neatlm-----intelligent-orchestration">2. NeatLM — Intelligent Orchestration</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n3626"><a class="md-toc-inner" style="" href="#3-neatportal-----continuous-control--optimisation"><strong>3. NeatPortal — Continuous Control &amp; Optimisation</strong></a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n3649"><a class="md-toc-inner" style="" href="#the-customer-journey"><strong>The Customer Journey</strong></a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n3672"><a class="md-toc-inner" style="" href="#why-it-works-and-others-dont"><strong>Why It Works (and Others Don't)</strong></a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n165"><a class="md-toc-inner" style="" href="#infrastructure-vs-tooling-framing">Infrastructure vs. Tooling Framing</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n195"><a class="md-toc-inner" style="" href="#7-neataudit-overview">7. NeatAudit Overview</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n196"><a class="md-toc-inner" style="" href="#diagnostic-scoring-framework">Diagnostic Scoring Framework</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n207"><a class="md-toc-inner" style="" href="#scoring-framework">Scoring Framework</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n231"><a class="md-toc-inner" style="" href="#sample-questions-by-category">Sample Questions by Category</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n240"><a class="md-toc-inner" style="" href="#friction-index-scoring">Friction Index Scoring</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n272"><a class="md-toc-inner" style="" href="#output-mapping-example">Output Mapping Example</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n291"><a class="md-toc-inner" style="" href="#8-competitive-landscape">8. Competitive Landscape</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n3879"><a class="md-toc-inner" style="" href="#positioning-matrix">Positioning Matrix</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n320"><a class="md-toc-inner" style="" href="#direct-vs-indirect-competitors">Direct vs. Indirect Competitors</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n343"><a class="md-toc-inner" style="" href="#behavioral-data-moat">Behavioral Data Moat</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n354"><a class="md-toc-inner" style="" href="#future-threats--moat-preservation">Future Threats &amp; Moat Preservation</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n382"><a class="md-toc-inner" style="" href="#9-business-model">9. Business Model</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n383"><a class="md-toc-inner" style="" href="#pricing-tiers--acv-breakdown">Pricing Tiers &amp; ACV Breakdown</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n417"><a class="md-toc-inner" style="" href="#unit-economics">Unit Economics</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n438"><a class="md-toc-inner" style="" href="#land-&gt;-expand-&gt;-compound-model">Land &gt; Expand &gt; Compound Model</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n448"><a class="md-toc-inner" style="" href="#10-technology--infrastructure">10. Technology &amp; Infrastructure</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n449"><a class="md-toc-inner" style="" href="#modular-architecture">Modular Architecture</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n451"><a class="md-toc-inner" style="" href="#101-interface-layer-neataudit-neatportal">10.1 Interface Layer (NeatAudit, NeatPortal)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n459"><a class="md-toc-inner" style="" href="#102-orchestration-engine-neatlm">10.2 Orchestration Engine (NeatLM)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n469"><a class="md-toc-inner" style="" href="#103-learning--feedback-layer">10.3 Learning &amp; Feedback Layer</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n477"><a class="md-toc-inner" style="" href="#behavioral-ai-engine">Behavioral AI Engine</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n489"><a class="md-toc-inner" style="" href="#modular--model-agnostic">Modular &amp; Model-Agnostic</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n497"><a class="md-toc-inner" style="" href="#defensible-learning-infrastructure">Defensible Learning Infrastructure</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n505"><a class="md-toc-inner" style="" href="#security-compliance--scalability">Security, Compliance &amp; Scalability</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n517"><a class="md-toc-inner" style="" href="#11-go-to-market-strategy">11. Go-To-Market Strategy</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n518"><a class="md-toc-inner" style="" href="#phased-growth-roadmap-validation-→-scale-→-distribution">Phased Growth Roadmap (Validation → Scale → Distribution)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n528"><a class="md-toc-inner" style="" href="#channel-strategy">Channel Strategy</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n573"><a class="md-toc-inner" style="" href="#sales-flow-free-audit-→-pilot-→-full-rollout">Sales Flow: Free Audit → Pilot → Full Rollout</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n583"><a class="md-toc-inner" style="" href="#12-pilot-case-studies">12. Pilot Case Studies</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n628"><a class="md-toc-inner" style="" href="#13-product-roadmap">13. Product Roadmap</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n629"><a class="md-toc-inner" style="" href="#platform-v10-→-v40">Platform v1.0 → v4.0</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n656"><a class="md-toc-inner" style="" href="#data-flywheel--feature-expansion">Data Flywheel &amp; Feature Expansion</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n667"><a class="md-toc-inner" style="" href="#14-team--hiring-plan">14. Team &amp; Hiring Plan</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n668"><a class="md-toc-inner" style="" href="#founder--advisors">Founder &amp; Advisors</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n680"><a class="md-toc-inner" style="" href="#key-roles-post-raise">Key Roles Post-Raise</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n3847"><a class="md-toc-inner" style="" href="#15-financials">15. Financials</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n701"><a class="md-toc-inner" style="" href="#revenue-forecast-aud">Revenue Forecast (AUD)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n770"><a class="md-toc-inner" style="" href="#key-metrics-year-2-targets">Key Metrics (Year 2 targets)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n791"><a class="md-toc-inner" style="" href="#profit--loss-statement">Profit &amp; Loss Statement</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n828"><a class="md-toc-inner" style="" href="#sensitivity-analysis">Sensitivity Analysis</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n836"><a class="md-toc-inner" style="" href="#key-assumptions">Key Assumptions</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n851"><a class="md-toc-inner" style="" href="#16-funding-requirements">16. Funding Requirements</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n852"><a class="md-toc-inner" style="" href="#$2m-seed-round">$2M Seed Round</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n855"><a class="md-toc-inner" style="" href="#capital-allocation----$2m-aud-24-month-deployment">Capital Allocation – $2M AUD (24-Month Deployment)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n3857"><a class="md-toc-inner" style="" href="#24-month-milestones">24-Month Milestones</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n897"><a class="md-toc-inner" style="" href="#market-momentum-is-onside">Market Momentum Is Onside</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n907"><a class="md-toc-inner" style="" href="#17-risk-analysis">17. Risk Analysis</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n940"><a class="md-toc-inner" style="" href="#operational--market-dynamics">Operational &amp; Market Dynamics</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n948"><a class="md-toc-inner" style="" href="#external-risk-considerations">External Risk Considerations</a></span><span role="listitem" class="md-toc-item md-toc-h2" data-ref="n956"><a class="md-toc-inner" style="" href="#18-appendix">18. Appendix</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n957"><a class="md-toc-inner" style="" href="#181-neataudit">18.1 NeatAudit</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n1376"><a class="md-toc-inner" style="" href="#thesis-logic--strategic-role">Thesis, Logic &amp; Strategic Role</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n978"><a class="md-toc-inner" style="" href="#academic-research--validation">Academic Research &amp; Validation</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n1110"><a class="md-toc-inner" style="" href="#paper-a-taxonomy-of-friction-in-sme-digital-transformation">Paper A: Taxonomy of Friction in SME Digital Transformation</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1127"><a class="md-toc-inner" style="" href="#focus-of-attention">Focus of Attention</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1144"><a class="md-toc-inner" style="" href="#situated-attention">Situated Attention</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1247"><a class="md-toc-inner" style="" href="#why-this-matters">Why This Matters</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n985"><a class="md-toc-inner" style="" href="#paper-b-srvdneat-going-deep-on-friction-2025">Paper B: SrvdNeat: Going Deep on Friction (2025)</a></span><span role="listitem" class="md-toc-item md-toc-h4" data-ref="n987"><a class="md-toc-inner" style="" href="#sample-visual-qa-brief">Sample Visual: Q&amp;A Brief</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n993"><a class="md-toc-inner" style="" href="#182-formative-documents">18.2 Formative Documents.</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1463"><a class="md-toc-inner" style="" href="#a-the-rag-ai-agent-module-for-every-sme-on-the-planet"><span>	</span>A. The RAG AI Agent Module For Every SME on the Planet:</a></span><span role="listitem" class="md-toc-item md-toc-h5" data-ref="n1525"><a class="md-toc-inner" style="" href="#b-prompt-engineering-pilot-001-archers-omitted-alpha"><span>	</span>B. Prompt Engineering Pilot 001: Archers (Omitted Alpha)</a></span><span role="listitem" class="md-toc-item md-toc-h3" data-ref="n1796"><a class="md-toc-inner" style="" href="#srvdneat-technical-qa">SrvdNeat Technical Q&amp;A</a></span></p></div><p>&nbsp;</p><h2 id='executive-summary'><span>Executive Summary</span></h2><p><span>Australia&#39;s 2.6 million SMEs are hemorrhaging $38.6 billion annually to operational friction—manual handoffs, fragmented systems, and workflow chaos that turns promising businesses into administrative nightmares. While 80% of these businesses recognize AI as essential for survival, a devastating 70% of AI implementations fail within six months. The culprit isn&#39;t AI capability—it&#39;s deployment into operational chaos.</span></p><p><strong><span>SrvdNeat solves the problem everyone else ignores: you can&#39;t automate carnage. Fix it first</span></strong></p><p><span>Our friction-first approach is a total reconsideration of the stagnant AI adoption model. Instead of layering intelligent tools onto broken workflows, we diagnose operational friction within five minutes, stabilize the underlying systems, then deploy AI that actually sticks. This isn&#39;t consulting—it&#39;s infrastructure.</span></p><p><span>Our proprietary NeatAudit diagnostic captures behavioral patterns across six friction dimensions, feeding our orchestration engine (NeatLM) with the contextual intelligence needed to deploy precision solutions rather than generic automation. The result: 24-hour time-to-value, 251% ROI, and 95% implementation success rate across paying pilots.</span></p><p><strong><span>The market timing is exceptional.</span></strong><span> OpenAI&#39;s July 2025 announcement of a $185B Australian AI initiative validates our exact framework—that successful AI adoption requires foundational operational intelligence, not just access to models. </span></p><blockquote><p><strong><span>Proven traction speaks louder than projections.</span></strong><span> We've already made $75,000—no launch, no funnel, no sales team. Just one person who heard the model was in development. She paid. Then told two others. That's it. Three conversations, $75K.</span></p><p><strong><span>We anticipate revenue may grow slightly now that we've decided to inform people on purpose.</span></strong></p></blockquote><p><strong><span>Market Opportunity:</span></strong></p><ul><li><p><strong><span>Total Addressable Market (TAM):</span></strong><span> 2.6 million Australian SMEs, representing $38.6 billion in lost productivity</span></p></li><li><p><strong><span>Serviceable Available Market (SAM):</span></strong><span> 1.2 million high-friction SMEs, particularly in legal, finance, and administrative-heavy sectors</span></p></li><li><p><strong><span>Serviceable Obtainable Market (SOM):</span></strong><span> 420,000 SMEs with specific needs in legal and finance functions, indicating a potential capture of $10-15 billion.</span></p></li></ul><p><img src="/Users/neatmac/Desktop/CleanShot 2025-07-20 at 21.56.50@2x.png" alt="CleanShot 2025-07-20 at 21.56.50@2x" style="zoom:50%;" /></p><hr /><h2 id='2-company-overview'><span>2. Company Overview</span></h2><h3 id='vision--mission'><span>Vision &amp; Mission</span></h3><ul><li><p><strong><span>Vision:</span></strong><span> To power Australia&#39;s next era of SME productivity by eliminating operational friction and enabling intelligent automation at scale</span></p></li><li><p><strong><span>Mission:</span></strong><span> To help every SME deploy AI that actually works—by diagnosing friction, orchestrating execution, and embedding intelligence into everyday workflows to achieve the ~70% productivity gains that effective AI integration projects achieve</span></p></li></ul><h3 id='core-philosophy--values'><span>Core Philosophy &amp; Values</span></h3><ul><li><p><strong><span>Friction is the real barrier to AI.</span></strong><span> Not access to tools—but the chaos between them</span></p></li><li><p><strong><span>Infrastructure beats tooling.</span></strong><span> We don&#39;t just layer AI on top; we rebuild the foundations that make it effective</span></p></li><li><p><strong><span>Behavior reveals opportunity.</span></strong><span> Operational inefficiency isn&#39;t random—it&#39;s patterned, predictable, and solvable</span></p></li><li><p><strong><span>Adoption is a design problem.</span></strong><span> Intelligence must adapt to the user, not the other way around</span></p></li><li><p><strong><span>SMEs deserve better.</span></strong><span> They power half the workforce but operate with duct tape and PDFs. We&#39;re here to fix that</span></p></li></ul><hr /><h2 id='3-market-context'><span>3. Market Context</span></h2><h3 id='market-timing--adoption-gap'><span>Market Timing &amp; Adoption Gap</span></h3><p><span>AI is rapidly emerging in the SME market, yet its adoption is stalling. This isn&#39;t due to the complexity of AI itself, but rather the inherent messiness of existing operational workflows. Key observations include:</span></p><ul><li><p><span>65% of Australian SMEs report failed or stalled AI initiatives</span></p></li><li><p><span>80% of owners view AI as essential for reaching new customers and meeting expectations</span></p></li><li><p><span>63% use AI tools weekly, but primarily in isolation (e.g., ChatGPT for administration, Canva for design) without proper operational integration</span></p></li></ul><p><span>This fragmentation leads to wasted spending, disjointed workflows, and increased burnout. The issue isn&#39;t AI&#39;s failure to perform, but rather the significant gap between diagnosis of operational issues and the successful deployment of AI solutions.</span></p><h3 id='timing-tailwinds'><span>Timing Tailwinds</span></h3><p><span>In July 2025, right as SrvdNeat meets the market, OpenAI and the Australian government announce a $185B dollar initiative to repair our significantly underdeveloped AI ecosystem. The focus and wording used in the announcement mirrors the entire framework that SrvdNeat is built on. In addition to this:</span></p><ul><li><p><span>Government incentives and funding (e.g., Digital Solutions Program, Industry Growth Fund) are fostering a supportive environment</span></p></li><li><p><span>Declining costs of foundational models and orchestration tools make AI more accessible</span></p></li><li><p><span>Growing SME appetite for efficiency gains and compliance automation</span></p></li><li><p><span>A clear shift from the exploration phase to the execution phase in the AI maturity curve</span></p></li></ul><h3 id='the-friction-economy'><span>The Friction Economy</span></h3><p><span>Australia&#39;s SMEs collectively lose over $38.6 billion annually due to operational friction. This friction is primarily driven by:</span></p><ul><li><p><strong><span>Manual load:</span></strong><span> Excessive data entry, filing, and cross-system handoffs</span></p></li><li><p><strong><span>Lost context:</span></strong><span> Inefficient communication through email chains, siloed information, and reliance on PDF-based workflows</span></p></li><li><p><strong><span>Reactive processes:</span></strong><span> Inefficient handling of compliance, client onboarding, and billing</span></p></li><li><p><strong><span>Scalability blockers:</span></strong><span> Non-standardized operations, reliance on tribal knowledge, and over-dependence on key individuals</span></p></li></ul><p><span>SrvdNeat quantifies this with a proprietary Friction Index, benchmarked across six dimensions. Most SMEs score 3.2/5 or higher, indicating a critical state for AI deployment without foundational operational changes.</span></p><hr /><h2 id='4-problem-framing'><span>4. Problem Framing</span></h2><h3 id='root-causes-of-ai-failure'><span>Root Causes of AI Failure</span></h3><p><span>AI solutions often fail not because they lack intelligence, but because they are introduced into chaotic operational environments. Most SME operations are characterized by:</span></p><ul><li><p><strong><span>Unstructured:</span></strong><span> Lacking clear process ownership and relying on ad hoc tasks</span></p></li><li><p><strong><span>Overloaded:</span></strong><span> Burdened by manual workflows and constant reactive firefighting</span></p></li><li><p><strong><span>Siloed:</span></strong><span> Information and data are scattered across emails, PDFs, and legacy systems</span></p></li></ul><p><span>Australian SMEs lose $14,857 and 541 hours a year to friction—manual handoffs, lost context, fractured data. Furthermore, Friction derails 70% of digital projects; locking 2.6M SMEs out of AI&#39;s transformative potential.</span></p><p><span>These conditions severely impede AI adoption. The technology itself is capable, but it lacks a stable foundation upon which to operate. The core failure point is not the quality of the AI model, but rather the business&#39;s execution readiness. As the saying goes, &quot;You can&#39;t automate chaos. You have to fix it first.&quot; SrvdNeat strategically targets this often-overlooked pre-AI layer, which is critical for the success or failure of AI adoption.</span></p><h3 id='friction-patterns-in-smes'><span>Friction Patterns in SMEs</span></h3><figure class='table-figure'><table><thead><tr><th><strong><span>Friction Type</span></strong></th><th><strong><span>Description</span></strong></th><th><strong><span>SME Examples</span></strong></th></tr></thead><tbody><tr><td><span>Manual Load</span></td><td><span>High-volume, low-leverage work</span></td><td><span>Intake forms, duplicate data entry</span></td></tr><tr><td><span>Data Fracture</span></td><td><span>Information spread across tools, no single source of truth</span></td><td><span>Client info in Gmail + Xero + Excel</span></td></tr><tr><td><span>Process Clarity</span></td><td><span>No clear workflow ownership or visibility</span></td><td><span>Legal onboarding varies per employee</span></td></tr><tr><td><span>Reactive Pings</span></td><td><span>Teams operate by inbox, not logic</span></td><td><span>Email → invoice manually, no sync</span></td></tr><tr><td><span>Scalability</span></td><td><span>Inability to standardize due to founder dependence</span></td><td><span>Everything lives in someone&#39;s head</span></td></tr><tr><td><span>Knowledge Silos</span></td><td><span>Critical knowledge not captured or shared</span></td><td><span>Lost context when a staff member leaves</span></td></tr></tbody></table></figure><hr /><h2 id='5-market-analysis'><span>5. Market Analysis</span></h2><h3 id='tam--sam--som'><span>TAM / SAM / SOM</span></h3><ul><li><p><strong><span>Total Addressable Market (TAM):</span></strong><span> 2.6 million Australian SMEs lose </span><strong><span>$38.6B annually</span></strong><span> to operational friction—manual handoffs, lost context, fragmented systems</span></p></li><li><p><strong><span>Serviceable Available Market (SAM):</span></strong><span> 1.2 million SMEs in friction-heavy sectors: legal, finance, healthcare, NDIS, and compliance-led services. These are process-reliant businesses with clear stakes in efficiency and accuracy</span></p></li><li><p><strong><span>Serviceable Obtainable Market (SOM):</span></strong><span> 420,000 digitally ready firms with clear, quantified admin pain. We qualify them by a friction index: &gt;30% of team time spent on non-billable work. This unlocks a </span><strong><span>$10–15B immediate revenue opportunity</span></strong><span> for outcome-led AI deployment</span></p></li></ul><h3 id='segmentation'><span>Segmentation</span></h3><p><span>SrvdNeat targets SMEs that are willing but blocked. We call them:</span></p><p><strong><span>AI-Curious but Stuck</span></strong></p><p><span>They exhibit three core traits:</span></p><ul><li><p><strong><span>Mindset:</span></strong><span> Want automation, but distrust generic consultants or freelance builders</span></p></li><li><p><strong><span>Behavior:</span></strong><span> Have tried AI tools (e.g. chatbots, Zapier) and quit due to complexity or low ROI</span></p></li><li><p><strong><span>Conditions:</span></strong><span> Founder-led ops, regulatory complexity, and manual workflows that break at scale</span></p></li></ul><p><span>These aren&#39;t laggards. They&#39;re early adopters with friction. They don&#39;t need more AI tools — they need an intelligent partner to remove the blockers.</span></p><h3 id='sector-growth-tailwinds'><span>Sector Growth Tailwinds</span></h3><ul><li><p><span>Professional services automation market (legal, finance, admin) is growing at 11.4% CAGR, driven by staff shortages and compliance burden</span></p></li><li><p><span>Post-COVID digital infrastructure funding is increasing SME readiness across Australia</span></p></li><li><p><span>AI tooling adoption is outpacing success — but success rates remain below 30%. This gap is where SrvdNeat thrives: not in selling software, but in delivering outcomes</span></p></li></ul><hr /><h2 id='6-solution-overview'><span>6. Solution Overview</span></h2><div class="md-alert md-alert-note note"><p><span class='md-alert-text md-alert-text-note'><svg viewBox="0 0 16 16" version="1.1" width="1em" height="1em" aria-hidden="true"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</span><br></p><p><span>Video of our highly comitted NeatLM model </span><strong><u><a href='https://streamshare.wireway.ch/download/92emla9n'><span>here</span></a></u></strong><span>.</span></p></div><p><img src="/Users/neatmac/Desktop/CleanShot 2025-07-20 at 22.02.20@2x.png" referrerpolicy="no-referrer" alt="CleanShot 2025-07-20 at 22.02.20@2x"></p><p><strong><span>We ask what hurts before we force solutions.</span></strong></p><h2 id='the-srvdneat-stack'><span>The SrvdNeat Stack</span></h2><p><span>A tightly integrated three-layer system designed to diagnose, deploy, and continuously improve AI inside real SME workflows. SrvdNeat fundamentally redefines the AI adoption model for SMEs. Instead of the traditional approach where AI is deployed first, leading to chaos and project stalls, our model is:</span></p><ul><li><p><strong><span>Traditional Model:</span></strong><span> AI first → chaos reveals itself → project stalls</span></p></li><li><p><strong><span>SrvdNeat Model:</span></strong><span> Diagnose friction → stabilize workflows → deploy AI that sticks</span></p></li></ul><hr /><h3 id='1-neataudit-----friction-diagnostic-free'><span>1. NeatAudit — Friction Diagnostic (Free)</span></h3><p><strong><span>Purpose:</span></strong><span> Identify where AI </span><em><span>should</span></em><span> be deployed</span>
+<strong><span>Format:</span></strong><span> 5-minute online assessment → output within 24 hours</span></p><figure class='table-figure'><table><thead><tr><th><strong><span>Function</span></strong></th><th><strong><span>Description</span></strong></th></tr></thead><tbody><tr><td><strong><span>Friction Index</span></strong></td><td><span>Scores operational drag across 6 dimensions</span></td></tr><tr><td><strong><span>ROI Analysis</span></strong></td><td><span>Quantifies opportunity by use case</span></td></tr><tr><td><strong><span>Feasibility Scan</span></strong></td><td><span>Assesses complexity, tools, and resourcing</span></td></tr></tbody></table></figure><p><strong><span>Output:</span></strong><span> Prioritised AI roadmap with high-ROI interventions</span></p><h3 id='2-neatlm-----intelligent-orchestration'><span>2. NeatLM — Intelligent Orchestration</span></h3><p><strong><span>Purpose:</span></strong><span> Deploy tailored AI agents that *fit the business**</span>
+<strong><span>How it works:</span></strong><span> Converts raw diagnostic data into executable automations</span></p><figure class='table-figure'><table><thead><tr><th><strong><span>Input</span></strong></th><th><strong><span>Processing</span></strong></th><th><strong><span>Output</span></strong></th></tr></thead><tbody><tr><td><span>Documents, tasks, behavioural signals</span></td><td><span>Agent matching + workflow templating</span></td><td><span>Business-specific AI agents</span></td></tr></tbody></table></figure><p><strong><span>Result:</span></strong><span> AI that adapts to </span><em><span>you</span></em><span>, not the other way around</span></p><h3 id='3-neatportal-----continuous-control--optimisation'><strong><span>3. NeatPortal — Continuous Control &amp; Optimisation</span></strong></h3><p><strong><span>Purpose:</span></strong><span> Monitor performance, surface friction, and learn over time</span></p><p><strong><span>Functionality:</span></strong></p><figure class='table-figure'><table><thead><tr><th><strong><span>Feature</span></strong></th><th><strong><span>Description</span></strong></th></tr></thead><tbody><tr><td><strong><span>Agent Analytics</span></strong></td><td><span>Tracks ROI, usage, and outcomes</span></td></tr><tr><td><strong><span>User Signals</span></strong></td><td><span>Measures engagement and adoption</span></td></tr><tr><td><strong><span>Friction Alerts</span></strong></td><td><span>Flags emerging issues and inefficiencies</span></td></tr></tbody></table></figure><p><strong><span>Output:</span></strong><span> Self-improving AI infrastructure for SMEs</span></p><h3 id='the-customer-journey'><strong><span>The Customer Journey</span></strong></h3><figure class='table-figure'><table><thead><tr><th><strong><span>Phase</span></strong></th><th><strong><span>What Happens</span></strong></th><th><strong><span>Value Delivered</span></strong></th></tr></thead><tbody><tr><td><strong><span>Audit</span></strong></td><td><span>Friction scored, roadmap generated</span></td><td><span>Insight without commitment</span></td></tr><tr><td><strong><span>Pilot</span></strong></td><td><span>1–2 agents deployed in 2 weeks</span></td><td><span>Fast ROI and confidence</span></td></tr><tr><td><strong><span>Rollout</span></strong></td><td><span>Full-stack orchestration + Portal</span></td><td><span>Long-term automation, zero waste</span></td></tr></tbody></table></figure><h3 id='why-it-works-and-others-dont'><strong><span>Why It Works (and Others Don't)</span></strong></h3><ol><li><p><strong><span>We Start with Friction</span></strong><span> – Most vendors start with what they've built. We start with what's </span><em><span>broken</span></em><span>.</span></p></li><li><p><strong><span>Agents That Fit</span></strong><span> – NeatLM tailors every deployment to business-specific logic and tooling.</span></p></li><li><p><strong><span>Learning by Design</span></strong><span> – NeatPortal isn't a dashboard. It's a feedback engine that compounds ROI.</span></p></li><li><p><strong><span>Zero-Risk Entry</span></strong><span> – The free audit delivers value before any commitment. Sales friction = gone.</span></p><p>&nbsp;</p></li></ol><h3 id='infrastructure-vs-tooling-framing'><span>Infrastructure vs. Tooling Framing</span></h3><p><span>Most vendors offer point solutions or AI tools. SrvdNeat, however, builds essential infrastructure:</span></p><figure class='table-figure'><table><thead><tr><th><strong><span>Category</span></strong></th><th><strong><span>AI Tooling</span></strong></th><th><strong><span>SrvdNeat Infrastructure</span></strong></th></tr></thead><tbody><tr><td><span>Approach</span></td><td><span>Point solution (e.g., AI email writer)</span></td><td><span>Pattern engine (across operations, teams, workflows)</span></td></tr><tr><td><span>Integration</span></td><td><span>Requires SME to adapt to the tool</span></td><td><span>Learns from SME behavior and adapts to it</span></td></tr><tr><td><span>Deployment</span></td><td><span>Static agent per task</span></td><td><span>Orchestrated execution layer across systems</span></td></tr><tr><td><span>Feedback Loop</span></td><td><span>Manual retraining, reimplementation</span></td><td><span>Live feedback → friction map → agent tuning</span></td></tr><tr><td><span>Business Impact</span></td><td><span>Productivity spike, then drop</span></td><td><span>Compounding ROI via embedded intelligence</span></td></tr></tbody></table></figure><p><span>We are not selling &quot;AI in a box.&quot; We are building the systemic solution that makes AI truly usable and measurably valuable for real businesses.</span></p><hr /><h2 id='7-neataudit-overview'><span>7. NeatAudit Overview</span></h2><h3 id='diagnostic-scoring-framework'><span>Diagnostic Scoring Framework</span></h3><p><span>NeatAudit is SrvdNeat&#39;s proprietary AI readiness diagnostic, specifically designed for SMEs. It features:</span></p><ul><li><p><span>A rapid 5-minute digital intake process, requiring no account setup or technical jargon</span></p></li><li><p><span>Structure around six universal friction dimensions</span></p></li><li><p><span>Each dimension is scored on a 1–5 severity scale, weighted by its impact and prevalence</span></p></li><li><p><span>The output includes an Aggregate Friction Score (AFS), prioritized use cases, and an ROI-weighted intervention path</span></p></li></ul><h3 id='scoring-framework'><span>Scoring Framework</span></h3><figure class='table-figure'><table><thead><tr><th><strong><span>Dimension</span></strong></th><th><strong><span>Scoring Criteria (1–5 scale)</span></strong></th></tr></thead><tbody><tr><td><span>Manual Load</span></td><td><span>Volume of repeatable, low-value tasks</span></td></tr><tr><td><span>Data Fragmentation</span></td><td><span>Number of disconnected systems + manual handoffs</span></td></tr><tr><td><span>Process Opacity</span></td><td><span>Lack of visibility, SOPs, or automation triggers</span></td></tr><tr><td><span>Audit Reactivity</span></td><td><span>Time spent reacting to compliance/client demands</span></td></tr><tr><td><span>Scalability Friction</span></td><td><span>Workflows dependent on individuals, not systems</span></td></tr><tr><td><span>Knowledge Silos</span></td><td><span>Critical information not captured, structured, or shared</span></td></tr></tbody></table></figure><p><span>Scores are dynamically weighted based on industry, organizational size, and digital maturity.</span></p><h3 id='sample-questions-by-category'><span>Sample Questions by Category</span></h3><ul><li><p><strong><span>Manual Load:</span></strong><span> &quot;How often do you enter the same data into multiple systems (e.g., Xero + CRM + Email)? What % of your team&#39;s time is spent on repeatable tasks?&quot;</span></p></li><li><p><strong><span>Data Fragmentation:</span></strong><span> &quot;How many software tools do you actively use to manage operations? Do these tools sync automatically or require manual updates?&quot;</span></p></li><li><p><strong><span>Process Opacity:</span></strong><span> &quot;Can you describe your workflow for onboarding a new client? Who owns each step, and is that documented?&quot;</span></p></li></ul><p><span>Each question is presented in plain English, is role-specific, and designed to extract genuine friction points rather than vague pain points.</span></p><h3 id='friction-index-scoring'><span>Friction Index Scoring</span></h3><p><span>Sample Range: 1 = Minimal Friction, 5 = Critical Barrier)</span></p><figure class='table-figure'><table><thead><tr><th><strong><span>Dimension</span></strong></th><th><strong><span>Example (Legal SME)</span></strong></th><th><strong><span>Score</span></strong></th></tr></thead><tbody><tr><td><span>Manual Load</span></td><td><span>Intake forms retyped from PDFs</span></td><td><span>4.5</span></td></tr><tr><td><span>Data Fragmentation</span></td><td><span>Client docs in Dropbox, billing in LEAP</span></td><td><span>4.2</span></td></tr><tr><td><span>Process Opacity</span></td><td><span>No automated handoff from email to billing</span></td><td><span>3.8</span></td></tr><tr><td><span>Audit Reactivity</span></td><td><span>Compliance flagged late via email chains</span></td><td><span>4.0</span></td></tr><tr><td><span>Scalability Friction</span></td><td><span>Principal manually approves every document</span></td><td><span>4.6</span></td></tr><tr><td><span>Knowledge Silos</span></td><td><span>No shared SOPs; &quot;we ask Sarah&quot; for everything</span></td><td><span>5.0</span></td></tr></tbody></table></figure><p><strong><span>Aggregate Friction Score: 4.35</span></strong>
+<strong><span>Recommendation:</span></strong><span> Immediate orchestration of onboarding, billing, and approval workflows.</span></p><h3 id='output-mapping-example'><span>Output Mapping Example</span></h3><p><span>Upon completion of an audit, NeatLM generates a tailored solution path. For instance:</span></p><p><strong><span>Input:</span></strong><span> AFS = 4.3 | High admin in manual load, silos, billing</span></p><p><strong><span>Output:</span></strong></p><ul><li><p><span>Deploy agent to extract onboarding info from email → sync with CRM</span></p></li><li><p><span>Auto-generate client engagement letter → trigger billing setup</span></p></li><li><p><span>Centralize SOPs and workflows inside NeatPortal for team access</span></p></li></ul><p><strong><span>Time-to-value:</span></strong><span> 24–48 hours</span></p><p><strong><span>Projected ROI:</span></strong><span> 270% in the first 90 days</span></p><hr /><h2 id='8-competitive-landscape'><span>8. Competitive Landscape</span></h2><p>&nbsp;</p><blockquote><p>&nbsp;</p><h3 id='of-australias-744-ai-vendors-only-17-focus-on-deployment-within-that-group-85-chase-generative-ai-trends-while-just-15-solve-operational-friction-srvdneat-dominates-the-nlp-execution-gap-that-generative-ai-vendors-cant-fill'><em><span>Of Australia&#39;s </span><strong><span>744 AI vendors, only 17% focus on deployment.</span></strong><span> Within that group, </span><strong><span>85% chase generative AI</span></strong><span> trends while </span><strong><span>just 15% solve operational friction</span></strong><span>. SrvdNeat dominates the NLP execution gap that generative AI vendors can&#39;t fill.</span></em></h3><p>&nbsp;</p></blockquote><p>&nbsp;</p><h3 id='positioning-matrix'><span>Positioning Matrix</span></h3><figure class='table-figure'><table><thead><tr><th><strong><span>Vendor Type</span></strong></th><th><strong><span>Example Companies</span></strong></th><th><strong><span>Limitation</span></strong></th><th><strong><span>SrvdNeat Advantage</span></strong></th></tr></thead><tbody><tr><td><span>Generic AI Tools</span></td><td><span>ChatGPT, Notion AI</span></td><td><span>No business logic, no orchestration</span></td><td><span>Behavioral logic layer with tailored agents</span></td></tr><tr><td><span>SME Automation</span></td><td><span>Zapier, Make.com</span></td><td><span>Requires technical setup, brittle workflows</span></td><td><span>Pre-mapped playbooks, no-code agent deployment</span></td></tr><tr><td><span>Vertical SaaS</span></td><td><span>Clio, LEAP, Xero</span></td><td><span>Solves one slice, creates silos elsewhere</span></td><td><span>Cross-platform pattern engine</span></td></tr><tr><td><span>AI Consultancies</span></td><td><span>Deloitte, Accenture</span></td><td><span>High-cost, slow, not scalable to SMEs</span></td><td><span>Fast, repeatable, data-backed interventions</span></td></tr></tbody></table></figure><p><span>SrvdNeat distinguishes itself as infrastructure. It unifies, adapts, and learns—rather than simply adding another tool into an already chaotic environment.</span></p><h3 id='direct-vs-indirect-competitors'><span>Direct vs. Indirect Competitors</span></h3><figure class='table-figure'><table><thead><tr><th><strong><span>Type</span></strong></th><th><strong><span>Company</span></strong></th><th><strong><span>Our Take</span></strong></th></tr></thead><tbody><tr><td><span>Direct: Orchestration</span></td><td><span>Bardeen, Relevance AI</span></td><td><span>Focused on tech-savvy users or enterprises</span></td></tr><tr><td><span>Indirect: SaaS AI</span></td><td><span>Jasper, Copy.ai</span></td><td><span>Feature-specific, non-integrated</span></td></tr><tr><td><span>Indirect: Consultants</span></td><td><span>Fractional AI CXOs</span></td><td><span>Not scalable, no IP flywheel</span></td></tr><tr><td><span>Adjacent: Ops Tools</span></td><td><span>ClickUp, Asana</span></td><td><span>Not AI-native, require manual configuration</span></td></tr></tbody></table></figure><p><span>SrvdNeat gains a competitive edge by combining orchestration, context awareness, and compounding data within a system that continuously learns from every deployment.</span></p><hr /><h3 id='behavioral-data-moat'><span>Behavioral Data Moat</span></h3><p><span>Our defensibility is rooted in pattern density, not merely intellectual property. This is achieved through:</span></p><ul><li><p><strong><span>NeatAudit Fingerprint:</span></strong><span> Each NeatAudit generates a unique fingerprint of how SMEs operate</span></p></li><li><p><strong><span>Friction Cluster Identification:</span></strong><span> NeatLM leverages this data to identify friction clusters across various industries</span></p></li><li><p><strong><span>Smarter Interventions:</span></strong><span> Interventions become increasingly intelligent with each rollout</span></p></li><li><p><strong><span>Continuously Tuned Playbooks:</span></strong><span> Playbooks are templated but are continuously fine-tuned for each segment</span></p></li></ul><h3 id='future-threats--moat-preservation'><span>Future Threats &amp; Moat Preservation</span></h3><p><span>As the SME AI market matures, we anticipate three categories of competitive threat:</span></p><ol start='' ><li><p><strong><span>Vertical SaaS Tools Adding AI Layers</span></strong></p><ul><li><p><span>Tools like Xero, Clio, and LEAP may embed AI features, but they will remain feature-bound and siloed</span></p></li><li><p><strong><span>SrvdNeat Advantage:</span></strong><span> We orchestrate </span><em><span>across</span></em><span> systems, not within them—making us complementary, not redundant</span></p></li></ul></li><li><p><strong><span>Enterprise AI Orchestration Platforms Moving Downmarket</span></strong></p><ul><li><p><span>Players like UiPath, Relevance AI, or custom consultant stacks may attempt SME targeting</span></p></li><li><p><strong><span>SrvdNeat Advantage:</span></strong><span> Our product, pricing, and UX are purpose-built for SME velocity—low-code interfaces, rapid time-to-value, and no integration debt</span></p></li></ul></li><li><p><strong><span>Generic Copilots with Workflow Plugins (e.g., Microsoft, Google)</span></strong></p><ul><li><p><span>These tools will drive automation awareness but lack tailored context logic</span></p></li><li><p><strong><span>SrvdNeat Advantage:</span></strong><span> Our moat is behavioral—the friction data, context maps, and adaptive agent logic trained across real-world SME operations. This isn&#39;t a plugin layer. It&#39;s infrastructure</span></p></li></ul></li></ol><p><strong><span>Our defense isn&#39;t just IP—it&#39;s inertia.</span></strong></p><p><span>The more clients we serve, the smarter our orchestration becomes—and the more painful it is to rip us out. This represents infrastructure-level learning—a dynamic map of SME behavior in motion, rather than static rules. Over time, SrvdNeat is poised to become the default pattern library for SME AI orchestration.</span></p><hr /><h2 id='9-business-model'><span>9. Business Model</span></h2><h3 id='pricing-tiers--acv-breakdown'><span>Pricing Tiers &amp; ACV Breakdown</span></h3><p><span>SrvdNeat employs a tiered subscription model designed to scale with the complexity of SME operations, rather than simply headcount. The key changes per tier are as followed:</span></p><ul><li><p><strong><span>Core:</span></strong><span> internal, non-branded AI efficiency tools (frameworks to amplify effective work)</span></p></li><li><p><strong><span>Plus:</span></strong><span> internal, branded AI efficiency tools (internal infranet/chat etc)</span></p></li><li><p><strong><span>App/Scale:</span></strong><span> Outward facing, branded AI deployments</span></p></li></ul><figure class='table-figure'><table><thead><tr><th><strong><span>Tier</span></strong></th><th><strong><span>Monthly</span></strong></th><th><strong><span>Description</span></strong></th></tr></thead><tbody><tr><td><span>Core</span></td><td><span>$1.5K</span></td><td><span>Basic agent deployment + NeatPortal access</span></td></tr><tr><td><span>Plus</span></td><td><span>$3K</span></td><td><span>Multi-agent orchestration + industry templates</span></td></tr><tr><td><span>App/Scale</span></td><td><span>$4.5K+</span></td><td><span>Full orchestration, comprehensive support, and compliance wrap</span></td></tr></tbody></table></figure><ul><li><p><strong><span>Blended ACV:</span></strong><span> $33.3K AUD</span></p></li><li><p><strong><span>Average onboarding to activation:</span></strong><span> Less than 7 days</span></p></li><li><p><strong><span>Average agent deployment timeline:</span></strong><span> 24–48 hours</span></p></li></ul><p><span>Our pricing is value-anchored: clients pay for the measurable elimination of friction, not for arbitrary &quot;seats&quot; or &quot;features&quot; or unpredictable, often-spiking API pings.</span></p><p>&nbsp;</p><h3 id='unit-economics'><span>Unit Economics</span></h3><figure class='table-figure'><table><thead><tr><th><strong><span>Metric</span></strong></th><th><strong><span>Value</span></strong></th></tr></thead><tbody><tr><td><span>Gross Margin</span></td><td><span>85%</span></td></tr><tr><td><span>CAC (est. Year 1)</span></td><td><span>$7.9K</span></td></tr><tr><td><span>LTV</span></td><td><span>$100K</span></td></tr><tr><td><span>LTV:CAC</span></td><td><span>4.2x</span></td></tr><tr><td><span>Payback Period</span></td><td><span>8 months</span></td></tr></tbody></table></figure><p><span>Efficiency is projected to increase post-raise due to the maturation of our Go-to-Market (GTM) engine and enhanced agent reuse. Our high margin is protected by an in-house orchestration engine, minimizing reliance on outsourced development.</span></p><h3 id='land->-expand->-compound-model'><span>Land &gt; Expand &gt; Compound Model</span></h3><ul><li><p><strong><span>Land:</span></strong><span> Initiate with a free NeatAudit to quantify and highlight potential ROI during the initial meeting. Deploy 1–2 high-impact agents (e.g., for onboarding, billing, or compliance)</span></p></li><li><p><strong><span>Expand:</span></strong><span> Introduce multi-agent workflows (e.g., integrating onboarding → billing → follow-up processes). Activate NeatPortal for client-side usage and deeper engagement</span></p></li><li><p><strong><span>Compound:</span></strong><span> Behavioral data continuously feeds our learning loop. Usage patterns trigger new intervention prompts, and margins expand without a proportional increase in headcount</span></p></li></ul><p><span>This model creates a virtuous cycle: the more clients we serve, the more precise our interventions become, and the faster we can acquire new clients.</span></p><hr /><h2 id='10-technology--infrastructure'><span>10. Technology &amp; Infrastructure</span></h2><h3 id='modular-architecture'><span>Modular Architecture</span></h3><p><span>SrvdNeat is built as a modular orchestration platform with three tightly integrated layers:</span></p><h4 id='101-interface-layer-neataudit-neatportal'><span>10.1 Interface Layer (NeatAudit, NeatPortal)</span></h4><ul><li><p><span>Built on Next.js, Supabase, and Retool for speed and flexibility</span></p></li><li><p><span>Designed for SME usability—low-code interfaces allow rapid iteration</span></p></li><li><p><span>Broad low/no-code compatibility ensures NeatLM can map diverse client requests</span></p></li></ul><h4 id='102-orchestration-engine-neatlm'><span>10.2 Orchestration Engine (NeatLM)</span></h4><ul><li><p><span>Multi-agent task handler with pattern-matching logic</span></p></li><li><p><span>Uses OpenAI and other LLMs via an adaptive routing layer</span></p></li><li><p><span>Instruction loops managed by a Redis-backed queue and worker pool</span></p></li><li><p><span>Modular task execution allows for custom workflows without rewrites</span></p></li></ul><h4 id='103-learning--feedback-layer'><span>10.3 Learning &amp; Feedback Layer</span></h4><ul><li><p><span>Logs actions, tracks outcomes, and assesses quality in real time</span></p></li><li><p><span>Feeds back into prompt tuning and agent selection</span></p></li><li><p><span>Builds long-term performance advantages via flywheel refinement</span></p></li></ul><h3 id='behavioral-ai-engine'><span>Behavioral AI Engine</span></h3><p><span>Unlike generative copilots that simply respond to prompts, our Behavioral AI constructs a dynamic context graph from real operational behavior.</span></p><ul><li><p><span>Trained over 1.5 years on &gt;10M tokens and 35+ iterations</span></p></li><li><p><span>Ingests friction signatures from 150+ NeatAudit patterns</span></p></li><li><p><span>Activates interventions based on real behavioral signals—not just triggers</span></p></li><li><p><span>Continuously refined via deployment feedback and agent reinforcement</span></p></li></ul><p><span>This isn&#39;t generative AI slapped on forms—it&#39;s a logic-aware, outcome-driven orchestration layer that evolves with each deployment.</span></p><h3 id='modular--model-agnostic'><span>Modular &amp; Model-Agnostic</span></h3><ul><li><p><span>Dynamically integrates new LLMs or custom agents</span></p></li><li><p><span>Decoupled from single vendors (OpenAI, Anthropic, OSS)</span></p></li><li><p><span>Supports plug-and-play expansion across industries</span></p></li></ul><h3 id='defensible-learning-infrastructure'><span>Defensible Learning Infrastructure</span></h3><ul><li><p><span>Core advantage is not model access—but how we instruct, refine, and deploy them</span></p></li><li><p><span>Pattern libraries + feedback loop compound with scale</span></p></li><li><p><span>Harder to replicate than code—because it&#39;s built on behavior</span></p></li></ul><h3 id='security-compliance--scalability'><span>Security, Compliance &amp; Scalability</span></h3><p><span>SrvdNeat pairs enterprise-grade security with startup-speed adaptability.</span></p><ul><li><p><strong><span>Security:</span></strong><span> RBAC, AES-256 encryption, TLS 1.3, full audit logging</span></p></li><li><p><strong><span>Compliance:</span></strong><span> Aligned to SOC2 Type I; Type II targeted post-raise</span></p></li><li><p><strong><span>Scalability:</span></strong><span> Stateless, cloud-native (GCP + Fly.io), horizontally scalable agents and queues</span></p></li><li><p><strong><span>Modularity:</span></strong><span> Vertical-agnostic agents enable rapid cross-industry rollout</span></p></li></ul><hr /><h2 id='11-go-to-market-strategy'><span>11. Go-To-Market Strategy</span></h2><p>&nbsp;</p><h3 id='phased-growth-roadmap-validation-→-scale-→-distribution'><span>Phased Growth Roadmap (Validation → Scale → Distribution)</span></h3><p><span>Our Go-to-Market (GTM) strategy is structured in phases to ensure sustainable growth and market penetration:</span></p><ul><li><p><strong><span>0–6 Months (Validation):</span></strong><span> Focus on founder-led sales and securing initial pilot wins. Target Outcome: $250K ARR from 10–12 clients</span></p></li><li><p><strong><span>6–12 Months (Scale):</span></strong><span> Develop a robust content engine and test various channel strategies. Target Outcome: $1M ARR run-rate, with established playbook repeatability</span></p></li><li><p><strong><span>12–24 Months (Distribution):</span></strong><span> Implement partner programs and further automate sales processes. Target Outcome: $2M ARR, preparing for a Series A funding round</span></p></li></ul><p><span>This phased execution ensures early product-market fit, followed by scalable growth through predictable friction segments.</span></p><p><span>Full GTM in private access.</span></p><h3 id='channel-strategy'><span>Channel Strategy</span></h3><ul><li><p><strong><span>Founder-Led Sales:</span></strong><span> Targeted outreach to high-friction segments, particularly in legal and financial services. This approach aims for a 30–40% conversion rate from audit to deal</span></p></li><li><p><strong><span>Content Engine:</span></strong><span> Development of diagnostic-style lead magnets, industry-specific friction benchmarks, and compelling founder narratives supported by case study storytelling</span></p><p><strong><span>Content Strategy Examples</span></strong></p><p><span>Our content strategy is designed to </span><strong><span>educate, qualify, and convert</span></strong><span> the &quot;AI-Curious but Stuck&quot; segment through high-trust, high-context materials. Core content assets include:</span></p><p><strong><span>E-books / Guides:</span></strong></p><ul><li><p><em><span>&quot;The Friction Economy: What It&#39;s Costing Your Firm&quot;</span></em></p></li><li><p><em><span>&quot;AI Without the Chaos: A Guide for Professional Services SMEs&quot;</span></em></p></li><li><p><em><span>&quot;The SME Friction Index: Benchmarking Your Operations&quot;</span></em></p></li></ul><p><strong><span>Founder-Led Narratives:</span></strong></p><ul><li><p><em><span>Postmortems of failed AI deployments and what we learned</span></em></p></li><li><p><em><span>Before/after client stories with ROI metrics and time-to-value curves</span></em></p></li><li><p><em><span>Behind-the-scenes: Building behavioral AI for real-world SME workflows</span></em></p></li></ul><p><strong><span>Interactive Tools:</span></strong></p><ul><li><p><span>Free Friction Assessment Calculator</span></p></li><li><p><span>ROI projection tools based on audit results</span></p></li><li><p><span>Industry-specific friction benchmarks and reports</span></p></li></ul></li><li><p><strong><span>Partnerships:</span></strong><span> Collaboration with member organizations (e.g., Law Society, Accounting bodies) to offer white-labeled NeatAudit for trusted distribution This includes shared-revenue or bundled offers. SrvdNeat enhances associations and networks by giving them actionable AI value to pass on to members—without the risk of recommending generic tooling. Benefits include:</span></p><ul><li><p><strong><span>Branded NeatAudit:</span></strong><span> Offered as a free member benefit (e.g. &quot;AI Readiness Diagnostic for Law Society Members&quot;)</span></p></li><li><p><strong><span>Revenue Share / Lead Attribution:</span></strong><span> Structured for win-win monetisation</span></p></li><li><p><strong><span>Education-First Framing:</span></strong><span> Positions the partner as a trusted AI navigator—not a product pusher</span></p></li><li><p><strong><span>Aggregate Insights:</span></strong><span> Anonymous benchmarking data (e.g. &quot;Average Friction Score for Accounting Firms&quot;) shared back with the org</span></p></li></ul></li></ul><p><span>We&#39;re not selling through partners—we&#39;re helping them deliver new value to their members, while capturing qualified pipeline at the point of trust.</span></p><h3 id='sales-flow-free-audit-→-pilot-→-full-rollout'><span>Sales Flow: Free Audit → Pilot → Full Rollout</span></h3><ul><li><p><strong><span>NeatAudit (Free):</span></strong><span> Quantifies pain points and opportunities, providing custom output within 24 hours</span></p></li><li><p><strong><span>Pilot (1–2 agents):</span></strong><span> A 2-week deployment focused on delivering quick wins</span></p></li><li><p><strong><span>Rollout:</span></strong><span> Expansion of agents and activation of NeatPortal, followed by continuous optimization and upsell triggers</span></p></li></ul><p><span>This sales process functions as a flywheel, where each successful step facilitates the next. All data across the user journey pins to a wheel that feeds right back into the cycle.</span></p><hr /><h2 id='12-pilot-case-studies'><span>12. Pilot Case Studies</span></h2><p><strong><span>Case Study 1: Huxley Hilltop Farms (Agriculture)</span></strong></p><ul><li><p><span>Struggle with low motivation from seasonal workers.</span></p></li><li><p><span>Agents favoured transparency over rules.</span></p></li><li><p><span>Dashboard showed standouts &amp; slouches.</span></p></li></ul><p><strong><span>Case Study 2: Racquet Film Lab (Creative Industries)</span></strong></p><ul><li><p><span>Automated CRM via triggers and workflows.</span></p></li><li><p><span>300+ manual emails, 40+ human hours/week saved</span></p></li><li><p><span>Saving a SME $1250 AUD+ a week</span></p></li></ul><p><strong><span>Case Study 3: Civil Engineering Workmate (Construction)</span></strong></p><ul><li><p><span>10+ hours per employee saved weekly</span></p></li><li><p><span>Contract execution time halved</span></p></li><li><p><span>Tangible ROI achieved — in less than 4 weeks.</span></p></li></ul><p><strong><span>Case Study 4: Critical Case Assist App</span></strong></p><ul><li><p><span>Triangulated patterns: weather, meds, symptoms</span></p></li><li><p><span>Exportable visual data for GPs.</span></p></li><li><p><span>Life-changing support — $10 in compute build.</span></p></li></ul><p><strong><span>ROI Results &amp; Industry Validation</span></strong></p><ul><li><p><span>Average time-to-value: 24–48 hours.</span></p></li><li><p><span>Average ROI at 90 days: 2.5x–3.2x.</span></p></li><li><p><span>Implementation success rate: 95%+.</span></p></li><li><p><span>Net Promoter Score (NPS) from pilot clients: 92.</span></p></li></ul><p><span>We have unequivocally proven that our solution works. The next step is to scale these proven successes.</span></p><hr /><h2 id='13-product-roadmap'><span>13. Product Roadmap</span></h2><h3 id='platform-v10-→-v40'><span>Platform v1.0 → v4.0</span></h3><figure class='table-figure'><table><thead><tr><th><strong><span>Version</span></strong></th><th><strong><span>Key Milestones</span></strong></th><th><strong><span>Status</span></strong></th></tr></thead><tbody><tr><td><span>v1.0</span></td><td><span>Core audit engine, first-generation agent deployments</span></td><td><span>✅ Launched</span></td></tr><tr><td><span>v1.5</span></td><td><span>NeatPortal MVP (team dashboard + SOP delivery)</span></td><td><span>✅ Live</span></td></tr><tr><td><span>v2.0</span></td><td><span>Agent chaining + logic branching</span></td><td><span>🔄 In dev</span></td></tr><tr><td><span>v3.0</span></td><td><span>Contextual memory + agent reuse across clients</span></td><td><span>Q1 2026</span></td></tr><tr><td><span>v4.0</span></td><td><span>Fully autonomous orchestration loop + user-trained logic</span></td><td><span>Q3 2026</span></td></tr></tbody></table></figure><p><span>Each successive version is designed to enhance stickiness, increase Monthly Recurring Revenue (MRR) per client, and strengthen our defensibility.</span></p><hr /><h3 id='data-flywheel--feature-expansion'><span>Data Flywheel &amp; Feature Expansion</span></h3><p><span>As our client base expands, we compound three distinct advantages:</span></p><ul><li><p><strong><span>Pattern Density:</span></strong><span> Every audit refines our understanding of SME friction, leading to the evolution of segment-specific playbooks derived from real-world data</span></p></li><li><p><strong><span>Instruction Optimization:</span></strong><span> Our agents continuously improve their execution across various use cases, not just within individual companies. This reduces deployment effort and error rates</span></p></li><li><p><strong><span>Predictive Intervention:</span></strong><span> Friction signatures enable preemptive solution nudges. For example, a system prompt might alert a user: &quot;You&#39;re about to hit a billing bottleneck—would you like suggested paths forward?&quot;</span></p></li></ul><p><span>We are not merely adding features; we are systematically upgrading the SME nervous system, one workflow at a time.</span></p><hr /><h2 id='14-team--hiring-plan'><span>14. Team &amp; Hiring Plan</span></h2><h3 id='founder--advisors'><span>Founder &amp; Advisors</span></h3><ul><li><p><strong><span>Sam Attwood – Founder &amp; CEO:</span></strong><span> A two-time startup founder with successful exits. Sam brings a strong background in behavioral psychology and automation, coupled with over 10 years of experience in brand development, AI operations, and SME transformation. He built SrvdNeat from inception, securing paying clients even before the codebase was fully stable, demonstrating sharp capabilities in distribution, brand-led Go-to-Market (GTM), and execution psychology</span></p></li><li><p><strong><span>Martyn Reeves - Lead Advisor (GTM):</span></strong><span> SaaS exec, 40+ years scaling B2B across US, EU, and AU. Now backing Australia&#39;s next breakout layer as recognised angel investor.</span></p></li><li><p><strong><span>AI Architecture Advisor</span></strong><span> (TBD CTO candidate)</span></p></li><li><p><strong><span>Brand Manager</span></strong><span> (partnerships/growth)</span></p></li><li><p><strong><span>Angel Operator</span></strong><span> (Invested, active): Tech based</span></p></li></ul><h3 id='key-roles-post-raise'><span>Key Roles Post-Raise</span></h3><figure class='table-figure'><table><thead><tr><th><strong><span>Role</span></strong></th><th><strong><span>Timing</span></strong></th><th><strong><span>Purpose</span></strong></th></tr></thead><tbody><tr><td><span>CTO</span></td><td><span>At raise</span></td><td><span>Owns technical roadmap, security, and infrastructure scale</span></td></tr><tr><td><span>Brand Manager</span></td><td><span>Month 3-4</span></td><td><span>Builds out sales automation and partner engine</span></td></tr><tr><td><span>Product Manager</span></td><td><span>Month 6+</span></td><td><span>Oversees agent deployment, tuning, and quality assurance (QA) loop</span></td></tr></tbody></table></figure><p><span>Our hiring strategy is focused on compounding execution, not merely adding headcount.</span></p><hr /><p>&nbsp;</p><h2 id='15-financials'><span>15. Financials</span></h2><h3 id='revenue-forecast-aud'><span>Revenue Forecast (AUD)</span></h3><figure class='table-figure'><table><thead><tr><th><strong><span>Month</span></strong></th><th><strong><span>Clients</span></strong></th><th><strong><span>Monthly ARR</span></strong></th><th><strong><span>Annual ARR</span></strong></th><th><strong><span>Cumulative Revenue</span></strong></th><th><strong><span>Key Milestones</span></strong></th></tr></thead><tbody><tr><td><span>0</span></td><td><span>0</span></td><td><span>$0</span></td><td><span>$0</span></td><td><span>$0</span></td><td><span>Seed funding secured</span></td></tr><tr><td><span>6</span></td><td><span>10</span></td><td><span>$27,750</span></td><td><span>$333K</span></td><td><span>$162K</span></td><td><span>Product-market fit</span></td></tr><tr><td><span>12</span></td><td><span>25</span></td><td><span>$69,375</span></td><td><span>$832.5K</span></td><td><span>$588K</span></td><td><span>Case studies and PMF confirmed</span></td></tr><tr><td><span>18</span></td><td><span>45</span></td><td><span>$124,875</span></td><td><span>$1.4985M</span></td><td><span>$1.2M</span></td><td><span>GTM scaling phase</span></td></tr><tr><td><span>24</span></td><td><span>60</span></td><td><span>$166,500</span></td><td><span>$1.998M</span></td><td><span>$2.1M</span></td><td><span>Series A milestone</span></td></tr><tr><td><span>30</span></td><td><span>80</span></td><td><span>$222,000</span></td><td><span>$2.664M</span></td><td><span>$3.16M</span></td><td><span>Network effect kicks in</span></td></tr><tr><td><span>36</span></td><td><span>110</span></td><td><span>$305,250</span></td><td><span>$3.663M</span></td><td><span>$5.9M</span></td><td><span>Vertical dominance begins</span></td></tr></tbody></table></figure><ul><li><p><strong><span>Average Contract Value (ACV):</span></strong><span> $33.3K</span></p></li><li><p><strong><span>Gross Margin:</span></strong><span> 85%</span></p></li><li><p><strong><span>Revenue Mix:</span></strong><span> 90% recurring, 10% setup/custom integrations</span></p></li><li><p><strong><span>Break-even:</span></strong><span> Approximately Month 20</span></p></li></ul><h3 id='key-metrics-year-2-targets'><span>Key Metrics (Year 2 targets)</span></h3><figure class='table-figure'><table><thead><tr><th><strong><span>Metric</span></strong></th><th><strong><span>Target</span></strong></th></tr></thead><tbody><tr><td><span>LTV:CAC</span></td><td><span>4.2x</span></td></tr><tr><td><span>CAC Payback</span></td><td><span>8 months</span></td></tr><tr><td><span>Gross Margin</span></td><td><span>85%</span></td></tr><tr><td><span>Retention Rate</span></td><td><span>92%+ (logo)</span></td></tr><tr><td><span>Net Revenue Retention (NRR)</span></td><td><span>&gt;</span><span>115%</span></td></tr></tbody></table></figure><p><span>Our primary goal is not immediate profitability, but rather to establish compounding unit economics and data defensibility.</span></p><h3 id='profit--loss-statement'><span>Profit &amp; Loss Statement</span></h3><figure class='table-figure'><table><thead><tr><th><strong><span>Line Item</span></strong></th><th><strong><span>Year 1</span></strong></th><th><strong><span>Year 2</span></strong></th><th><strong><span>Year 3</span></strong></th></tr></thead><tbody><tr><td><span>Revenue</span></td><td><span>$457K</span></td><td><span>$2.0M</span></td><td><span>$3.16M</span></td></tr><tr><td><span>COGS (15%)</span></td><td><span>$68,550</span></td><td><span>$300,000</span></td><td><span>$474,000</span></td></tr><tr><td><span>Gross Profit</span></td><td><span>$388,450</span></td><td><span>$1.7M</span></td><td><span>$2.686M</span></td></tr><tr><td><span>Operating Expenses</span></td><td><span>$660K</span></td><td><span>$820K</span></td><td><span>$990K</span></td></tr><tr><td><span>Net Profit</span></td><td><span>-</span><span>$271,550</span></td><td><span>$880K</span></td><td><span>$1.696M</span></td></tr><tr><td><span>Net Margin</span></td><td><span>-</span><span>59.40%</span></td><td><span>44.00%</span></td><td><span>53.70%</span></td></tr></tbody></table></figure><h3 id='sensitivity-analysis'><span>Sensitivity Analysis</span></h3><ul><li><p><strong><span>Base Case:</span></strong><span> 110 clients, $3.66M ARR, strong 0.36 burn multiple</span></p></li><li><p><strong><span>Conservative Case:</span></strong><span> 85 clients, $2.83M ARR, still efficient at 0.55</span></p></li><li><p><strong><span>Stretch Case:</span></strong><span> 150 clients, $5M ARR, standout 0.28 burn multiple</span></p></li></ul><h3 id='key-assumptions'><span>Key Assumptions</span></h3><ul><li><p><strong><span>Client Growth Rate:</span></strong><span> Average of 2.5–4 new clients per month post-raise, driven by phased GTM and vertical channel acquisition</span></p></li><li><p><strong><span>Churn Rate:</span></strong><span> Target logo retention &gt;92% with embedded workflows and platform lock-in (current pilot churn: 0%)</span></p></li><li><p><strong><span>Customer Acquisition Cost (CAC):</span></strong><span> Estimated at $7.9K per client in Year 1, improving with partner channels and content-driven lead gen</span></p></li><li><p><strong><span>Blended ACV:</span></strong><span> Maintained at $33.3K across tiers, with upsell potential via NeatPortal feature activation</span></p></li><li><p><strong><span>Gross Margin:</span></strong><span> Held at 85% due to proprietary orchestration (NeatLM) and minimal ongoing support burden</span></p></li><li><p><strong><span>Sales Cycle:</span></strong><span> Average audit-to-close window of 10–14 days with friction-qualified leads, proven through pilots</span></p></li></ul><hr /><h2 id='16-funding-requirements'><span>16. Funding Requirements</span></h2><h3 id='$2m-seed-round'><span>$2M Seed Round</span></h3><p><span>We are raising $2M AUD in Seed capital to scale a validated model and own the orchestration layer for SME AI deployment. This raise enables us to convert proven pilots into a repeatable go-to-market engine, scale our Behavioral AI infrastructure, and strengthen the team to execute at speed.</span></p><h3 id='capital-allocation----$2m-aud-24-month-deployment'><span>Capital Allocation – $2M AUD (24-Month Deployment)</span></h3><p>&nbsp;</p><p><img src="/Users/neatmac/Downloads/SrvdNeat Business Plan - visual selection (3).png" referrerpolicy="no-referrer" alt="SrvdNeat Business Plan - visual selection (3)"></p><figure class='table-figure'><table><thead><tr><th><strong><span>Category</span></strong></th><th><strong><span>Allocation</span></strong></th><th><strong><span>Amount (AUD)</span></strong></th><th><strong><span>Strategic Purpose</span></strong></th></tr></thead><tbody><tr><td><strong><span>Go-to-Market (GTM)</span></strong></td><td><span>50%</span></td><td><span>$1,000,000</span></td><td><span>Build repeatable acquisition engine: content, lead gen, sales automation, partnerships</span></td></tr><tr><td><strong><span>Infrastructure</span></strong></td><td><span>20%</span></td><td><span>$400,000</span></td><td><span>Scale NeatLM orchestration, deploy agent chaining, invest in data infrastructure</span></td></tr><tr><td><strong><span>Team Expansion</span></strong></td><td><span>20%</span></td><td><span>$400,000</span></td><td><span>Hire CTO and Head of Growth + support roles to scale product and GTM delivery</span></td></tr><tr><td><strong><span>Operating Buffer</span></strong></td><td><span>10%</span></td><td><span>$200,000</span></td><td><span>Preserve 24-month runway; ensure flexibility for reallocation based on signal</span></td></tr></tbody></table></figure><blockquote><p><span>This allocation is intentionally biased toward </span><strong><span>distribution and delivery</span></strong><span>, not experimentation.</span></p><p><span>The model is working. This capital scales what's already proven</span></p></blockquote><p>&nbsp;</p><h3 id='24-month-milestones'><span>24-Month Milestones</span></h3><figure class='table-figure'><table><thead><tr><th><strong><span>Month</span></strong></th><th><strong><span>Target</span></strong></th><th><strong><span>ARR</span></strong></th></tr></thead><tbody><tr><td><span>6</span></td><td><span>10 clients live</span></td><td><span>$333K ARR</span></td></tr><tr><td><span>12</span></td><td><span>25 clients, playbook refined</span></td><td><span>$832K ARR</span></td></tr><tr><td><span>24</span></td><td><span>60 clients, vertical expansion underway</span></td><td><span>$2.0M ARR</span></td></tr></tbody></table></figure><p><span>These milestones lock in product-market fit, unlock channel scale, and position us for a high-conviction Series A.</span></p><h3 id='market-momentum-is-onside'><span>Market Momentum Is Onside</span></h3><ul><li><p><span>OpenAI&#39;s new Australian partnerships (announced July 2025) confirm what we&#39;ve built early: The next decade of AI adoption will be won at the workflow layer</span></p></li><li><p><span>SrvdNeat is uniquely positioned to serve the underserved 2.6M SME market, where execution—not access—is the primary barrier to AI value</span></p></li><li><p><span>With 85% gross margins, strong early ROI (225% in Year 1), and a growing data moat, we offer a defensible, capital-efficient path to category ownership</span></p></li></ul><p><span>This isn&#39;t a tooling bet. It&#39;s an infrastructure play—built to scale, and built to last.</span></p><hr /><h2 id='17-risk-analysis'><span>17. Risk Analysis</span></h2><figure class='table-figure'><table><thead><tr><th><strong><span>Risk</span></strong></th><th><strong><span>Severity</span></strong></th><th><strong><span>Mitigation</span></strong></th><th><strong><span>Contingency Plan</span></strong></th></tr></thead><tbody><tr><td><span>GTM Underperformance</span></td><td><span>High</span></td><td><span>Phased rollout, lean pilots, warm channels, and founder-led sales in early stages</span></td><td><span>Reduce burn; extend free audit period; pivot to most engaged verticals</span></td></tr><tr><td><span>Talent Acquisition (CTO)</span></td><td><span>Medium</span></td><td><span>Pre-qualified candidates; interim advisory oversight in place</span></td><td><span>Interim fractional CTO or contract tech lead if hiring cycle lags</span></td></tr><tr><td><span>Model Drift / AI Quality</span></td><td><span>Medium</span></td><td><span>Real-time QA layer; human-in-the-loop fallbacks; structured feedback loop via NeatPortal</span></td><td><span>Revert to versioned prompts; enforce stricter fallback routing thresholds</span></td></tr><tr><td><span>Compliance / Data Risk</span></td><td><span>Medium</span></td><td><span>Local data tenancy (AU), SOC2 Type I alignment, legal advisory retainer in place</span></td><td><span>Accelerate internal audit; segment high-sensitivity clients by tenancy</span></td></tr><tr><td><span>Market Timing Slips</span></td><td><span>Low</span></td><td><span>Friction-first foundation remains relevant regardless of hype cycles or adoption pace</span></td><td><span>Focus on cost-saving messaging over AI enablement; use downtime to widen moat</span></td></tr></tbody></table></figure><h3 id='operational--market-dynamics'><span>Operational &amp; Market Dynamics</span></h3><ul><li><p><span>SMEs can be slow to act → We lead with a free Friction Audit to remove inertia and prove ROI up front</span></p></li><li><p><span>Some verticals require education → We target pain-qualified niches (legal, finance, HR) with existing urgency</span></p></li><li><p><span>Competitor noise will grow → Our moat compounds through usage—not hype—via proprietary friction pattern data</span></p></li></ul><h3 id='external-risk-considerations'><span>External Risk Considerations</span></h3><ul><li><p><strong><span>Economic Downturns</span></strong><span> → SrvdNeat directly reduces headcount pressure and cost overhead—making it more valuable in lean times</span></p></li><li><p><strong><span>Regulatory Shifts</span></strong><span> → Local-first architecture, SOC2 roadmap, and modular tenancy design protect against emerging data restrictions</span></p></li></ul><p><span>We do not require perfect market conditions. Our approach is grounded in operational reality, proven need, and modular execution—positioning us to win through both upturns and headwinds.</span></p><hr /><h2 id='18-appendix'><span>18. Appendix</span></h2><h3 id='181-neataudit'><span>18.1 NeatAudit</span></h3><h4 id='thesis-logic--strategic-role'><span>Thesis, Logic &amp; Strategic Role</span></h4><p><span>NeatAudit serves as the foundational engine for all of SrvdNeat&#39;s offerings, both technically and philosophically. It embodies our core approach to addressing the critical problem often overlooked by AI vendors: operational friction.</span></p><p><span>As a utility, NeatAudit functions as a rapid 5-minute diagnostic tool that captures comprehensive operational context and generates precise instructions for our NeatLM engine. As a strategic concept, it validates three of our core beliefs:</span></p><ol start='' ><li><p><strong><span>Context is Critical:</span></strong><span> Large Language Models (LLMs) degrade rapidly when deployed without explicit context. NeatAudit ensures our AI solutions are built upon comprehensive foundational knowledge, transforming AI from a guessing engine into a precision tool</span></p></li><li><p><strong><span>Flywheel + Data &gt; Static Logic:</span></strong><span> When integrated with an iterative system (our NeatIQ Stack), each audit enriches the next. The more clients we serve, the more precise and predictive our solutions become, creating a powerful data flywheel</span></p></li><li><p><strong><span>SME Friction is Patterned, Not Random:</span></strong><span> Cross-industry friction patterns are real and repeatable. NeatAudit collects standardized data across diverse verticals (e.g., legal, administration, finance), significantly increasing the value of these insights as the dataset scales</span></p></li></ol><p><strong><span>Concept to Competitive Edge</span></strong></p><p><span>NeatAudit originated from a simple yet profound question: What if we truly understood a client&#39;s problem before prescribing an AI solution? While seemingly obvious, most of the AI market bypasses this crucial step, prioritizing flashy solutions over actual operational fit.</span></p><p><span>Our early insight revealed that SMEs require automation at scale, but without the prohibitive cost or friction associated with high-touch consulting. NeatAudit provided a pathway to deliver customized solutions with minimal overhead, while simultaneously building an IP-rich dataset as a valuable byproduct.</span></p><p><span>As our client base expands, the value of NeatAudit compounds:</span></p><ul><li><p><span>It delivers rapid ROI</span></p></li><li><p><span>It powers our behavioral AI engine</span></p></li><li><p><span>It builds defensibility through proprietary friction data</span></p></li></ul><hr /><h4 id='academic-research--validation'><span>Academic Research &amp; Validation</span></h4><p><span>Below are references to the peer-reviewed SME pattern report on inhibitors and accelerators of digital transformation, alongside our own research on the topic. Following them is a brief overview of the academic groundings for the questions.</span></p><h4 id='paper-a-taxonomy-of-friction-in-sme-digital-transformation'><span>Paper A: Taxonomy of Friction in SME Digital Transformation</span></h4><ul><li><p><span>Influences on SME Digital Transformation (Scholastica, 2023) </span><a href='https://streamshare.wireway.ch/download/wcr56iy8'><span>Download</span></a></p></li></ul><p><strong><span>Core Insight</span></strong><span>: Digital transformation in SMEs doesn't fail because of AI, tools, or tech complexity. It fails because of </span><strong><span>predictable behavioural and operational friction patterns</span></strong><span>—repeatable across industries, functions, and business sizes.</span></p><p><strong><span>These patterns cluster under three proven categories:</span></strong></p><h5 id='focus-of-attention'><span>Focus of Attention</span></h5><p><span>Where leaders direct their limited cognitive bandwidth. If the CEO isn't driving it, it dies.</span></p><ul><li><p><span>Executive Leadership: Degree of owner/manager engagement in transformation</span></p></li><li><p><span>Strategy Alignment: Presence of a clear digital roadmap and vision</span></p></li></ul><h5 id='situated-attention'><span>Situated Attention</span></h5><p><span>What competes for attention in the real world. Even motivated leaders can't focus if daily pressures dominate.</span></p><ul><li><p><span>Employees: Staff resistance, low buy-in, or misaligned incentives</span></p></li><li><p><span>Culture: Organisational norms that discourage change</span></p></li><li><p><span>Skills: Lack of digital competencies or training pathways</span></p></li><li><p><span>Finance: Budget constraints, short-termism, unclear ROI</span></p></li><li><p><span>Risk Tolerance: Aversion to uncertainty or disruption</span></p></li><li><p><span>Innovation Readiness: Capacity to experiment or test new workflows</span></p></li><li><p><span>Tech Resources: Outdated infrastructure, IT bottlenecks</span></p></li><li><p><span>Digital Tools: Overwhelming or underused software sprawl</span></p></li><li><p><span>Market Pressure: Low urgency from competitors or clients</span></p></li><li><p><span>Ecosystem Influence: Vendor lock-in, unreliable partners, or regulatory fog</span></p></li></ul><p><strong><span>Structural Distribution of Attention</span></strong></p><p><span>How decisions are made, information flows, and bottlenecks form.</span></p><ul><li><p><span>Organisational Structure: Flat or siloed setups blocking initiative</span></p></li><li><p><span>Processes: Poorly defined or undocumented workflows</span></p></li><li><p><span>Project Management: Lack of ownership or clarity in execution</span></p></li><li><p><span>Technology Adoption: Fragmented rollouts, missing integrations</span></p></li><li><p><span>Data Management: Inaccessible, inconsistent, or incomplete data</span></p></li></ul><h5 id='why-this-matters'><span>Why This Matters</span></h5><p><span>These 17 patterns explain why even well-funded digital initiatives stall in SMEs. They're not tech problems—they're </span><strong><span>friction problems</span></strong><span>. They appear everywhere: </span><strong><span>A law firm drowning in admin, a retailer with poor inventory visibility, a consultant spending 30% of time on compliance overhead.</span></strong></p><p><span>Same patterns. Same bottlenecks. Same outcome: digital fatigue and wasted investment. And they&#39;ve gone unnoticed for the same reason selling tools has seen such great success: feature sets and complex tech has been sold as the height of AI. The world&#39;s forgotten that AI was promised in a very different way: a simplification tool unlike anything before it.</span></p><p><span>SrvdNeat doesn't sell generic tooling. We diagnose these patterns early—then </span><strong><span>deploy automation only where the organisation is actually ready</span></strong><span>. Our behavioral AI is built to understand and respond to the friction taxonomy this research proves. In short:</span></p><p><strong><span>Fix the friction, and transformation compounds. Ignore it, and it fails—predictably.</span></strong></p><hr /><h4 id='paper-b-srvdneat-going-deep-on-friction-2025'><span>Paper B: SrvdNeat: Going Deep on Friction (2025)</span></h4><p><span>A deep dive into the nuances of success within rapid change. </span><a href='https://jsbs.scholasticahq.com/article/66283-a-taxonomy-on-influencing-factors-towards-digital-transformation-in-smes'><span>Download</span></a>
+<strong><span>Pages</span></strong><span> 25</span>
+<strong><span>Words</span></strong><span> 8597</span>
+<strong><span>Characters</span></strong><span> 61587</span></p><p><span>This report validates the thesis that operational friction within Small and Medium-sized Enterprises (SMEs) is fundamentally structural, not vertical-specific. An in-depth analysis of SME operational challenges reveals that issues such as resource constraints, process immaturity, and a lack of specialized expertise are inherent to the SME organizational model, transcending any single industry. It also draws conclusions on key areas shown below:</span></p><ul><li><p><strong><span>Orchestration over Tools</span></strong></p><p><span>The defensible opportunity isn't in building better point solutions—it's in owning the AI-powered orchestration layer that unifies existing systems and eliminates structural friction.</span></p></li><li><p><strong><span>Data Unification is Step Zero</span></strong></p><p><span>No orchestration works without clean, structured data. The first unlock is a platform that can ingest, reconcile, and structure fragmented SME data across Legal, HR, and Finance.</span></p></li><li><p><strong><span>Hybrid Architecture is Non-Negotiable</span></strong></p><p><span>Winning platforms must combine LLM flexibility with symbolic logic. This neuro-symbolic approach ensures reliable, compliant, and auditable business outcomes—especially in regulated environments.</span></p></li></ul><h4 id='sample-visual-qa-brief'><span>Sample Visual: Q&amp;A Brief</span></h4><p><img src="/Users/neatmac/Desktop/CleanShot 2025-07-20 at 20.04.36@2x.png" referrerpolicy="no-referrer" alt="CleanShot 2025-07-20 at 20.04.36@2x"></p><p><span>NeatAudit is SrvdNeat's proprietary diagnostic engine built to evaluate an SME's readiness for AI adoption. In just five minutes, it identifies where friction exists—across systems, leadership, culture, and execution—and translates that into actionable instructions for our orchestration engine, NeatLM. This isn't a gimmick questionnaire or a glorified lead gen tool. It's a structured data grab that uses coupling logic to ensure the first time we talk to a client, we speak with conviction and use the kind of vernacular that evokes a relief. It&#39;s a tool that de-risks AI deployment and accelerates fit-for-purpose adoption, especially in organisations with high manual load and low digital confidence.</span></p><p><strong><span>Structure</span></strong></p><ul><li><p><strong><span>25 questions</span></strong><span>: 6 onboarding (not scored), 19 scored</span></p></li><li><p><strong><span>6 categories</span></strong><span>: Urgency, Leadership, Budget, Tooling, Automation, Strategy</span></p></li><li><p><strong><span>Output</span></strong><span>: Generates a total readiness score (0–100), internal JSON for NeatLM ingestion, and an executive summary used in both client-facing reports and internal prioritisation</span></p></li></ul><p><strong><span>Scoring Tiers</span></strong></p><figure class='table-figure'><table><thead><tr><th><span>  </span><strong><span>Score Range</span></strong><span> </span></th><th><span>  </span><strong><span>Tier</span></strong><span> </span></th><th><span>  </span><strong><span>Interpretation</span></strong><span> </span></th></tr></thead><tbody><tr><td><span> 0–25 </span></td><td><span> Not AI-Ready </span></td><td><span> Focus on foundations: data hygiene, systems, and buy-in </span></td></tr><tr><td><span> 26–50 </span></td><td><span> Early-Stage Readiness </span></td><td><span> Good intent but weak execution—start with scoped pilots </span></td></tr><tr><td><span> 51–75 </span></td><td><span> AI Opportunity Active </span></td><td><span> Solid core—ready for focused automation </span></td></tr><tr><td><span> 76–100 </span></td><td><span> AI-Deployment Ready </span></td><td><span> Primed for rollout—start with high-ROI use cases and scale </span></td></tr></tbody></table></figure><p><strong><span>What Makes It Different</span></strong></p><ul><li><p><strong><span>Behavioural-First</span></strong><span>: Captures the human and organisational signals traditional consultants ignore</span></p></li><li><p><strong><span>Tightly Integrated</span></strong><span>: Feeds directly into NeatLM to trigger tailored instructions, not generic recommendation.</span></p></li><li><p><strong><span>Cross-Vertical Pattern Recognition</span></strong><span>: Every audit enhances our friction taxonomy, improving predictive targeting.</span></p></li><li><p><strong><span>Zero-Bloat Format</span></strong><span>: 5–7 minutes to complete, no follow-up required unless qualified</span></p></li></ul><p><strong><span>Strategic Role in the Platform</span></strong></p><p><span>NeatAudit is not just a lead-gen tool. It's the front-end intelligence layer of the SrvdNeat flywheel. It captures the operational truth of each business, turns it into structured data, and enables surgical intervention with high adoption likelihood and low implementation risk.</span></p><hr /><h3 id='182-formative-documents'><span>18.2 Formative Documents.</span></h3><h5 id='a-the-rag-ai-agent-module-for-every-sme-on-the-planet'><span>	</span><span>A. The RAG AI Agent Module For Every SME on the Planet:</span></h5><p><span>	</span><span>Looks at the white label possibilites of SrvdNeat&#39;s internal engine. </span><a href='https://streamshare.wireway.ch/download/wat1icd2'><span>Download</span></a></p><h5 id='b-prompt-engineering-pilot-001-archers-omitted-alpha'><span>	</span><span>B. Prompt Engineering Pilot 001: Archers (Omitted Alpha)</span></h5><p><span>	</span><span>Showcases the internal syntax and systom prompts that produced SrvdNeat&#39;s first major validation. </span><a href='https://streamshare.wireway.ch/download/6a9h580a'><span>Download</span></a><span>.</span></p><hr /><h3 id='srvdneat-technical-qa'><span>SrvdNeat Technical Q&amp;A</span></h3><p><strong><span>Q: Why build infrastructure over vertical SaaS or tooling?</span></strong></p><p><strong><span>A:</span></strong><span> SME workflows break in structurally identical ways across domains. SrvdNeat focuses on pattern recognition and orchestration, not feature overload. Infrastructure enables scale, reuse, and data flywheels — SaaS tools can&#39;t.</span></p><p><strong><span>Q: What&#39;s proprietary vs composable?</span></strong></p><p><strong><span>A:</span></strong><span> See below:</span></p><ul><li><p><strong><span>Proprietary:</span></strong><span> Intelligence Layer (behavioural intelligence loop), NeatLM orchestration logic, NeatAudit signal set</span></p></li><li><p><strong><span>Composable:</span></strong><span> Model APIs (OpenAI, Claude, Mistral), Zapier/Retool automations, CRM/POS integrations</span></p></li></ul><p><strong><span>Q: Why Intelligence Layer?</span></strong></p><p><strong><span>A:</span></strong><span> Intelligence Layer is our name for the diagnostic-to-deployment loop. It codifies friction, deploys tailored solutions, and compounds intelligence with each interaction — forming the moat.</span></p><p><strong><span>Q: Can this scale with a lean team?</span></strong></p><p><strong><span>A:</span></strong><span> Yes. We&#39;ve intentionally used a modular low-code infrastructure (Zapier, Make, Retool) alongside scalable backend services (Vercel, Firebase, Supabase). Agents and workflows are templatized after stripping client identifiers, then used as foundational components for projects that show levels of repeatability.</span></p><p><strong><span>Q: What&#39;s your upgrade path to enterprise-grade?</span></strong></p><p><strong><span>A:</span></strong><span> Retool and Zapier-based flows are containerised for easy migration to full-code agents or microservices. Post-CTO hire, high-friction flows (e.g. contract redline, risk scoring) will transition to custom infrastructure.</span></p><p><strong><span>Q: How do you handle deployment repeatability?</span></strong></p><p><strong><span>A:</span></strong><span> Each audit tags workflows with friction signatures. Our matching engine maps these to pre-built patterns — 94% cross-vertical recognition accuracy, based on pilot data.</span></p><p><strong><span>Q: Are you training your own models?</span></strong></p><p><strong><span>A:</span></strong><span> No traditional model training. We use MCP (Model Context Protocol) and A2A (Agent-to-Agent) orchestration to create hybrid models that combine multiple AI capabilities. This approach leverages existing models through intelligent routing and composition rather than training from scratch.</span></p><p><strong><span>Q: Why a multi-model approach?</span></strong></p><p><strong><span>A:</span></strong><span> It avoids vendor lock-in, reduces latency risk, and allows selection based on domain (e.g. Mistral for speed, Claude for long-form logic). We&#39;re model-agnostic by design, just as our tech stack is intentionally broad, reducing restrictions on our output to ensure wide scope of ability.</span></p><p><strong><span>Q: What&#39;s the learning loop?</span></strong></p><p><strong><span>A:</span></strong><span> All feedback (manual or behavioural) flows back into Intelligence Layer — improving pattern accuracy, recommendation speed, and agent selection over time.</span></p><p><strong><span>Q: How do you create hybrid models without training?</span></strong></p><p><strong><span>A:</span></strong><span> Through MCP orchestration, we combine multiple AI models into specialized workflows. Intelligence Layer learns which model combinations work best for different scenarios, creating &quot;hybrid&quot; capabilities through intelligent composition rather than traditional training.</span></p><p><strong><span>Q: Where is data stored and how is it protected?</span></strong></p><p><strong><span>A:</span></strong><span> Transient processing via encrypted API calls. Data is stored in Supabase/Firebase with access control via Auth0. No long-term retention without explicit client consent.</span></p><p><strong><span>Q: Are you compliant with data protection regulations?</span></strong></p><p><strong><span>A:</span></strong><span> Compliance roadmap in place. Current practices include role-based access, encryption at rest, audit logs, and PII minimisation. Enhanced compliance measures planned for future growth phases.</span></p><p><strong><span>Q: What happens if OpenAI/Claude changes access or pricing?</span></strong></p><p><strong><span>A:</span></strong><span> We abstract model access behind a routing layer. If one provider fails or spikes in cost, we redirect to fallback models (e.g. Mistral, Gemini, Claude). No workflow is dependent on a single model.</span></p><p><strong><span>Q: What breaks at scale, and how are you mitigating it?</span></strong></p><p><strong><span>A:</span></strong><span> The following, with mitigation already sorted:</span></p><ul><li><p><strong><span>API rate limits</span></strong><span> → Mitigated via async queues, batch inference</span></p></li><li><p><strong><span>Low-code fragility</span></strong><span> → High-usage flows scheduled for rebuild in full-code.</span></p></li><li><p><strong><span>Monitoring gaps</span></strong><span> → PostHog and internal alerts in rollout</span></p></li></ul><p><strong><span>Q: What&#39;s your worst-case failure path?</span></strong></p><p><strong><span>A:</span></strong><span> If the orchestration layer fails, no client data is lost. Recommendations stall, not systems. The fallback is always a human-verified deployment (client sees paused agent alert).</span></p><p><strong><span>Q: Moat and defensibility?</span></strong><span> </span></p><p><strong><span>A:</span></strong><span> We&#39;re already an equivalent of 14-months ahead, with 10m+ in data tokens working on modular platforms that were validated as they were built (Manus - Ambient AI - MCP etc). In addition, a life, coupled capture of data points that iteratively feeds back into our model means we&#39;ll be running fast even at five clients. In terms of the modular internals, if you decouple the Q&amp;A from the internal NeatLM engine, it breaks. If we do it, it breaks. Neither component can run independently, and neither component is commercially viable without the other. We&#39;ve welded our defensibility to our limbs.</span></p><p><strong><span>Q: How do you handle data ownership and portability requirements?</span></strong></p><p><strong><span>A:</span></strong><span> Client data remains their property - we process it transiently and store only what&#39;s necessary for service delivery. We provide data export capabilities and clear deletion protocols. Our architecture separates client data from our proprietary intelligence patterns, ensuring clients can extract their data while we retain our core IP. We&#39;re transparent about what data we retain for model improvement and always obtain explicit consent. For our intelligence flywheel, we use fully anonymized and aggregated patterns - no individual client data is ever used for model improvement without explicit opt-in.</span></p><p><strong><span>Q: How do you protect your intellectual property and trade secrets?</span></strong></p><p><strong><span>A:</span></strong><span> Our core IP is in the Intelligence Layer orchestration logic and NeatLM engine architecture - these are protected through hard-front security and algorithms. We maintain strict access controls and compartmentalised back-end knowledge keeps. The modular design means individual components can be open-sourced while keeping the integration logic is proprietary. Our data flywheel and behavioral intelligence patterns are our most valuable IP assets, but remain bound to the intake engine that feeds them.</span></p><hr /><p><strong><span>Closing Note</span></strong></p><p><span>SrvdNeat is not merely another AI tool. It is the operating system for an SME sector that has been left behind by the pervasive automation hype. We are already actively assisting real businesses in reducing friction, reclaiming valuable time, and unlocking the intelligence they were promised. Our mission now is to scale these proven successes. Let&#39;s build the infrastructure AI adoption actually needs.</span></p><hr /><p>&nbsp;</p></div></div>
+</body>
+</html>
