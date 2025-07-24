@@ -5,107 +5,177 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SrvdNeat Virtual Data Room</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
+            color: #1a1a1a;
+            background-color: #ffffff;
+            font-weight: 400;
+        }
+        
+        .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 20px;
-            background-color: #f8f9fa;
+            padding: 60px 20px;
         }
-        .container {
-            background: white;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .section {
-            margin-bottom: 30px;
-        }
-        .section h2 {
-            color: #34495e;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        .links {
-            list-style: none;
-            padding: 0;
-        }
-        .links li {
-            margin: 10px 0;
-        }
-        .links a {
-            display: block;
-            padding: 12px 15px;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-        .links a:hover {
-            background: #2980b9;
-        }
-        .complete-vdr {
-            background: #27ae60 !important;
-        }
-        .complete-vdr:hover {
-            background: #229954 !important;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #7f8c8d;
-            font-size: 14px;
-        }
+        
         .login-container {
             text-align: center;
-            padding: 40px;
+            padding: 80px 40px;
         }
+        
         .login-form {
-            max-width: 400px;
+            max-width: 320px;
             margin: 0 auto;
         }
+        
         .login-form input {
             width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 2px solid #ddd;
-            border-radius: 5px;
+            padding: 16px 20px;
+            margin: 20px 0;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
             font-size: 16px;
+            font-family: inherit;
+            background: #fafafa;
+            transition: all 0.2s ease;
         }
+        
+        .login-form input:focus {
+            outline: none;
+            border-color: #000;
+            background: #fff;
+        }
+        
         .login-form button {
             width: 100%;
-            padding: 12px;
-            background: #3498db;
-            color: white;
+            padding: 16px 20px;
+            background: #000;
+            color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 16px;
+            font-weight: 500;
             cursor: pointer;
+            transition: background 0.2s ease;
         }
+        
         .login-form button:hover {
-            background: #2980b9;
+            background: #333;
         }
+        
         .error {
-            color: #e74c3c;
-            margin-top: 10px;
+            color: #d32f2f;
+            margin-top: 16px;
+            font-size: 14px;
         }
+        
         .hidden {
             display: none;
+        }
+        
+        h1 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+        
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+        
+        .section {
+            margin-bottom: 48px;
+        }
+        
+        .section h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+            letter-spacing: -0.01em;
+        }
+        
+        .links {
+            list-style: none;
+        }
+        
+        .links li {
+            margin: 12px 0;
+        }
+        
+        .links a {
+            display: block;
+            padding: 16px 20px;
+            background: #f8f8f8;
+            color: #1a1a1a;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 1px solid #f0f0f0;
+            font-weight: 500;
+        }
+        
+        .links a:hover {
+            background: #f0f0f0;
+            border-color: #e0e0e0;
+            transform: translateY(-1px);
+        }
+        
+        .complete-vdr {
+            background: #000 !important;
+            color: #fff !important;
+            border-color: #000 !important;
+        }
+        
+        .complete-vdr:hover {
+            background: #333 !important;
+            border-color: #333 !important;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #f0f0f0;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        .footer p {
+            margin: 8px 0;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 20px;
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+            
+            .subtitle {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
     <div id="login" class="container">
         <div class="login-container">
-            <h1>🔒 SrvdNeat Virtual Data Room</h1>
-            <p>Please enter the password to access the VDR</p>
+            <h1>SrvdNeat</h1>
+            <p class="subtitle">Virtual Data Room</p>
             <form class="login-form" onsubmit="checkPassword(event)">
                 <input type="password" id="password" placeholder="Enter password" required>
                 <button type="submit">Access VDR</button>
@@ -115,45 +185,47 @@
     </div>
 
     <div id="content" class="container hidden">
-        <h1>🚀 SrvdNeat Virtual Data Room</h1>
+        <h1>SrvdNeat</h1>
+        <p class="subtitle">Virtual Data Room</p>
         
         <div class="section">
-            <h2>📋 Complete VDR Package</h2>
+            <h2>Complete VDR Package</h2>
             <ul class="links">
-                <li><a href="srvdneat-complete-vdr.md" class="complete-vdr">📄 Complete VDR (Single File)</a></li>
+                <li><a href="srvdneat-complete-vdr.md" class="complete-vdr">Complete VDR (Single File)</a></li>
             </ul>
         </div>
 
         <div class="section">
-            <h2>📊 Individual Sections</h2>
+            <h2>Individual Sections</h2>
             <ul class="links">
-                <li><a href="executive-summary.md">📈 Executive Summary</a></li>
-                <li><a href="team-advisors.md">👥 Team & Advisors</a></li>
-                <li><a href="vision-mission-brand.md">🎯 Vision, Mission & Brand</a></li>
-                <li><a href="market-analysis.md">📊 Market Analysis</a></li>
-                <li><a href="problem-framing.md">🔍 Problem Framing</a></li>
-                <li><a href="product-architecture.md">🏗️ Product Architecture</a></li>
-                <li><a href="differentiation-moat.md">🛡️ Differentiation & Moat</a></li>
-                <li><a href="go-to-market.md">🚀 Go-To-Market Strategy</a></li>
-                <li><a href="competitive-landscape.md">⚔️ Competitive Landscape</a></li>
-                <li><a href="business-model-economics.md">💰 Business Model & Economics</a></li>
-                <li><a href="team-execution-plan.md">📋 Team & Execution Plan</a></li>
-                <li><a href="financials.md">📈 Financials</a></li>
-                <li><a href="appendices.md">📚 Appendices</a></li>
+                <li><a href="executive-summary.md">Executive Summary</a></li>
+                <li><a href="team-advisors.md">Team & Advisors</a></li>
+                <li><a href="vision-mission-brand.md">Vision, Mission & Brand</a></li>
+                <li><a href="market-analysis.md">Market Analysis</a></li>
+                <li><a href="problem-framing.md">Problem Framing</a></li>
+                <li><a href="product-architecture.md">Product Architecture</a></li>
+                <li><a href="differentiation-moat.md">Differentiation & Moat</a></li>
+                <li><a href="go-to-market.md">Go-To-Market Strategy</a></li>
+                <li><a href="competitive-landscape.md">Competitive Landscape</a></li>
+                <li><a href="business-model-economics.md">Business Model & Economics</a></li>
+                <li><a href="team-execution-plan.md">Team & Execution Plan</a></li>
+                <li><a href="financials.md">Financials</a></li>
+                <li><a href="appendices.md">Appendices</a></li>
             </ul>
         </div>
 
         <div class="section">
-            <h2>📁 Supporting Documents</h2>
+            <h2>Supporting Documents</h2>
             <ul class="links">
-                <li><a href="README.md">📖 README</a></li>
-                <li><a href="_sidebar.md">📑 Navigation</a></li>
+                <li><a href="README.md">README</a></li>
+                <li><a href="_sidebar.md">Navigation</a></li>
             </ul>
         </div>
 
         <div class="footer">
-            <p>SrvdNeat Virtual Data Room | Last updated: July 2025</p>
-            <p>For investor inquiries, contact: info@srvdneat.com</p>
+            <p>SrvdNeat Virtual Data Room</p>
+            <p>Last updated: July 2025</p>
+            <p>For investor inquiries: info@srvdneat.com</p>
         </div>
     </div>
 
@@ -161,7 +233,7 @@
         function checkPassword(event) {
             event.preventDefault();
             const password = document.getElementById('password').value;
-            const correctPassword = 'SrvdNeat2025'; // Change this to your desired password
+            const correctPassword = 'SrvdNeat2025';
             
             if (password === correctPassword) {
                 document.getElementById('login').classList.add('hidden');
@@ -174,7 +246,6 @@
             }
         }
 
-        // Check if already authenticated
         if (localStorage.getItem('vdrAccess') === 'granted') {
             document.getElementById('login').classList.add('hidden');
             document.getElementById('content').classList.remove('hidden');
