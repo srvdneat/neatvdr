@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SrvdNeat Virtual Data Room</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -124,6 +125,7 @@
             transition: all 0.2s ease;
             border: 1px solid #f0f0f0;
             font-weight: 500;
+            cursor: pointer;
         }
         
         .links a:hover {
@@ -156,6 +158,148 @@
             margin: 8px 0;
         }
         
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 900px;
+            max-height: 80vh;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .modal-header {
+            padding: 24px 32px;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+        
+        .close {
+            color: #999;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background 0.2s ease;
+        }
+        
+        .close:hover {
+            background: #f0f0f0;
+        }
+        
+        .modal-body {
+            padding: 32px;
+            max-height: 60vh;
+            overflow-y: auto;
+        }
+        
+        .modal-body h1 {
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+        
+        .modal-body h2 {
+            font-size: 22px;
+            margin: 32px 0 16px 0;
+            color: #1a1a1a;
+        }
+        
+        .modal-body h3 {
+            font-size: 18px;
+            margin: 24px 0 12px 0;
+            color: #1a1a1a;
+        }
+        
+        .modal-body p {
+            margin: 16px 0;
+            line-height: 1.7;
+        }
+        
+        .modal-body ul, .modal-body ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+        
+        .modal-body li {
+            margin: 8px 0;
+        }
+        
+        .modal-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 24px 0;
+        }
+        
+        .modal-body th, .modal-body td {
+            border: 1px solid #e0e0e0;
+            padding: 12px 16px;
+            text-align: left;
+        }
+        
+        .modal-body th {
+            background: #f8f8f8;
+            font-weight: 600;
+        }
+        
+        .modal-body code {
+            background: #f8f8f8;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
+            font-size: 14px;
+        }
+        
+        .modal-body pre {
+            background: #f8f8f8;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+        
+        .modal-body pre code {
+            background: none;
+            padding: 0;
+        }
+        
+        .modal-body blockquote {
+            border-left: 4px solid #e0e0e0;
+            padding-left: 16px;
+            margin: 16px 0;
+            color: #666;
+        }
+        
         @media (max-width: 600px) {
             .container {
                 padding: 40px 20px;
@@ -167,6 +311,19 @@
             
             .subtitle {
                 font-size: 16px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+            
+            .modal-header {
+                padding: 16px 20px;
+            }
+            
+            .modal-body {
+                padding: 20px;
             }
         }
     </style>
@@ -191,34 +348,34 @@
         <div class="section">
             <h2>Complete VDR Package</h2>
             <ul class="links">
-                <li><a href="srvdneat-complete-vdr.md" class="complete-vdr">Complete VDR (Single File)</a></li>
+                <li><a onclick="loadMarkdown('srvdneat-complete-vdr.md', 'Complete VDR')" class="complete-vdr">Complete VDR (Single File)</a></li>
             </ul>
         </div>
 
         <div class="section">
             <h2>Individual Sections</h2>
             <ul class="links">
-                <li><a href="executive-summary.md">Executive Summary</a></li>
-                <li><a href="team-advisors.md">Team & Advisors</a></li>
-                <li><a href="vision-mission-brand.md">Vision, Mission & Brand</a></li>
-                <li><a href="market-analysis.md">Market Analysis</a></li>
-                <li><a href="problem-framing.md">Problem Framing</a></li>
-                <li><a href="product-architecture.md">Product Architecture</a></li>
-                <li><a href="differentiation-moat.md">Differentiation & Moat</a></li>
-                <li><a href="go-to-market.md">Go-To-Market Strategy</a></li>
-                <li><a href="competitive-landscape.md">Competitive Landscape</a></li>
-                <li><a href="business-model-economics.md">Business Model & Economics</a></li>
-                <li><a href="team-execution-plan.md">Team & Execution Plan</a></li>
-                <li><a href="financials.md">Financials</a></li>
-                <li><a href="appendices.md">Appendices</a></li>
+                <li><a onclick="loadMarkdown('executive-summary.md', 'Executive Summary')">Executive Summary</a></li>
+                <li><a onclick="loadMarkdown('team-advisors.md', 'Team & Advisors')">Team & Advisors</a></li>
+                <li><a onclick="loadMarkdown('vision-mission-brand.md', 'Vision, Mission & Brand')">Vision, Mission & Brand</a></li>
+                <li><a onclick="loadMarkdown('market-analysis.md', 'Market Analysis')">Market Analysis</a></li>
+                <li><a onclick="loadMarkdown('problem-framing.md', 'Problem Framing')">Problem Framing</a></li>
+                <li><a onclick="loadMarkdown('product-architecture.md', 'Product Architecture')">Product Architecture</a></li>
+                <li><a onclick="loadMarkdown('differentiation-moat.md', 'Differentiation & Moat')">Differentiation & Moat</a></li>
+                <li><a onclick="loadMarkdown('go-to-market.md', 'Go-To-Market Strategy')">Go-To-Market Strategy</a></li>
+                <li><a onclick="loadMarkdown('competitive-landscape.md', 'Competitive Landscape')">Competitive Landscape</a></li>
+                <li><a onclick="loadMarkdown('business-model-economics.md', 'Business Model & Economics')">Business Model & Economics</a></li>
+                <li><a onclick="loadMarkdown('team-execution-plan.md', 'Team & Execution Plan')">Team & Execution Plan</a></li>
+                <li><a onclick="loadMarkdown('financials.md', 'Financials')">Financials</a></li>
+                <li><a onclick="loadMarkdown('appendices.md', 'Appendices')">Appendices</a></li>
             </ul>
         </div>
 
         <div class="section">
             <h2>Supporting Documents</h2>
             <ul class="links">
-                <li><a href="README.md">README</a></li>
-                <li><a href="_sidebar.md">Navigation</a></li>
+                <li><a onclick="loadMarkdown('README.md', 'README')">README</a></li>
+                <li><a onclick="loadMarkdown('_sidebar.md', 'Navigation')">Navigation</a></li>
             </ul>
         </div>
 
@@ -226,6 +383,21 @@
             <p>SrvdNeat Virtual Data Room</p>
             <p>Last updated: July 2025</p>
             <p>For investor inquiries: info@srvdneat.com</p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="markdownModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle"></h2>
+                <button class="close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <div style="text-align: center; padding: 40px;">
+                    <p>Loading...</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -245,6 +417,50 @@
                 document.getElementById('password').value = '';
             }
         }
+
+        function loadMarkdown(filename, title) {
+            const modal = document.getElementById('markdownModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+            
+            modalTitle.textContent = title;
+            modalBody.innerHTML = '<div style="text-align: center; padding: 40px;"><p>Loading...</p></div>';
+            modal.style.display = 'block';
+            
+            fetch(filename)
+                .then(response => response.text())
+                .then(markdown => {
+                    const html = marked.parse(markdown);
+                    modalBody.innerHTML = html;
+                })
+                .catch(error => {
+                    modalBody.innerHTML = `
+                        <div style="text-align: center; padding: 40px;">
+                            <p>Error loading document. Please try again.</p>
+                            <p style="color: #999; font-size: 14px; margin-top: 16px;">${error.message}</p>
+                        </div>
+                    `;
+                });
+        }
+
+        function closeModal() {
+            document.getElementById('markdownModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('markdownModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
 
         if (localStorage.getItem('vdrAccess') === 'granted') {
             document.getElementById('login').classList.add('hidden');
