@@ -46,7 +46,9 @@ Sample Range: 1 = Minimal Friction, 5 = Critical Barrier)
 **Aggregate Friction Score: 4.35**
 **Recommendation:** Immediate orchestration of onboarding, billing, and approval workflows.
 
-*[Visualization: Radar chart showing the six friction dimensions with scores plotted]*
+<!-- Friction Radar Chart -->
+
+![Friction Radar Chart](friction-radar.png)
 
 ## Pattern Memory & Adaptive Execution
 
