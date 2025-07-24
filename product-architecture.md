@@ -11,6 +11,8 @@ SrvdNeat fundamentally redefines the AI adoption model for SMEs. Instead of the 
 
 A tightly integrated three-layer system designed to diagnose, deploy, and continuously improve AI inside real SME workflows.
 
+*[Visualization: Layered diagram showing NeatAudit → NeatLM → NeatPortal flow]*
+
 ### NeatAudit: Friction Diagnostic (Free)
 
 **Purpose:** Identify where AI *should* be deployed

@@ -9,6 +9,8 @@ Australia's 2.6 million SMEs collectively lose over $38.6 billion annually due t
 - **Reactive processes:** Inefficient handling of compliance, client onboarding, and billing
 - **Scalability blockers:** Non-standardized operations, reliance on tribal knowledge, and over-dependence on key individuals
 
+*[Visualization: Large number graphic "$38.6 Billion" with caption "Lost Annually by Australian SMEs to Friction"]*
+
 SrvdNeat quantifies this with a proprietary Friction Index, benchmarked across six dimensions. Most SMEs score 3.2/5 or higher, indicating a critical state for AI deployment without foundational operational changes.
 
 ## Operational Friction: The Root Cause of AI Failure
@@ -25,7 +27,7 @@ These conditions severely impede AI adoption. The technology itself is capable, 
 
 ## From Curiosity to Accountability: How SME AI Has Evolved
 
-**AI isn't too early for SMEs—it's already here, and it's already failing.**
+**The market has matured beyond AI hype—SMEs now demand measurable outcomes.**
 
 - **65% of Australian SMEs** report stalled or failed AI projects
 - **80% of owners** see AI as vital for customer reach and competitiveness
@@ -35,14 +37,8 @@ These conditions severely impede AI adoption. The technology itself is capable, 
 
 ## Broken Tools, Broken Promises: Why Vendors Fail
 
-Most vendors offer point solutions or AI tools. SrvdNeat, however, builds essential infrastructure:
+Most vendors offer point solutions or AI tools that fail to address the root cause of operational friction. They focus on individual features rather than systemic infrastructure that can truly transform SME operations.
 
-| **Category** | **AI Tooling** | **SrvdNeat Infrastructure** |
-|--------------|----------------|------------------------------|
-| Approach | Point solution (e.g., AI email writer) | Pattern engine (across operations, teams, workflows) |
-| Integration | Requires SME to adapt to the tool | Learns from SME behavior and adapts to it |
-| Deployment | Static agent per task | Orchestrated execution layer across systems |
-| Feedback Loop | Manual retraining, reimplementation | Live feedback → friction map → agent tuning |
-| Business Impact | Productivity spike, then drop | Compounding ROI via embedded intelligence |
+The fundamental issue is that existing solutions require SMEs to adapt to the tool, rather than adapting the tool to the business. This creates additional friction rather than eliminating it.
 
 We are not selling "AI in a box." We are building the systemic solution that makes AI truly usable and measurably valuable for real businesses. 

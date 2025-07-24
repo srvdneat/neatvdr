@@ -46,6 +46,8 @@ Sample Range: 1 = Minimal Friction, 5 = Critical Barrier)
 **Aggregate Friction Score: 4.35**
 **Recommendation:** Immediate orchestration of onboarding, billing, and approval workflows.
 
+*[Visualization: Radar chart showing the six friction dimensions with scores plotted]*
+
 ## Pattern Memory & Adaptive Execution
 
 Upon completion of an audit, NeatLM generates a tailored solution path. For instance:

@@ -61,8 +61,6 @@ This sales process functions as a flywheel, where each successful step facilitat
 
 ## Expansion Pathways: From Legal to Horizontal Scale
 
-As our client base expands, we compound three distinct advantages:
+Our GTM strategy creates a compounding advantage through data-driven insights and pattern recognition. As we serve more clients across different verticals, our understanding of SME friction patterns deepens, enabling more precise targeting and faster deployment.
 
-- **Pattern Density:** Every audit refines our understanding of SME friction, leading to the evolution of segment-specific playbooks derived from real-world data
-- **Instruction Optimization:** Our agents continuously improve their execution across various use cases, not just within individual companies. This reduces deployment effort and error rates
-- **Predictive Intervention:** Friction signatures enable preemptive solution nudges. For example, a system prompt might alert a user: "You're about to hit a billing bottleneck—would you like suggested paths forward?" 
+This expansion strategy leverages the behavioral data moat and learning flywheel described in our Differentiation & Moat section, creating a virtuous cycle of improved targeting, faster deployment, and better outcomes. 

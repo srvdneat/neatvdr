@@ -8,27 +8,52 @@ Of Australia's **744 AI vendors, only 17% focus on deployment.** Within that gro
 
 | **Vendor Type** | **Example Companies** | **Limitation** | **SrvdNeat Advantage** |
 |-----------------|----------------------|----------------|------------------------|
-| Generic AI Tools | ChatGPT, Notion AI | No business logic, no orchestration | Behavioral logic layer with tailored agents |
-| SME Automation | Zapier, Make.com | Requires technical setup, brittle workflows | Pre-mapped playbooks, no-code agent deployment |
-| Vertical SaaS | Clio, LEAP, Xero | Solves one slice, creates silos elsewhere | Cross-platform pattern engine |
-| AI Consultancies | Deloitte, Accenture | High-cost, slow, not scalable to SMEs | Fast, repeatable, data-backed interventions |
+| Generic AI Tools | ChatGPT, Notion AI, Claude | No business logic, no orchestration | Behavioral logic layer with tailored agents |
+| SME Automation | Zapier, Make.com, n8n | Requires technical setup, brittle workflows | Pre-mapped playbooks, no-code agent deployment |
+| Vertical SaaS | Clio, LEAP, Xero, Practice Ignition | Solves one slice, creates silos elsewhere | Cross-platform pattern engine |
+| AI Consultancies | Deloitte, Accenture, fractional AI CXOs | High-cost, slow, not scalable to SMEs | Fast, repeatable, data-backed interventions |
+| Workflow Automation | Bardeen, Relevance AI, Zapier AI | Focused on tech-savvy users or enterprises | SME-optimized, friction-first approach |
+| Document AI | DocuSign, PandaDoc, Juro | Limited to document workflows | End-to-end process orchestration |
+| CRM AI | HubSpot AI, Salesforce Einstein | CRM-specific, siloed intelligence | Cross-system behavioral intelligence |
 
 SrvdNeat distinguishes itself as infrastructure. It unifies, adapts, and learns—rather than simply adding another tool into an already chaotic environment.
 
 ### Direct vs. Indirect Competitors
 
-| **Type** | **Company** | **Our Take** |
-|----------|-------------|--------------|
-| Direct: Orchestration | Bardeen, Relevance AI | Focused on tech-savvy users or enterprises |
-| Indirect: SaaS AI | Jasper, Copy.ai | Feature-specific, non-integrated |
-| Indirect: Consultants | Fractional AI CXOs | Not scalable, no IP flywheel |
-| Adjacent: Ops Tools | ClickUp, Asana | Not AI-native, require manual configuration |
+| **Category** | **Company** | **Focus** | **Our Take** |
+|--------------|-------------|-----------|--------------|
+| **Direct: Orchestration** | Bardeen, Relevance AI, Zapier AI | Tech-savvy users, enterprise workflows | Focused on power users, not SME simplicity |
+| **Direct: SME Automation** | Zapier, Make.com, n8n | Technical automation, requires setup | Complex for SMEs, no behavioral intelligence |
+| **Indirect: SaaS AI** | Jasper, Copy.ai, Grammarly Business | Content generation, specific use cases | Feature-specific, non-integrated workflows |
+| **Indirect: Consultants** | Fractional AI CXOs, boutique agencies | Custom solutions, high-touch | Not scalable, no IP flywheel, expensive |
+| **Adjacent: Ops Tools** | ClickUp, Asana, Monday.com | Project management, team collaboration | Not AI-native, require manual configuration |
+| **Adjacent: Document AI** | DocuSign, PandaDoc, Juro | Document automation, contract workflows | Limited scope, no cross-system orchestration |
+| **Adjacent: CRM AI** | HubSpot AI, Salesforce Einstein | CRM-specific intelligence | Siloed, doesn't address operational friction |
+
+### Emerging Competitors & Market Gaps
+
+| **Emerging Player** | **Focus** | **Gap** | **SrvdNeat Advantage** |
+|---------------------|-----------|---------|------------------------|
+| **Notion AI** | Knowledge management, content | No operational workflow integration | Behavioral process mapping |
+| **Microsoft Copilot** | Office productivity, enterprise | Enterprise-focused, complex setup | SME-optimized, friction-first |
+| **Google Workspace AI** | Gmail, Docs automation | Limited to Google ecosystem | Cross-platform orchestration |
+| **Slack AI** | Communication, knowledge retrieval | Chat-focused, no process automation | End-to-end workflow intelligence |
+| **Figma AI** | Design automation | Design-specific, no business processes | Operational friction diagnosis |
+
+### Australian Market Specific
+
+| **Local Player** | **Focus** | **Limitation** | **Our Edge** |
+|------------------|-----------|----------------|--------------|
+| **Deputy** | Workforce management, scheduling | Limited to HR/workforce processes | Cross-functional operational intelligence |
+| **Xero** | Accounting automation | Financial processes only | End-to-end business orchestration |
+| **MYOB** | SME business management | Legacy system constraints | Modern AI-native architecture |
+| **Practice Ignition** | Client onboarding, proposals | Sales process only | Comprehensive operational friction mapping |
 
 SrvdNeat gains a competitive edge by combining orchestration, context awareness, and compounding data within a system that continuously learns from every deployment.
 
 ## Why SrvdNeat Can't Be Bundled, Replaced, or Ignored
 
-### Behavioral Data Moat
+### Competitive Advantages
 
 Our defensibility is rooted in pattern density, not merely intellectual property. This is achieved through:
 

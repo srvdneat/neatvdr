@@ -8,6 +8,8 @@
 
 **Serviceable Obtainable Market (SOM):** 420,000 digitally ready firms with clear, quantified admin pain. We qualify them by a friction index: >30% of team time spent on non-billable work. At an average contract value of $33,300, this unlocks a **$14B immediate revenue opportunity** for outcome-led AI deployment.
 
+*[Visualization: Nested circle diagram showing TAM ($38.6B) → SAM (1.2M SMEs) → SOM ($14B opportunity)]*
+
 ## Target Segmentation
 
 SrvdNeat targets SMEs that are willing but blocked. We call them:

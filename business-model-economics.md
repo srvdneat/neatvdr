@@ -49,6 +49,8 @@ Efficiency is projected to increase post-raise due to the maturation of our Go-t
 - **Revenue Mix:** 90% recurring, 10% setup/custom integrations
 - **Break-even:** Approximately Month 20
 
+*[Visualization: Line chart showing ARR growth over 36 months with key milestones marked]*
+
 ## Capital Efficiency & Use of Funds
 
 ### $2M Seed Round Allocation
@@ -61,6 +63,8 @@ Efficiency is projected to increase post-raise due to the maturation of our Go-t
 | **Operating Buffer** | 10% | $200,000 | Preserve 24-month runway; ensure flexibility for reallocation based on signal |
 
 This allocation is intentionally biased toward **distribution and delivery**, not experimentation. The model is working. This capital scales what's already proven.
+
+*[Visualization: Donut chart showing the $2M allocation breakdown]*
 
 ### Land > Expand > Compound Model
 
