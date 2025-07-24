@@ -394,6 +394,10 @@
         </div>
     </div>
 
+    <div id="protectionNotice" style="background:#f3f4f6;color:#444;padding:12px 0;text-align:center;font-size:15px;font-family:'Inter',sans-serif;font-weight:500;letter-spacing:0.01em;">
+      Digital protection measures are in place for visitors of this private space.
+    </div>
+
     <div id="content" class="container hidden">
         <h1>SrvdNeat</h1>
         <p class="subtitle">Virtual Data Room</p>
@@ -518,6 +522,31 @@
             document.getElementById('login').classList.add('hidden');
             document.getElementById('content').classList.remove('hidden');
         }
+    </script>
+
+    <script>
+      // Disable right-click/context menu
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+      });
+      // Disable text selection
+      document.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+      });
+      // Disable copy, cut, paste keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'x' || e.key === 'v' || e.key === 'a')) {
+          e.preventDefault();
+        }
+        // Block Print (Cmd/Ctrl+P)
+        if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+          e.preventDefault();
+        }
+      });
+      // Disable copy/cut/paste events
+      document.addEventListener('copy', function(e) { e.preventDefault(); });
+      document.addEventListener('cut', function(e) { e.preventDefault(); });
+      document.addEventListener('paste', function(e) { e.preventDefault(); });
     </script>
 </body>
 </html> 
