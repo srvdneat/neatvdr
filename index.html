@@ -382,79 +382,120 @@
     </style>
 </head>
 <body>
-    <div id="login" class="container">
-        <div class="login-container">
-            <h1>SrvdNeat</h1>
-            <p class="subtitle">Virtual Data Room</p>
-            <form class="login-form" onsubmit="checkPassword(event)">
-                <input type="password" id="password" placeholder="Enter password" required>
-                <button type="submit">Access VDR</button>
-            </form>
-            <div id="error" class="error hidden"></div>
-        </div>
+    <div id="sidebar" style="position:fixed;top:0;left:0;height:100vh;width:260px;background:#fff;border-right:2px solid #f3f4f6;z-index:1100;display:flex;flex-direction:column;align-items:center;padding:32px 0 0 0;box-shadow:2px 0 16px rgba(0,0,0,0.03);">
+      <img src="logo.png" alt="SrvdNeat Logo" style="width:90px;height:90px;margin-bottom:18px;"/>
+      <h2 style="font-family:'Inter',sans-serif;font-size:2rem;font-weight:700;color:#000;margin-bottom:8px;letter-spacing:-0.01em;">SrvdNeat</h2>
+      <div style="font-size:15px;color:#ff4000;font-weight:600;margin-bottom:24px;">Virtual Data Room</div>
+      <nav style="width:100%;">
+        <ul style="list-style:none;padding:0 0 0 24px;margin:0;">
+          <li><a href="#complete-vdr" class="sidebar-link">Complete VDR</a></li>
+          <li><a href="#sections" class="sidebar-link">Sections</a></li>
+          <li><a href="#supporting" class="sidebar-link">Supporting Docs</a></li>
+          <li><a href="#faq" class="sidebar-link">Investor FAQ</a></li>
+        </ul>
+      </nav>
+      <div style="margin-top:auto;padding-bottom:32px;width:90%;text-align:center;">
+        <a href="mailto:hi@srvdneat.com" style="display:block;background:#ff4000;color:#fff;font-weight:600;padding:12px 0;border-radius:8px;text-decoration:none;margin-bottom:12px;">Contact Us</a>
+        <a href="https://srvdneat.com/neataudit" target="_blank" rel="noopener" style="display:block;background:#000;color:#fff;font-weight:600;padding:12px 0;border-radius:8px;text-decoration:none;">SME? Take a NeatAudit</a>
+      </div>
     </div>
 
-    <div id="protectionNotice" style="background:#f3f4f6;color:#444;padding:12px 0;text-align:center;font-size:15px;font-family:'Inter',sans-serif;font-weight:500;letter-spacing:0.01em;">
-      Digital protection measures are in place for visitors of this private space.
+    <!-- Main content wrapper -->
+    <div id="main-content" style="margin-left:260px;min-height:100vh;">
+      <div id="login" class="container">
+          <div class="login-container">
+              <h1>SrvdNeat</h1>
+              <p class="subtitle">Virtual Data Room</p>
+              <form class="login-form" onsubmit="checkPassword(event)">
+                  <input type="password" id="password" placeholder="Enter password" required>
+                  <button type="submit">Access VDR</button>
+              </form>
+              <div id="error" class="error hidden"></div>
+          </div>
+      </div>
+
+      <div id="protectionNotice" style="background:#f3f4f6;color:#444;padding:12px 0;text-align:center;font-size:15px;font-family:'Inter',sans-serif;font-weight:500;letter-spacing:0.01em;">
+        Digital protection measures are in place for visitors of this private space.
+      </div>
+
+      <div id="content" class="container hidden">
+          <h1>SrvdNeat</h1>
+          <p class="subtitle">Virtual Data Room</p>
+          
+          <div class="section">
+              <h2>Complete VDR Package</h2>
+              <ul class="links">
+                  <li><a onclick="loadMarkdown('srvdneat-complete-vdr.md', 'Complete VDR')" class="complete-vdr">Complete VDR (Single File)</a></li>
+              </ul>
+          </div>
+
+          <div class="section">
+              <h2>Individual Sections</h2>
+              <ul class="links">
+                  <li><a onclick="loadMarkdown('executive-summary.md', 'Executive Summary')">Executive Summary</a></li>
+                  <li><a onclick="loadMarkdown('team-advisors.md', 'Team & Advisors')">Team & Advisors</a></li>
+                  <li><a onclick="loadMarkdown('vision-mission-brand.md', 'Vision, Mission & Brand')">Vision, Mission & Brand</a></li>
+                  <li><a onclick="loadMarkdown('market-analysis.md', 'Market Analysis')">Market Analysis</a></li>
+                  <li><a onclick="loadMarkdown('problem-framing.md', 'Problem Framing')">Problem Framing</a></li>
+                  <li><a onclick="loadMarkdown('product-architecture.md', 'Product Architecture')">Product Architecture</a></li>
+                  <li><a onclick="loadMarkdown('differentiation-moat.md', 'Differentiation & Moat')">Differentiation & Moat</a></li>
+                  <li><a onclick="loadMarkdown('go-to-market.md', 'Go-To-Market Strategy')">Go-To-Market Strategy</a></li>
+                  <li><a onclick="loadMarkdown('competitive-landscape.md', 'Competitive Landscape')">Competitive Landscape</a></li>
+                  <li><a onclick="loadMarkdown('business-model-economics.md', 'Business Model & Economics')">Business Model & Economics</a></li>
+                  <li><a onclick="loadMarkdown('team-execution-plan.md', 'Team & Execution Plan')">Team & Execution Plan</a></li>
+                  <li><a onclick="loadMarkdown('financials.md', 'Financials')">Financials</a></li>
+                  <li><a onclick="loadMarkdown('appendices.md', 'Appendices')">Appendices</a></li>
+              </ul>
+          </div>
+
+          <div class="section">
+              <h2>Supporting Documents</h2>
+              <ul class="links">
+                  <li><a onclick="loadMarkdown('README.md', 'README')">README</a></li>
+              </ul>
+          </div>
+
+          <div class="footer">
+              <p>SrvdNeat Virtual Data Room</p>
+              <p>Last updated: July 2025</p>
+              <p>For investor inquiries: info@srvdneat.com</p>
+          </div>
+      </div>
+
+      <!-- Modal -->
+      <div id="markdownModal" class="modal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h2 class="modal-title" id="modalTitle"></h2>
+                  <button class="close" onclick="closeModal()">&times;</button>
+              </div>
+              <div class="modal-body" id="modalBody">
+                  <div style="text-align: center; padding: 40px;">
+                      <p>Loading...</p>
+                  </div>
+              </div>
+          </div>
+      </div>
     </div>
 
-    <div id="content" class="container hidden">
-        <h1>SrvdNeat</h1>
-        <p class="subtitle">Virtual Data Room</p>
-        
-        <div class="section">
-            <h2>Complete VDR Package</h2>
-            <ul class="links">
-                <li><a onclick="loadMarkdown('srvdneat-complete-vdr.md', 'Complete VDR')" class="complete-vdr">Complete VDR (Single File)</a></li>
-            </ul>
+    <!-- Add Investor FAQ tab/modal at end of body -->
+    <div id="faqModal" class="modal">
+      <div class="modal-content" style="max-width:600px;">
+        <div class="modal-header">
+          <h2 class="modal-title">Investor FAQ</h2>
+          <button class="close" onclick="closeFaq()">&times;</button>
         </div>
-
-        <div class="section">
-            <h2>Individual Sections</h2>
-            <ul class="links">
-                <li><a onclick="loadMarkdown('executive-summary.md', 'Executive Summary')">Executive Summary</a></li>
-                <li><a onclick="loadMarkdown('team-advisors.md', 'Team & Advisors')">Team & Advisors</a></li>
-                <li><a onclick="loadMarkdown('vision-mission-brand.md', 'Vision, Mission & Brand')">Vision, Mission & Brand</a></li>
-                <li><a onclick="loadMarkdown('market-analysis.md', 'Market Analysis')">Market Analysis</a></li>
-                <li><a onclick="loadMarkdown('problem-framing.md', 'Problem Framing')">Problem Framing</a></li>
-                <li><a onclick="loadMarkdown('product-architecture.md', 'Product Architecture')">Product Architecture</a></li>
-                <li><a onclick="loadMarkdown('differentiation-moat.md', 'Differentiation & Moat')">Differentiation & Moat</a></li>
-                <li><a onclick="loadMarkdown('go-to-market.md', 'Go-To-Market Strategy')">Go-To-Market Strategy</a></li>
-                <li><a onclick="loadMarkdown('competitive-landscape.md', 'Competitive Landscape')">Competitive Landscape</a></li>
-                <li><a onclick="loadMarkdown('business-model-economics.md', 'Business Model & Economics')">Business Model & Economics</a></li>
-                <li><a onclick="loadMarkdown('team-execution-plan.md', 'Team & Execution Plan')">Team & Execution Plan</a></li>
-                <li><a onclick="loadMarkdown('financials.md', 'Financials')">Financials</a></li>
-                <li><a onclick="loadMarkdown('appendices.md', 'Appendices')">Appendices</a></li>
-            </ul>
+        <div class="modal-body" style="font-size:17px;">
+          <h3>What is SrvdNeat?</h3>
+          <p>SrvdNeat is the first behavioral AI platform built to eliminate operational friction for SMEs, delivering measurable ROI and rapid deployment.</p>
+          <h3>How do you protect sensitive data?</h3>
+          <p>All VDR content is protected by password, digital copy prevention, and strict access controls. For deeper diligence, contact us directly.</p>
+          <h3>What are your key financial milestones?</h3>
+          <p>See the Financials and Business Model sections for ARR, billings, breakeven, and client growth projections.</p>
+          <h3>How can I invest or get more information?</h3>
+          <p>Email <a href="mailto:hi@srvdneat.com">hi@srvdneat.com</a> or use the Contact Us button for a direct response from the founder.</p>
         </div>
-
-        <div class="section">
-            <h2>Supporting Documents</h2>
-            <ul class="links">
-                <li><a onclick="loadMarkdown('README.md', 'README')">README</a></li>
-            </ul>
-        </div>
-
-        <div class="footer">
-            <p>SrvdNeat Virtual Data Room</p>
-            <p>Last updated: July 2025</p>
-            <p>For investor inquiries: info@srvdneat.com</p>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div id="markdownModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="modalTitle"></h2>
-                <button class="close" onclick="closeModal()">&times;</button>
-            </div>
-            <div class="modal-body" id="modalBody">
-                <div style="text-align: center; padding: 40px;">
-                    <p>Loading...</p>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
 
     <script>
@@ -548,5 +589,37 @@
       document.addEventListener('cut', function(e) { e.preventDefault(); });
       document.addEventListener('paste', function(e) { e.preventDefault(); });
     </script>
+
+    <!-- Accessibility & keyboard navigation JS -->
+    <script>
+    // Sidebar link scroll
+    Array.from(document.querySelectorAll('.sidebar-link')).forEach(function(link){
+      link.addEventListener('click',function(e){
+        e.preventDefault();
+        var target = document.querySelector(link.getAttribute('href'));
+        if(target) target.scrollIntoView({behavior:'smooth'});
+      });
+    });
+    // FAQ tab
+    function openFaq(){ document.getElementById('faqModal').style.display='block'; }
+    function closeFaq(){ document.getElementById('faqModal').style.display='none'; }
+    document.querySelector('a[href="#faq"]').onclick = openFaq;
+    // Keyboard navigation for modal
+    window.addEventListener('keydown',function(e){
+      if(document.getElementById('faqModal').style.display==='block' && e.key==='Escape') closeFaq();
+    });
+    // Ensure all links/buttons are focusable
+    Array.from(document.querySelectorAll('a,button')).forEach(function(el){ el.setAttribute('tabindex','0'); });
+    </script>
+
+    <!-- Add ARIA roles for accessibility -->
+    <style>
+    #sidebar { box-shadow:2px 0 16px rgba(0,0,0,0.03); }
+    #sidebar nav ul li a { color:#222; text-decoration:none; font-size:1.1rem; font-weight:500; padding:8px 0; display:block; border-radius:6px; transition:background 0.2s; }
+    #sidebar nav ul li a:hover, #sidebar nav ul li a:focus { background:#f3f4f6; color:#ff4000; outline:none; }
+    #sidebar a:focus, #sidebar button:focus { outline:2px solid #ff4000; }
+    #main-content { background:#fff; color:#111; font-size:18px; line-height:1.7; }
+    @media (max-width:900px) { #sidebar { position:static; width:100vw; height:auto; flex-direction:row; justify-content:space-between; padding:12px 0; } #main-content { margin-left:0; } }
+    </style>
 </body>
 </html> 
