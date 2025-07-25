@@ -7,7 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -18,210 +18,329 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: #000000;
+            color: #1a1a1a;
             background-color: #ffffff;
-            font-weight: 400;
+            font-weight: 300;
+            font-size: 14px;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 80px 40px;
+        /* Password Overlay */
+        #password-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        .login-container {
+        #password-form {
             text-align: center;
-            padding: 120px 40px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-        
-        .login-form {
             max-width: 400px;
-            margin: 0 auto;
+            padding: 40px;
         }
         
-        .login-form input {
+        #password-form h2 {
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 32px;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+        
+        #vdr-password {
             width: 100%;
-            padding: 20px 24px;
-            margin: 24px 0;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
+            padding: 16px 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
             font-size: 16px;
             font-family: inherit;
+            font-weight: 300;
             background: #ffffff;
-            transition: all 0.3s ease;
-            font-weight: 500;
+            margin-bottom: 20px;
+            transition: all 0.2s ease;
         }
         
-        .login-form input:focus {
+        #vdr-password:focus {
             outline: none;
             border-color: #ff4000;
             box-shadow: 0 0 0 3px rgba(255, 64, 0, 0.1);
         }
         
-        .login-form button {
+        #password-form button {
             width: 100%;
-            padding: 20px 24px;
-            background: #000000;
+            padding: 16px 20px;
+            background: #ff4000;
             color: #ffffff;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
             font-family: inherit;
         }
         
-        .login-form button:hover {
-            background: #333333;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        #password-form button:hover {
+            background: #e63900;
+            transform: translateY(-1px);
         }
         
-        .error {
+        #password-error {
             color: #dc2626;
             margin-top: 16px;
             font-size: 14px;
-            font-weight: 500;
-        }
-        
-        .hidden {
+            font-weight: 400;
             display: none;
         }
         
+        /* Sidebar */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 280px;
+            background: #ffffff;
+            border-right: 1px solid #f3f4f6;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            padding: 32px 0;
+            box-shadow: 1px 0 8px rgba(0,0,0,0.02);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            padding: 0 24px;
+        }
+        
+        .logo-container img {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            margin-right: 12px;
+        }
+        
+        .brand-name {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a1a1a;
+            letter-spacing: -0.02em;
+        }
+        
+        .brand-subtitle {
+            font-size: 12px;
+            color: #ff4000;
+            font-weight: 500;
+            margin-top: 4px;
+        }
+        
+        .sidebar-nav {
+            flex: 1;
+            padding: 0 24px;
+        }
+        
+        .sidebar-nav h3 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #6b7280;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 16px;
+            margin-top: 32px;
+        }
+        
+        .sidebar-nav h3:first-child {
+            margin-top: 0;
+        }
+        
+        .sidebar-nav ul {
+            list-style: none;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 8px;
+        }
+        
+        .sidebar-nav a {
+            display: block;
+            padding: 8px 12px;
+            color: #374151;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .sidebar-nav a:hover {
+            background: #f9fafb;
+            color: #ff4000;
+        }
+        
+        .sidebar-footer {
+            padding: 24px;
+            border-top: 1px solid #f3f4f6;
+        }
+        
+        .sidebar-footer a {
+            display: block;
+            padding: 12px 16px;
+            background: #ff4000;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 12px;
+            transition: all 0.2s ease;
+        }
+        
+        .sidebar-footer a:hover {
+            background: #e63900;
+        }
+        
+        .sidebar-footer a:last-child {
+            background: #1a1a1a;
+        }
+        
+        .sidebar-footer a:last-child:hover {
+            background: #374151;
+        }
+        
+        /* Main Content */
+        #main-content {
+            margin-left: 280px;
+            min-height: 100vh;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+        
         h1 {
-            font-size: 48px;
-            font-weight: 700;
+            font-size: 36px;
+            font-weight: 400;
             margin-bottom: 16px;
             letter-spacing: -0.02em;
-            color: #000000;
+            color: #1a1a1a;
         }
         
         .subtitle {
-            font-size: 20px;
+            font-size: 16px;
             color: #6b7280;
             margin-bottom: 48px;
-            font-weight: 400;
+            font-weight: 300;
         }
         
         .section {
-            margin-bottom: 64px;
+            margin-bottom: 48px;
         }
         
         .section h2 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 32px;
-            color: #000000;
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            color: #1a1a1a;
             letter-spacing: -0.01em;
         }
         
         .links {
             list-style: none;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .links li {
-            margin: 0;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
         }
         
         .links a {
             display: block;
-            padding: 24px 32px;
+            padding: 20px 24px;
             background: #ffffff;
-            color: #000000;
+            color: #374151;
             text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.3s ease;
-            border: 2px solid #f3f4f6;
-            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border: 1px solid #f3f4f6;
+            font-weight: 400;
+            font-size: 14px;
             cursor: pointer;
-            font-size: 16px;
             position: relative;
-            overflow: hidden;
         }
         
         .links a:hover {
             border-color: #ff4000;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 64, 0, 0.1), transparent);
-            transition: left 0.5s;
-        }
-        
-        .links a:hover::before {
-            left: 100%;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
         
         .complete-vdr {
-            background: #000000 !important;
+            background: #1a1a1a !important;
             color: #ffffff !important;
-            border-color: #000000 !important;
+            border-color: #1a1a1a !important;
+            font-weight: 500 !important;
         }
         
         .complete-vdr:hover {
-            background: #333333 !important;
-            border-color: #333333 !important;
+            background: #374151 !important;
+            border-color: #374151 !important;
         }
         
         .footer {
             text-align: center;
-            margin-top: 120px;
-            padding-top: 60px;
-            border-top: 2px solid #f3f4f6;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #f3f4f6;
             color: #6b7280;
-            font-size: 14px;
+            font-size: 12px;
         }
         
         .footer p {
-            margin: 8px 0;
-            font-weight: 500;
+            margin: 4px 0;
+            font-weight: 400;
         }
         
         /* Modal styles */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
+            z-index: 2000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.6);
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
+            background-color: rgba(0,0,0,0.4);
+            -webkit-backdrop-filter: blur(4px);
+            backdrop-filter: blur(4px);
         }
         
         .modal-content {
             background-color: #ffffff;
             margin: 5% auto;
             padding: 0;
-            border-radius: 16px;
+            border-radius: 12px;
             width: 90%;
-            max-width: 1000px;
+            max-width: 900px;
             max-height: 85vh;
             overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
             border: 1px solid #f3f4f6;
         }
         
         .modal-header {
-            padding: 32px 40px;
-            border-bottom: 2px solid #f3f4f6;
+            padding: 24px 32px;
+            border-bottom: 1px solid #f3f4f6;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -229,109 +348,117 @@
         }
         
         .modal-title {
-            font-size: 28px;
-            font-weight: 600;
-            color: #000000;
+            font-size: 20px;
+            font-weight: 500;
+            color: #1a1a1a;
         }
         
         .close {
             color: #6b7280;
-            font-size: 32px;
+            font-size: 24px;
             font-weight: 300;
             cursor: pointer;
             background: none;
             border: none;
             padding: 8px;
-            width: 48px;
-            height: 48px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
-            transition: all 0.3s ease;
+            border-radius: 6px;
+            transition: all 0.2s ease;
         }
         
         .close:hover {
             background: #f3f4f6;
-            color: #000000;
+            color: #1a1a1a;
         }
         
         .modal-body {
-            padding: 40px;
+            padding: 32px;
             max-height: 70vh;
             overflow-y: auto;
+            font-size: 14px;
+            line-height: 1.6;
         }
         
         .modal-body h1 {
-            font-size: 32px;
-            margin-bottom: 24px;
-            color: #000000;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #1a1a1a;
+            font-weight: 500;
         }
         
         .modal-body h2 {
-            font-size: 24px;
-            margin: 40px 0 20px 0;
-            color: #000000;
+            font-size: 18px;
+            margin: 32px 0 16px 0;
+            color: #1a1a1a;
+            font-weight: 500;
         }
         
         .modal-body h3 {
-            font-size: 20px;
-            margin: 32px 0 16px 0;
-            color: #000000;
+            font-size: 16px;
+            margin: 24px 0 12px 0;
+            color: #1a1a1a;
+            font-weight: 500;
         }
         
         .modal-body p {
-            margin: 20px 0;
-            line-height: 1.7;
+            margin: 16px 0;
+            line-height: 1.6;
             color: #374151;
+            font-weight: 300;
         }
         
         .modal-body ul, .modal-body ol {
-            margin: 20px 0;
-            padding-left: 32px;
+            margin: 16px 0;
+            padding-left: 24px;
         }
         
         .modal-body li {
-            margin: 12px 0;
+            margin: 8px 0;
             color: #374151;
+            font-weight: 300;
         }
         
         .modal-body table {
             width: 100%;
             border-collapse: collapse;
-            margin: 32px 0;
+            margin: 24px 0;
             border-radius: 8px;
             overflow: hidden;
             border: 1px solid #e5e7eb;
+            font-size: 13px;
         }
         
         .modal-body th, .modal-body td {
             border: 1px solid #e5e7eb;
-            padding: 16px 20px;
+            padding: 12px 16px;
             text-align: left;
         }
         
         .modal-body th {
             background: #f9fafb;
-            font-weight: 600;
-            color: #000000;
+            font-weight: 500;
+            color: #1a1a1a;
         }
         
         .modal-body code {
             background: #f3f4f6;
-            padding: 4px 8px;
-            border-radius: 6px;
+            padding: 2px 6px;
+            border-radius: 4px;
             font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace;
-            font-size: 14px;
+            font-size: 12px;
             color: #dc2626;
         }
         
         .modal-body pre {
             background: #f9fafb;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 16px;
+            border-radius: 8px;
             overflow-x: auto;
-            margin: 20px 0;
+            margin: 16px 0;
             border: 1px solid #e5e7eb;
         }
         
@@ -342,24 +469,31 @@
         }
         
         .modal-body blockquote {
-            border-left: 4px solid #ff4000;
-            padding-left: 20px;
-            margin: 20px 0;
+            border-left: 3px solid #ff4000;
+            padding-left: 16px;
+            margin: 16px 0;
             color: #6b7280;
             font-style: italic;
         }
         
         @media (max-width: 768px) {
+            #sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                padding: 16px;
+            }
+            
+            #main-content {
+                margin-left: 0;
+            }
+            
             .container {
-                padding: 40px 20px;
+                padding: 32px 20px;
             }
             
             h1 {
-                font-size: 36px;
-            }
-            
-            .subtitle {
-                font-size: 18px;
+                font-size: 28px;
             }
             
             .links {
@@ -372,7 +506,7 @@
             }
             
             .modal-header {
-                padding: 24px 24px;
+                padding: 20px 24px;
             }
             
             .modal-body {
@@ -382,137 +516,140 @@
     </style>
 </head>
 <body>
-    <!-- Move protectionNotice to bottom, fix logo display -->
-    <div id="sidebar" style="position:fixed;top:0;left:0;height:100vh;width:260px;background:#fff;border-right:2px solid #f3f4f6;z-index:1100;display:flex;flex-direction:column;align-items:center;padding:32px 0 0 0;box-shadow:2px 0 16px rgba(0,0,0,0.03);">
-      <div style="width:90px;height:90px;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:16px;margin-bottom:18px;overflow:hidden;">
-        <img src="logo.png" alt="SrvdNeat Logo" style="width:90px;height:90px;object-fit:contain;display:block;background:#fff;"/>
-      </div>
-      <h2 style="font-family:'Inter',sans-serif;font-size:2rem;font-weight:700;color:#000;margin-bottom:8px;letter-spacing:-0.01em;">SrvdNeat</h2>
-      <div style="font-size:15px;color:#ff4000;font-weight:600;margin-bottom:24px;">Virtual Data Room</div>
-      <nav style="width:100%;">
-        <ul style="list-style:none;padding:0 0 0 24px;margin:0;">
-          <li><a href="#complete-vdr" class="sidebar-link">Complete VDR</a></li>
-          <li><a href="#sections" class="sidebar-link">Sections</a></li>
-          <li><a href="#supporting" class="sidebar-link">Supporting Docs</a></li>
-          <li><a href="#faq" class="sidebar-link">Investor FAQ</a></li>
-        </ul>
-      </nav>
-      <div style="margin-top:auto;padding-bottom:32px;width:90%;text-align:center;">
-        <a href="mailto:hi@srvdneat.com" style="display:block;background:#ff4000;color:#fff;font-weight:600;padding:12px 0;border-radius:8px;text-decoration:none;margin-bottom:12px;">Contact Us</a>
-        <a href="https://srvdneat.com/neataudit" target="_blank" rel="noopener" style="display:block;background:#000;color:#fff;font-weight:600;padding:12px 0;border-radius:8px;text-decoration:none;">SME? Take a NeatAudit</a>
-      </div>
+    <!-- Password Overlay (always prompts) -->
+    <div id="password-overlay">
+        <form id="password-form">
+            <h2>SrvdNeat Virtual Data Room</h2>
+            <input type="password" id="vdr-password" placeholder="Enter password" required>
+            <button type="submit">Access VDR</button>
+            <div id="password-error">Incorrect password. Try again.</div>
+        </form>
     </div>
 
-    <div id="main-content" style="margin-left:260px;min-height:100vh;">
-      <div id="login" class="container">
-          <div class="login-container">
-              <h1>SrvdNeat</h1>
-              <p class="subtitle">Virtual Data Room</p>
-              <form class="login-form" onsubmit="checkPassword(event)">
-                  <input type="password" id="password" placeholder="Enter password" required>
-                  <button type="submit">Access VDR</button>
-              </form>
-              <div id="error" class="error hidden"></div>
-          </div>
-      </div>
-
-      <div id="content" class="container hidden">
-          <h1>SrvdNeat</h1>
-          <p class="subtitle">Virtual Data Room</p>
-          
-          <div class="section">
-              <h2>Complete VDR Package</h2>
-              <ul class="links">
-                  <li><a onclick="loadMarkdown('srvdneat-complete-vdr.md', 'Complete VDR')" class="complete-vdr">Complete VDR (Single File)</a></li>
-              </ul>
-          </div>
-
-          <div class="section">
-              <h2>Individual Sections</h2>
-              <ul class="links">
-                  <li><a onclick="loadMarkdown('executive-summary.md', 'Executive Summary')">Executive Summary</a></li>
-                  <li><a onclick="loadMarkdown('team-advisors.md', 'Team & Advisors')">Team & Advisors</a></li>
-                  <li><a onclick="loadMarkdown('vision-mission-brand.md', 'Vision, Mission & Brand')">Vision, Mission & Brand</a></li>
-                  <li><a onclick="loadMarkdown('market-analysis.md', 'Market Analysis')">Market Analysis</a></li>
-                  <li><a onclick="loadMarkdown('problem-framing.md', 'Problem Framing')">Problem Framing</a></li>
-                  <li><a onclick="loadMarkdown('product-architecture.md', 'Product Architecture')">Product Architecture</a></li>
-                  <li><a onclick="loadMarkdown('differentiation-moat.md', 'Differentiation & Moat')">Differentiation & Moat</a></li>
-                  <li><a onclick="loadMarkdown('go-to-market.md', 'Go-To-Market Strategy')">Go-To-Market Strategy</a></li>
-                  <li><a onclick="loadMarkdown('competitive-landscape.md', 'Competitive Landscape')">Competitive Landscape</a></li>
-                  <li><a onclick="loadMarkdown('business-model-economics.md', 'Business Model & Economics')">Business Model & Economics</a></li>
-                  <li><a onclick="loadMarkdown('team-execution-plan.md', 'Team & Execution Plan')">Team & Execution Plan</a></li>
-                  <li><a onclick="loadMarkdown('financials.md', 'Financials')">Financials</a></li>
-                  <li><a onclick="loadMarkdown('appendices.md', 'Appendices')">Appendices</a></li>
-              </ul>
-          </div>
-
-          <div class="section">
-              <h2>Supporting Documents</h2>
-              <ul class="links">
-                  <li><a onclick="loadMarkdown('README.md', 'README')">README</a></li>
-              </ul>
-          </div>
-
-          <div class="footer">
-              <p>SrvdNeat Virtual Data Room</p>
-              <p>Last updated: July 2025</p>
-              <p>For investor inquiries: info@srvdneat.com</p>
-          </div>
-      </div>
-
-      <!-- Modal -->
-      <div id="markdownModal" class="modal">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h2 class="modal-title" id="modalTitle"></h2>
-                  <button class="close" onclick="closeModal()">&times;</button>
-              </div>
-              <div class="modal-body" id="modalBody">
-                  <div style="text-align: center; padding: 40px;">
-                      <p>Loading...</p>
-                  </div>
-              </div>
-          </div>
-      </div>
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <div class="logo-container">
+            <img src="logo.png" alt="SrvdNeat Logo">
+            <div>
+                <div class="brand-name">SrvdNeat</div>
+                <div class="brand-subtitle">Virtual Data Room</div>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <h3>Complete VDR</h3>
+            <ul>
+                <li><a onclick="loadMarkdown('srvdneat-complete-vdr.md', 'Complete VDR')">Complete VDR (Single File)</a></li>
+            </ul>
+            
+            <h3>Sections</h3>
+            <ul>
+                <li><a onclick="loadMarkdown('executive-summary.md', 'Executive Summary')">Executive Summary</a></li>
+                <li><a onclick="loadMarkdown('team-advisors.md', 'Team & Advisors')">Team & Advisors</a></li>
+                <li><a onclick="loadMarkdown('vision-mission-brand.md', 'Vision, Mission & Brand')">Vision, Mission & Brand</a></li>
+                <li><a onclick="loadMarkdown('market-analysis.md', 'Market Analysis')">Market Analysis</a></li>
+                <li><a onclick="loadMarkdown('problem-framing.md', 'Problem Framing')">Problem Framing</a></li>
+                <li><a onclick="loadMarkdown('product-architecture.md', 'Product Architecture')">Product Architecture</a></li>
+                <li><a onclick="loadMarkdown('differentiation-moat.md', 'Differentiation & Moat')">Differentiation & Moat</a></li>
+                <li><a onclick="loadMarkdown('go-to-market.md', 'Go-To-Market Strategy')">Go-To-Market Strategy</a></li>
+                <li><a onclick="loadMarkdown('competitive-landscape.md', 'Competitive Landscape')">Competitive Landscape</a></li>
+                <li><a onclick="loadMarkdown('business-model-economics.md', 'Business Model & Economics')">Business Model & Economics</a></li>
+                <li><a onclick="loadMarkdown('team-execution-plan.md', 'Team & Execution Plan')">Team & Execution Plan</a></li>
+                <li><a onclick="loadMarkdown('financials.md', 'Financials')">Financials</a></li>
+                <li><a onclick="loadMarkdown('appendices.md', 'Appendices')">Appendices</a></li>
+            </ul>
+            
+            <h3>Supporting Documents</h3>
+            <ul>
+                <li><a onclick="loadMarkdown('README.md', 'README')">README</a></li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="mailto:hi@srvdneat.com">Contact Us</a>
+            <a href="https://srvdneat.com/neataudit" target="_blank" rel="noopener">SME? Take a NeatAudit</a>
+        </div>
     </div>
 
-    <!-- Add Investor FAQ tab/modal at end of body -->
-    <div id="faqModal" class="modal">
-      <div class="modal-content" style="max-width:600px;">
-        <div class="modal-header">
-          <h2 class="modal-title">Investor FAQ</h2>
-          <button class="close" onclick="closeFaq()">&times;</button>
+    <!-- Main Content -->
+    <div id="main-content">
+        <div class="container">
+            <h1>SrvdNeat</h1>
+            <p class="subtitle">Virtual Data Room</p>
+            
+            <div class="section">
+                <h2>Complete VDR Package</h2>
+                <ul class="links">
+                    <li><a onclick="loadMarkdown('srvdneat-complete-vdr.md', 'Complete VDR')" class="complete-vdr">Complete VDR (Single File)</a></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Individual Sections</h2>
+                <ul class="links">
+                    <li><a onclick="loadMarkdown('executive-summary.md', 'Executive Summary')">Executive Summary</a></li>
+                    <li><a onclick="loadMarkdown('team-advisors.md', 'Team & Advisors')">Team & Advisors</a></li>
+                    <li><a onclick="loadMarkdown('vision-mission-brand.md', 'Vision, Mission & Brand')">Vision, Mission & Brand</a></li>
+                    <li><a onclick="loadMarkdown('market-analysis.md', 'Market Analysis')">Market Analysis</a></li>
+                    <li><a onclick="loadMarkdown('problem-framing.md', 'Problem Framing')">Problem Framing</a></li>
+                    <li><a onclick="loadMarkdown('product-architecture.md', 'Product Architecture')">Product Architecture</a></li>
+                    <li><a onclick="loadMarkdown('differentiation-moat.md', 'Differentiation & Moat')">Differentiation & Moat</a></li>
+                    <li><a onclick="loadMarkdown('go-to-market.md', 'Go-To-Market Strategy')">Go-To-Market Strategy</a></li>
+                    <li><a onclick="loadMarkdown('competitive-landscape.md', 'Competitive Landscape')">Competitive Landscape</a></li>
+                    <li><a onclick="loadMarkdown('business-model-economics.md', 'Business Model & Economics')">Business Model & Economics</a></li>
+                    <li><a onclick="loadMarkdown('team-execution-plan.md', 'Team & Execution Plan')">Team & Execution Plan</a></li>
+                    <li><a onclick="loadMarkdown('financials.md', 'Financials')">Financials</a></li>
+                    <li><a onclick="loadMarkdown('appendices.md', 'Appendices')">Appendices</a></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>Supporting Documents</h2>
+                <ul class="links">
+                    <li><a onclick="loadMarkdown('README.md', 'README')">README</a></li>
+                </ul>
+            </div>
+
+            <div class="footer">
+                <p>SrvdNeat Virtual Data Room</p>
+                <p>Last updated: July 2025</p>
+                <p>For investor inquiries: info@srvdneat.com</p>
+            </div>
         </div>
-        <div class="modal-body" style="font-size:17px;">
-          <h3>What is SrvdNeat?</h3>
-          <p>SrvdNeat is the first behavioral AI platform built to eliminate operational friction for SMEs, delivering measurable ROI and rapid deployment.</p>
-          <h3>How do you protect sensitive data?</h3>
-          <p>All VDR content is protected by password, digital copy prevention, and strict access controls. For deeper diligence, contact us directly.</p>
-          <h3>What are your key financial milestones?</h3>
-          <p>See the Financials and Business Model sections for ARR, billings, breakeven, and client growth projections.</p>
-          <h3>How can I invest or get more information?</h3>
-          <p>Email <a href="mailto:hi@srvdneat.com">hi@srvdneat.com</a> or use the Contact Us button for a direct response from the founder.</p>
+
+        <!-- Modal -->
+        <div id="markdownModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalTitle"></h2>
+                    <button class="close" onclick="closeModal()">&times;</button>
+                </div>
+                <div class="modal-body" id="modalBody">
+                    <div style="text-align: center; padding: 40px;">
+                        <p>Loading...</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <script>
-        function checkPassword(event) {
-            event.preventDefault();
-            const password = document.getElementById('password').value;
-            const correctPassword = 'SrvdNeat2025';
-            
-            if (password === correctPassword) {
-                document.getElementById('login').classList.add('hidden');
-                document.getElementById('content').classList.remove('hidden');
-                localStorage.setItem('vdrAccess', 'granted');
+        const CORRECT_PASSWORD = "SrvdNeat2025";
+        document.getElementById('password-form').onsubmit = function(e) {
+            e.preventDefault();
+            const input = document.getElementById('vdr-password').value;
+            if (input === CORRECT_PASSWORD) {
+                document.getElementById('password-overlay').style.display = 'none';
+                document.body.style.overflow = '';
             } else {
-                document.getElementById('error').textContent = 'Incorrect password. Please try again.';
-                document.getElementById('error').classList.remove('hidden');
-                document.getElementById('password').value = '';
+                document.getElementById('password-error').style.display = 'block';
             }
-        }
+        };
+        // Prevent scrolling while overlay is active
+        document.body.style.overflow = 'hidden';
+    </script>
 
+    <script>
         function loadMarkdown(filename, title) {
             const modal = document.getElementById('markdownModal');
             const modalTitle = document.getElementById('modalTitle');
@@ -556,73 +693,31 @@
                 closeModal();
             }
         });
-
-        if (localStorage.getItem('vdrAccess') === 'granted') {
-            document.getElementById('login').classList.add('hidden');
-            document.getElementById('content').classList.remove('hidden');
-        }
     </script>
 
     <script>
-      // Disable right-click/context menu
-      document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-      });
-      // Disable text selection
-      document.addEventListener('selectstart', function(e) {
-        e.preventDefault();
-      });
-      // Disable copy, cut, paste keyboard shortcuts
-      document.addEventListener('keydown', function(e) {
-        if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'x' || e.key === 'v' || e.key === 'a')) {
-          e.preventDefault();
-        }
-        // Block Print (Cmd/Ctrl+P)
-        if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
-          e.preventDefault();
-        }
-      });
-      // Disable copy/cut/paste events
-      document.addEventListener('copy', function(e) { e.preventDefault(); });
-      document.addEventListener('cut', function(e) { e.preventDefault(); });
-      document.addEventListener('paste', function(e) { e.preventDefault(); });
+        // Disable right-click/context menu
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+        // Disable text selection
+        document.addEventListener('selectstart', function(e) {
+            e.preventDefault();
+        });
+        // Disable copy, cut, paste keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if ((e.ctrlKey || e.metaKey) && (e.key === 'c' || e.key === 'x' || e.key === 'v' || e.key === 'a')) {
+                e.preventDefault();
+            }
+            // Block Print (Cmd/Ctrl+P)
+            if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                e.preventDefault();
+            }
+        });
+        // Disable copy/cut/paste events
+        document.addEventListener('copy', function(e) { e.preventDefault(); });
+        document.addEventListener('cut', function(e) { e.preventDefault(); });
+        document.addEventListener('paste', function(e) { e.preventDefault(); });
     </script>
-
-    <!-- Accessibility & keyboard navigation JS -->
-    <script>
-    // Sidebar link scroll
-    Array.from(document.querySelectorAll('.sidebar-link')).forEach(function(link){
-      link.addEventListener('click',function(e){
-        e.preventDefault();
-        var target = document.querySelector(link.getAttribute('href'));
-        if(target) target.scrollIntoView({behavior:'smooth'});
-      });
-    });
-    // FAQ tab
-    function openFaq(){ document.getElementById('faqModal').style.display='block'; }
-    function closeFaq(){ document.getElementById('faqModal').style.display='none'; }
-    document.querySelector('a[href="#faq"]').onclick = openFaq;
-    // Keyboard navigation for modal
-    window.addEventListener('keydown',function(e){
-      if(document.getElementById('faqModal').style.display==='block' && e.key==='Escape') closeFaq();
-    });
-    // Ensure all links/buttons are focusable
-    Array.from(document.querySelectorAll('a,button')).forEach(function(el){ el.setAttribute('tabindex','0'); });
-    </script>
-
-    <!-- Add ARIA roles for accessibility -->
-    <style>
-    #sidebar { box-shadow:2px 0 16px rgba(0,0,0,0.03); }
-    #sidebar nav ul li a { color:#222; text-decoration:none; font-size:1.1rem; font-weight:500; padding:8px 0; display:block; border-radius:6px; transition:background 0.2s; }
-    #sidebar nav ul li a:hover, #sidebar nav ul li a:focus { background:#f3f4f6; color:#ff4000; outline:none; }
-    #sidebar a:focus, #sidebar button:focus { outline:2px solid #ff4000; }
-    #main-content { background:#fff; color:#111; font-size:18px; line-height:1.7; }
-    @media (max-width:900px) {
-      #sidebar { position:static; width:100vw; height:auto; flex-direction:row; justify-content:space-between; padding:12px 0; top:0; }
-      #main-content { margin-left:0; }
-      #protectionNotice { position:fixed; bottom:0; left:0; width:100vw; }
-    }
-    body { padding-bottom:48px; }
-    </style>
 </body>
 </html> 
