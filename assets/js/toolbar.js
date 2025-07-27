@@ -26,7 +26,11 @@ class ToolbarExtension {
         // Create toolbar HTML with explicit text content
         toolbar.innerHTML = `
             <div class="toolbar-toggle">
-                <span style="color: white; font-size: 18px;">☰</span>
+                <div class="hamburger-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
             <div class="toolbar-content">
                 <div class="toolbar-section">
