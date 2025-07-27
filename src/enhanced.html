@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/toolbar.css">
+    <link rel="stylesheet" href="../assets/css/stackai-style.css">
     
     <!-- Meta Information -->
     <meta name="description" content="SrvdNeat Seed Investment Package - AI Orchestration for SMEs">
@@ -37,99 +38,108 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="nav-sticky bg-black text-white shadow-lg border-b-2 border-gray-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <i class="fas fa-rocket text-2xl mr-3 text-white icon-float"></i>
-                    <h1 class="text-2xl font-bold text-white">SrvdNeat VDR</h1>
-                </div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#executive-summary" class="text-white hover:text-gray-300 transition-colors border-b border-transparent hover:border-white">Summary</a>
-                    <a href="#market-opportunity" class="text-white hover:text-gray-300 transition-colors border-b border-transparent hover:border-white">Market</a>
-                    <a href="financials.html" class="text-white hover:text-gray-300 transition-colors border-b border-transparent hover:border-white">Financials</a>
-                    <a href="#funding-ask" class="text-white hover:text-gray-300 transition-colors border-b border-transparent hover:border-white">Funding</a>
-                </div>
-                <div class="text-sm text-white">
-                    <i class="fas fa-lock mr-2"></i>
-                    Confidential - Seed Investment Package
+    <nav class="nav-sticky">
+        <div class="nav-container">
+            <div class="nav-content">
+                <a href="enhanced.html" class="nav-brand">
+                    <i class="fas fa-chart-line mr-2"></i>
+                    SrvdNeat VDR
+                </a>
+                <div class="nav-links">
+                    <a href="#executive-summary" class="nav-link active">Summary</a>
+                    <a href="#market-opportunity" class="nav-link">Market</a>
+                    <a href="financials.html" class="nav-link">Financials</a>
+                    <a href="#funding-ask" class="nav-link">Funding</a>
+                    <a href="presentations/pitch-deck.html" class="nav-link">Pitch Deck</a>
+                    <a href="#" class="nav-cta" id="demo-btn">Get Demo</a>
                 </div>
             </div>
         </div>
     </nav>
 
+    <!-- Video Demo Modal -->
+    <div id="demo-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden flex items-center justify-center">
+        <div class="relative max-w-2xl w-full mx-4">
+            <button id="close-demo" class="absolute -top-8 right-0 text-white text-xl hover:text-gray-300 z-10">
+                <i class="fas fa-times"></i>
+            </button>
+            <video id="demo-video" class="w-full rounded-lg shadow-2xl" controls>
+                <source src="../demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 border-2 border-black rounded-xl m-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         <!-- Executive Summary -->
-        <section id="executive-summary" class="mb-16 opacity-0 transform translate-y-8 transition-all duration-1000">
-            <div class="bg-white border-2 border-black p-8 rounded-xl shadow-lg mb-8">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center text-black">
-                    <i class="fas fa-star mr-3 icon-pulse text-black"></i>SrvdNeat: Seed Deck | 2025
-                </h2>
-                <p class="text-xl md:text-2xl text-center text-black">Turning a $15K drag into $47K upside—AI that works for SMEs</p>
-                <p class="text-lg text-center text-black mt-2">Owning the $38.6B execution layer while big tech sleeps</p>
-                <div class="mt-6 text-center">
-                    <div class="inline-flex items-center bg-black text-white rounded-full px-6 py-2 font-semibold border border-black">
+        <section id="executive-summary" class="section">
+            <div class="hero-section">
+                <h1 class="hero-title">SrvdNeat: Seed Deck | 2025</h1>
+                <p class="hero-subtitle">Turning a $15K drag into $47K upside—AI that works for SMEs</p>
+                <p class="hero-subtitle">Owning the $38.6B execution layer while big tech sleeps</p>
+                <div class="mt-8 flex flex-wrap gap-4 justify-center">
+                    <span class="btn btn-primary">
                         <i class="fas fa-calendar mr-2"></i>
-                        <span>Seed Funding Round • 2025</span>
-                    </div>
+                        Seed Funding Round • 2025
+                    </span>
+                    <a href="presentations/pitch-deck.html" class="btn btn-secondary">
+                        <i class="fas fa-presentation mr-2"></i>
+                        View Full Pitch Deck
+                    </a>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <div class="bg-white border-2 border-black p-6 rounded-xl shadow-lg text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer group relative">
-                    <i class="fas fa-dollar-sign text-3xl mb-4 icon-float text-black"></i>
-                    <h3 class="text-3xl font-bold text-black">$4.5M</h3>
-                    <p class="text-sm font-medium text-black">ARR Target (24 months)</p>
-                    <div class="mt-3 text-xs font-medium text-black">Seed to Series A</div>
-                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                        Financial Projections
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-dollar-sign"></i>
                     </div>
+                    <div class="metric-value">$4.5M</div>
+                    <div class="metric-label">ARR Target (24 months)</div>
+                    <div class="text-xs text-gray-500 mt-2">Seed to Series A</div>
                 </div>
-                <div class="bg-white border-2 border-black p-6 rounded-xl shadow-lg text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer group relative">
-                    <i class="fas fa-chart-line text-3xl mb-4 icon-float text-black"></i>
-                    <h3 class="text-3xl font-bold text-black">4.2×</h3>
-                    <p class="text-sm font-medium text-black">LTV:CAC Ratio</p>
-                    <div class="mt-3 text-xs font-medium text-black">85% gross margin</div>
-                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                        Business Model
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
+                    <div class="metric-value">4.2×</div>
+                    <div class="metric-label">LTV:CAC Ratio</div>
+                    <div class="text-xs text-gray-500 mt-2">85% gross margin</div>
                 </div>
-                <div class="bg-white border-2 border-black p-6 rounded-xl shadow-lg text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer group relative">
-                    <i class="fas fa-clock text-3xl mb-4 icon-float text-black"></i>
-                    <h3 class="text-3xl font-bold text-black">8</h3>
-                    <p class="text-sm font-medium text-black">Month Payback</p>
-                    <div class="mt-3 text-xs font-medium text-black">CAC-efficient AI</div>
-                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                        Unit Economics
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-clock"></i>
                     </div>
+                    <div class="metric-value">8</div>
+                    <div class="metric-label">Month Payback</div>
+                    <div class="text-xs text-gray-500 mt-2">CAC-efficient AI</div>
                 </div>
-                <div class="bg-white border-2 border-black p-6 rounded-xl shadow-lg text-center transform transition-all duration-300 hover:scale-105 hover:shadow-xl cursor-pointer group relative">
-                    <i class="fas fa-rocket text-3xl mb-4 icon-float text-black"></i>
-                    <h3 class="text-3xl font-bold text-black">251%</h3>
-                    <p class="text-sm font-medium text-black">ROI Average</p>
-                    <div class="mt-3 text-xs font-medium text-black">30-day validation</div>
-                    <div class="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-black text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">
-                        Performance Metrics
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-rocket"></i>
                     </div>
+                    <div class="metric-value">251%</div>
+                    <div class="metric-label">ROI Average</div>
+                    <div class="text-xs text-gray-500 mt-2">30-day validation</div>
                 </div>
             </div>
 
             <!-- The Blind Spot Section -->
-            <div class="bg-white border-2 border-black rounded-xl shadow-lg p-8 mb-8">
-                <h3 class="text-2xl font-bold mb-4 text-black">
-                    <i class="fas fa-exclamation-triangle text-black mr-3"></i>The Blind Spot
+            <div class="card card-large">
+                <h3 class="section-title text-left mb-6">
+                    <i class="fas fa-exclamation-triangle mr-3"></i>The Blind Spot
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
-                        <p class="text-black mb-4">2024 saw a record number of insolvencies in Australian SMEs. Digital should be their way out, but <strong>70% of projects drown</strong>. <strong>65% of Australian SMEs</strong> are currently wasting away in AI jail.</p>
-                        <p class="text-black mb-4">They bought the tools but weren't taught how they worked. Now they're manually digging their competitive graves—wasting <strong>$14,857 and 531 hours a year</strong>.</p>
-                        <p class="text-black">Still unsolved? Traditional models guarantee CAC > SME LTV. Our friction index flips the script.</p>
+                        <p class="text-gray-700 mb-4">2024 saw a record number of insolvencies in Australian SMEs. Digital should be their way out, but <strong>70% of projects drown</strong>. <strong>65% of Australian SMEs</strong> are currently wasting away in AI jail.</p>
+                        <p class="text-gray-700 mb-4">They bought the tools but weren't taught how they worked. Now they're manually digging their competitive graves—wasting <strong>$14,857 and 531 hours a year</strong>.</p>
+                        <p class="text-gray-700">Still unsolved? Traditional models guarantee CAC > SME LTV. Our friction index flips the script.</p>
                     </div>
-                    <div class="bg-gray-100 border border-black p-6 rounded-lg">
-                        <h4 class="font-bold text-black mb-3">The Problem</h4>
-                        <ul class="text-black space-y-2">
+                    <div class="bg-gray-50 p-6 rounded-lg border border-gray-200">
+                        <h4 class="font-bold text-gray-800 mb-3">The Problem</h4>
+                        <ul class="text-gray-700 space-y-2">
                             <li>• 70% of digital projects fail</li>
                             <li>• 65% of SMEs in AI jail</li>
                             <li>• $14,857 wasted annually</li>
@@ -140,9 +150,9 @@
             </div>
 
             <!-- Academic Foundation Section -->
-            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl shadow-lg p-8 mb-8">
+            <div class="card card-large">
                 <h3 class="text-2xl font-bold mb-4 text-gray-800">
-                    <i class="fas fa-graduation-cap text-blue-600 mr-3"></i>Academic Foundation: Peer-Reviewed Behavioral Science
+                    <i class="fas fa-graduation-cap mr-3"></i>Academic Foundation: Peer-Reviewed Behavioral Science
                 </h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <div>
@@ -192,8 +202,47 @@
                 <h3 class="text-2xl font-bold mb-4 text-gray-800">
                     <i class="fas fa-clock text-blue-500 mr-3"></i>Why Now?
                 </h3>
-                <p class="text-gray-700 mb-4"><strong>$185B</strong> in national SME enablement via OpenAI and Big Tech means the window is closing. Execution—not access—is now the bottleneck.</p>
-                <p class="text-gray-700">The platform that captures the SME execution layer today will define the next decade of SME AI.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="text-gray-700 mb-4"><strong>$185B</strong> in national SME enablement via OpenAI and Big Tech means the window is closing. Execution—not access—is now the bottleneck.</p>
+                        <p class="text-gray-700 mb-4">The platform that captures the SME execution layer today will define the next decade of SME AI.</p>
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                            <h4 class="font-semibold text-blue-800 mb-2">Market Timing</h4>
+                            <ul class="text-blue-700 text-sm space-y-1">
+                                <li>• Big Tech has democratized AI access</li>
+                                <li>• Execution is now the bottleneck</li>
+                                <li>• First-mover advantage in SME execution layer</li>
+                                <li>• Window closing on opportunity</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg border border-green-200">
+                        <h4 class="font-semibold text-green-800 mb-3">Competitive Advantage</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                <div>
+                                    <p class="text-green-700 font-medium">Academic Foundation</p>
+                                    <p class="text-green-600 text-sm">Peer-reviewed behavioral science</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                <div>
+                                    <p class="text-green-700 font-medium">Proven Framework</p>
+                                    <p class="text-green-600 text-sm">17 barriers distilled into 5-minute diagnostic</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-600 mt-1 mr-2"></i>
+                                <div>
+                                    <p class="text-green-700 font-medium">Validation Ready</p>
+                                    <p class="text-green-600 text-sm">$75K in pilot revenue, 251% ROI</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Academic Foundation & Behavioral AI -->
@@ -278,12 +327,98 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Zero-Touch Revenue Machine -->
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-cogs text-purple-500 mr-3"></i>Zero-Touch Revenue Machine
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
+                        <h4 class="font-semibold text-blue-700 mb-3 flex items-center">
+                            <i class="fas fa-search mr-2"></i>NeatAudit
+                        </h4>
+                        <p class="text-blue-600 text-sm">Instantly scores friction, triggers lead nurture, and delivers dynamic instructions. Our proprietary diagnostic identifies 60+ friction patterns in under 5 minutes.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border border-green-200">
+                        <h4 class="font-semibold text-green-700 mb-3 flex items-center">
+                            <i class="fas fa-brain mr-2"></i>NeatLM
+                        </h4>
+                        <p class="text-green-600 text-sm">Takes audit results and autonomously deploys tailored AI agents, selecting models pending client needs. 1.5 years of behavioral training embedded.</p>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-xl border border-purple-200">
+                        <h4 class="font-semibold text-purple-700 mb-3 flex items-center">
+                            <i class="fas fa-chart-line mr-2"></i>NeatPortal
+                        </h4>
+                        <p class="text-purple-600 text-sm">Self-monitors, adapts in real time, flags emerging bottlenecks, feeds flywheel data. Continuous improvement loop.</p>
+                    </div>
+                </div>
+                
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl border border-yellow-200">
+                    <h4 class="font-semibold text-yellow-800 mb-3">Scalable Acquisition Loop</h4>
+                    <p class="text-yellow-700 mb-4">Each client audit generates 3-5 referrals within their industry network. Our friction database identifies similar businesses automatically, creating warm outbound opportunities that convert 3× higher than cold outreach.</p>
+                </div>
+            </div>
+
+            <!-- Validation: A $75k Accident -->
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-8">
+                <h3 class="text-2xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-trophy text-green-500 mr-3"></i>Validation: A $75k Accident
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="bg-green-50 p-6 rounded-lg border border-green-200 mb-6">
+                            <h4 class="font-semibold text-green-800 mb-3">The Story</h4>
+                            <ul class="text-green-700 space-y-2">
+                                <li>• Friendly conversation turned lethal: $25K pilot. She said her lips were sealed.</li>
+                                <li>• $50K from pilot 2 hit days later. A $10K gift sealed the deal.</li>
+                                <li>• Pilot 3 emerged before we closed the window.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                            <h4 class="font-semibold text-blue-800 mb-3">Key Metrics</h4>
+                            <ul class="text-blue-700 space-y-2">
+                                <li>• 30-day averages: 251% ROI</li>
+                                <li>• Time-to-value: <24 hours</li>
+                                <li>• All inbound growth: pull, no push</li>
+                                <li>• Zero marketing spend</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg border border-purple-200">
+                        <h4 class="font-semibold text-purple-800 mb-3">What This Proves</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                                <div>
+                                    <p class="text-purple-700 font-medium">Product-Market Fit</p>
+                                    <p class="text-purple-600 text-sm">SMEs willing to pay for friction solutions</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                                <div>
+                                    <p class="text-purple-700 font-medium">Scalable Model</p>
+                                    <p class="text-purple-600 text-sm">Referral-driven growth without marketing</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-600 mt-1 mr-2"></i>
+                                <div>
+                                    <p class="text-purple-700 font-medium">Strong Unit Economics</p>
+                                    <p class="text-purple-600 text-sm">251% ROI validates pricing model</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <div class="section-divider"></div>
 
         <!-- Market Opportunity -->
-        <section id="market-opportunity" class="mb-16 opacity-0 transform translate-y-8 transition-all duration-1000">
+        <section id="market-opportunity" class="section-standard opacity-0 transform translate-y-8 transition-all duration-1000">
             <div class="card-enhanced p-8 rounded-xl">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">
                     <i class="fas fa-globe mr-3 text-blue-500"></i>Market & Opportunity
@@ -496,7 +631,7 @@
         <!-- For brevity, I'll include key sections but the full enhanced version would continue with all sections -->
         
         <!-- Financial Projections Section with Enhanced Charts -->
-        <section id="financial-projections" class="mb-16 opacity-0 transform translate-y-8 transition-all duration-1000">
+        <section id="financial-projections" class="section-standard opacity-0 transform translate-y-8 transition-all duration-1000">
             <div class="card-enhanced p-8 rounded-xl">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">
                     <i class="fas fa-chart-line mr-3 text-green-500"></i>Financial Projections
@@ -631,7 +766,7 @@
         </section>
 
         <!-- GTM Strategy Section -->
-        <section id="gtm-strategy" class="mb-16 opacity-0 transform translate-y-8 transition-all duration-1000">
+        <section id="gtm-strategy" class="section-standard opacity-0 transform translate-y-8 transition-all duration-1000">
             <div class="card-enhanced p-8 rounded-xl">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">
                     <i class="fas fa-bullseye mr-3 text-green-500"></i>Go-To-Market Strategy
@@ -679,6 +814,49 @@
                     </div>
                 </div>
 
+                <!-- Content Strategy -->
+                <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl border border-yellow-200 mb-8">
+                    <h4 class="font-semibold text-yellow-800 mb-3">Content Strategy</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="bg-white p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-700 mb-2">Client Case Studies</h5>
+                            <p class="text-yellow-600 text-sm">Real-world success stories with quantifiable results</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-700 mb-2">Long-form Research</h5>
+                            <p class="text-yellow-600 text-sm">Deep industry analysis and friction insights</p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h5 class="font-semibold text-yellow-700 mb-2">Topical Content</h5>
+                            <p class="text-yellow-600 text-sm">Current events with injected CTAs</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Scalable Acquisition Loop -->
+                <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-xl border border-purple-200">
+                    <h4 class="font-semibold text-purple-800 mb-3">Scalable Acquisition Loop</h4>
+                    <p class="text-purple-700 mb-4">Each client audit generates 3-5 referrals within their industry network. Our friction database identifies similar businesses automatically, creating warm outbound opportunities that convert 3× higher than cold outreach.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h5 class="font-semibold text-purple-700 mb-2">Referral Generation</h5>
+                            <ul class="text-purple-600 text-sm space-y-1">
+                                <li>• 3-5 referrals per client audit</li>
+                                <li>• Industry network expansion</li>
+                                <li>• Warm introduction opportunities</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-purple-700 mb-2">Conversion Advantage</h5>
+                            <ul class="text-purple-600 text-sm space-y-1">
+                                <li>• 3× higher conversion than cold outreach</li>
+                                <li>• Friction database targeting</li>
+                                <li>• Similar business identification</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Scalable Acquisition Loop -->
                 <div class="bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl border border-yellow-200">
                     <h3 class="text-xl font-semibold mb-4 text-orange-800">
@@ -713,7 +891,7 @@
         </section>
 
         <!-- Defensibility Section -->
-        <section id="defensibility" class="mb-16 opacity-0 transform translate-y-8 transition-all duration-1000">
+        <section id="defensibility" class="section-standard opacity-0 transform translate-y-8 transition-all duration-1000">
             <div class="card-enhanced p-8 rounded-xl">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">
                     <i class="fas fa-shield-alt mr-3 text-purple-500"></i>Defensibility
@@ -724,7 +902,28 @@
                         <i class="fas fa-database mr-2"></i>Friction Intelligence
                     </h3>
                     <p class="text-purple-700 mb-4">Friction isn't noise—it's patterned, structural and solvable. Each client adds 60+ friction datapoints, providing system training and compounding intelligence.</p>
-                    <p class="text-purple-700">We map interactions for the entire life-cycle of clients, running live and iteratively back into the entry point. Causal patterns and strategic focus on KPIs and pairings that matter make our flywheel dangerously fast.</p>
+                    <p class="text-purple-700 mb-4">We map interactions for the entire life-cycle of clients, running live and iteratively back into the entry point. Causal patterns and strategic focus on KPIs and pairings that matter make our flywheel dangerously fast.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-purple-700 mb-3">Data Flywheel</h4>
+                            <ul class="text-purple-600 text-sm space-y-2">
+                                <li>• 60+ friction datapoints per client</li>
+                                <li>• Pattern recognition across industries</li>
+                                <li>• Continuous model improvement</li>
+                                <li>• Predictive friction identification</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-purple-700 mb-3">Strategic Focus</h4>
+                            <ul class="text-purple-600 text-sm space-y-2">
+                                <li>• Causal pattern analysis</li>
+                                <li>• KPI-driven interventions</li>
+                                <li>• Lifecycle mapping</li>
+                                <li>• Iterative optimization</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="bg-blue-50 p-6 rounded-xl border border-blue-200 mb-8">
@@ -874,7 +1073,7 @@
         </section>
 
         <!-- Economics & Model Section -->
-        <section id="economics-model" class="mb-16 opacity-0 transform translate-y-8 transition-all duration-1000">
+        <section id="economics-model" class="section-standard opacity-0 transform translate-y-8 transition-all duration-1000">
             <div class="card-enhanced p-8 rounded-xl">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">
                     <i class="fas fa-calculator mr-3 text-green-500"></i>Economics & Model
@@ -922,6 +1121,57 @@
                         </div>
                         <div class="text-center">
                             <span class="inline-block bg-purple-200 text-purple-800 px-3 py-1 rounded-full text-sm">25% Revenue Split</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Comprehensive Pricing Model -->
+                <div class="bg-gradient-to-r from-blue-50 to-purple-50 p-6 rounded-xl border border-blue-200 mb-8">
+                    <h3 class="text-xl font-semibold mb-6 text-blue-800">
+                        <i class="fas fa-tags mr-2"></i>Product Tier Pricing Model
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white p-6 rounded-xl border border-blue-200 shadow-sm">
+                            <h4 class="font-semibold text-blue-700 mb-4">Workflow Optimisation</h4>
+                            <div class="text-center mb-4">
+                                <span class="text-3xl font-bold text-blue-600">$1,500</span>
+                                <span class="text-blue-600">/month</span>
+                            </div>
+                            <div class="text-center mb-4">
+                                <span class="text-2xl font-bold text-blue-600">$18k</span>
+                                <span class="text-blue-600">/year</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="inline-block bg-blue-200 text-blue-800 px-3 py-1 rounded-full text-sm">40% Revenue Split</span>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-green-200 shadow-sm">
+                            <h4 class="font-semibold text-green-700 mb-4">Operational Dashboard</h4>
+                            <div class="text-center mb-4">
+                                <span class="text-3xl font-bold text-green-600">$3,000</span>
+                                <span class="text-green-600">/month</span>
+                            </div>
+                            <div class="text-center mb-4">
+                                <span class="text-2xl font-bold text-green-600">$36k</span>
+                                <span class="text-green-600">/year</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="inline-block bg-green-200 text-green-800 px-3 py-1 rounded-full text-sm">35% Revenue Split</span>
+                            </div>
+                        </div>
+                        <div class="bg-white p-6 rounded-xl border border-purple-200 shadow-sm">
+                            <h4 class="font-semibold text-purple-700 mb-4">Client-Facing Apps</h4>
+                            <div class="text-center mb-4">
+                                <span class="text-3xl font-bold text-purple-600">$4,500</span>
+                                <span class="text-purple-600">/month</span>
+                            </div>
+                            <div class="text-center mb-4">
+                                <span class="text-2xl font-bold text-purple-600">$54k</span>
+                                <span class="text-purple-600">/year</span>
+                            </div>
+                            <div class="text-center">
+                                <span class="inline-block bg-purple-200 text-purple-800 px-3 py-1 rounded-full text-sm">25% Revenue Split</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -992,41 +1242,41 @@
                                         <td class="p-3 text-green-700">10</td>
                                         <td class="p-3 text-green-700">$27,750</td>
                                         <td class="p-3 text-green-700">$333K</td>
-                                        <td class="p-3 text-green-700">Product-market fit</td>
+                                        <td class="p-3 text-green-700">Early PMF + paid pilots</td>
                                     </tr>
                                     <tr class="border-b border-green-200">
                                         <td class="p-3 text-green-700">12</td>
-                                        <td class="p-3 text-green-700">25</td>
-                                        <td class="p-3 text-green-700">$69,375</td>
-                                        <td class="p-3 text-green-700">$832.5K</td>
-                                        <td class="p-3 text-green-700">Case studies and PMF confirmed</td>
+                                        <td class="p-3 text-green-700">49</td>
+                                        <td class="p-3 text-green-700">$135,975</td>
+                                        <td class="p-3 text-green-700">$1.63M</td>
+                                        <td class="p-3 text-green-700">PMF confirmed, early GTM traction</td>
                                     </tr>
                                     <tr class="border-b border-green-200 bg-white">
                                         <td class="p-3 text-green-700">18</td>
-                                        <td class="p-3 text-green-700">45</td>
-                                        <td class="p-3 text-green-700">$124,875</td>
-                                        <td class="p-3 text-green-700">$1.4985M</td>
-                                        <td class="p-3 text-green-700">GTM scaling phase</td>
+                                        <td class="p-3 text-green-700">82</td>
+                                        <td class="p-3 text-green-700">$227,550</td>
+                                        <td class="p-3 text-green-700">$2.73M</td>
+                                        <td class="p-3 text-green-700">Breakeven + GTM scaling validated</td>
                                     </tr>
                                     <tr class="border-b border-green-200">
                                         <td class="p-3 text-green-700">24</td>
-                                        <td class="p-3 text-green-700">60</td>
-                                        <td class="p-3 text-green-700">$166,500</td>
-                                        <td class="p-3 text-green-700">$1.998M</td>
-                                        <td class="p-3 text-green-700">Series A milestone</td>
+                                        <td class="p-3 text-green-700">135</td>
+                                        <td class="p-3 text-green-700">$375,000</td>
+                                        <td class="p-3 text-green-700">$4.5M</td>
+                                        <td class="p-3 text-green-700">$4.5M ARR milestone, Series A-ready</td>
                                     </tr>
                                     <tr class="border-b border-green-200 bg-white">
                                         <td class="p-3 text-green-700">30</td>
-                                        <td class="p-3 text-green-700">80</td>
-                                        <td class="p-3 text-green-700">$222,000</td>
-                                        <td class="p-3 text-green-700">$2.664M</td>
-                                        <td class="p-3 text-green-700">Network effect kicks in</td>
+                                        <td class="p-3 text-green-700">200</td>
+                                        <td class="p-3 text-green-700">$555,000</td>
+                                        <td class="p-3 text-green-700">$6.66M</td>
+                                        <td class="p-3 text-green-700">Network effects compounding</td>
                                     </tr>
                                     <tr class="border-b border-green-200">
                                         <td class="p-3 text-green-700">36</td>
-                                        <td class="p-3 text-green-700">110</td>
-                                        <td class="p-3 text-green-700">$305,250</td>
-                                        <td class="p-3 text-green-700">$3.663M</td>
+                                        <td class="p-3 text-green-700">258</td>
+                                        <td class="p-3 text-green-700">$715,350</td>
+                                        <td class="p-3 text-green-700">$8.58M</td>
                                         <td class="p-3 text-green-700">Vertical dominance begins</td>
                                     </tr>
                                 </tbody>
@@ -1116,7 +1366,7 @@
         </section>
 
         <!-- Team Section -->
-        <section id="team" class="mb-16 opacity-0 transform translate-y-8 transition-all duration-1000">
+        <section id="team" class="section-standard opacity-0 transform translate-y-8 transition-all duration-1000">
             <div class="card-enhanced p-8 rounded-xl">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">
                     <i class="fas fa-users mr-3 text-blue-500"></i>Team
@@ -1126,17 +1376,35 @@
                     <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl border border-blue-200">
                         <h3 class="text-xl font-semibold text-blue-700 mb-3">Sam Attwood</h3>
                         <p class="text-blue-600 mb-3">2× founder, rebuilt from collapse, 10+ years in SME automation and behavioral AI</p>
-                        <div class="text-sm text-blue-700">
+                        <div class="text-sm text-blue-700 mb-4">
                             <span class="inline-block bg-blue-200 text-blue-800 px-2 py-1 rounded mr-2">Founder & CEO</span>
                             <span class="inline-block bg-blue-200 text-blue-800 px-2 py-1 rounded">SME Expert</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-700 mb-2">Key Experience</h4>
+                            <ul class="text-blue-600 text-sm space-y-1">
+                                <li>• 2× founder with exit experience</li>
+                                <li>• Rebuilt company from collapse</li>
+                                <li>• 10+ years SME automation</li>
+                                <li>• Behavioral AI specialist</li>
+                            </ul>
                         </div>
                     </div>
                     <div class="bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl border border-green-200">
                         <h3 class="text-xl font-semibold text-green-700 mb-3">Martyn Reeves</h3>
                         <p class="text-green-600 mb-3">40+ years scaling SaaS across US, EU, AU</p>
-                        <div class="text-sm text-green-700">
+                        <div class="text-sm text-green-700 mb-4">
                             <span class="inline-block bg-green-200 text-green-800 px-2 py-1 rounded mr-2">Advisor</span>
                             <span class="inline-block bg-green-200 text-green-800 px-2 py-1 rounded">SaaS Veteran</span>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg">
+                            <h4 class="font-semibold text-green-700 mb-2">Key Experience</h4>
+                            <ul class="text-green-600 text-sm space-y-1">
+                                <li>• 40+ years SaaS scaling</li>
+                                <li>• US, EU, AU market experience</li>
+                                <li>• Proven track record</li>
+                                <li>• Strategic advisor</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1151,7 +1419,7 @@
         </section>
 
         <!-- Funding Ask Section -->
-        <section id="funding-ask" class="mb-16 opacity-0 transform translate-y-8 transition-all duration-1000">
+        <section id="funding-ask" class="section-standard opacity-0 transform translate-y-8 transition-all duration-1000">
             <div class="card-enhanced p-8 rounded-xl">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">
                     <i class="fas fa-hand-holding-usd mr-3 text-green-500"></i>The Ask
@@ -1161,7 +1429,40 @@
                     <h3 class="text-xl font-semibold mb-4 text-green-800">
                         <i class="fas fa-target mr-2"></i>Raising $2M Seed to reach $4.5M ARR in 24m
                     </h3>
-                    <p class="text-green-700">Achieve sustainable growth metrics by series A.</p>
+                    <p class="text-green-700 mb-4">Achieve sustainable growth metrics by series A.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold text-green-700 mb-3">Capital Allocation</h4>
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                                    <span class="text-green-700">Go-to-Market:</span>
+                                    <span class="font-semibold text-green-600">50%</span>
+                                </div>
+                                <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                                    <span class="text-green-700">Infrastructure:</span>
+                                    <span class="font-semibold text-green-600">20%</span>
+                                </div>
+                                <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                                    <span class="text-green-700">Team (CTO, Growth Lead):</span>
+                                    <span class="font-semibold text-green-600">20%</span>
+                                </div>
+                                <div class="flex justify-between items-center p-3 bg-white rounded-lg">
+                                    <span class="text-green-700">Operational Buffer:</span>
+                                    <span class="font-semibold text-green-600">10%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-green-700 mb-3">Key Milestones</h4>
+                            <ul class="text-green-600 text-sm space-y-2">
+                                <li>• $4.5M ARR by Month 24</li>
+                                <li>• 135 clients by Month 24</li>
+                                <li>• Sustainable unit economics</li>
+                                <li>• Series A ready metrics</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Capital Allocation -->
@@ -1227,6 +1528,47 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/toolbar.js"></script>
+    
+    <!-- Demo Modal Functionality -->
+    <script>
+        // Demo modal functionality
+        const demoBtn = document.getElementById('demo-btn');
+        const demoModal = document.getElementById('demo-modal');
+        const closeDemo = document.getElementById('close-demo');
+        const demoVideo = document.getElementById('demo-video');
+
+        // Open demo modal
+        demoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            demoModal.classList.remove('hidden');
+            demoModal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+
+        // Close demo modal
+        function closeDemoModal() {
+            demoModal.classList.add('hidden');
+            demoModal.classList.remove('flex');
+            document.body.style.overflow = ''; // Restore scrolling
+            demoVideo.pause(); // Pause video when closing
+        }
+
+        closeDemo.addEventListener('click', closeDemoModal);
+
+        // Close modal when clicking outside
+        demoModal.addEventListener('click', (e) => {
+            if (e.target === demoModal) {
+                closeDemoModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !demoModal.classList.contains('hidden')) {
+                closeDemoModal();
+            }
+        });
+    </script>
     
     <!-- Remove loading screen -->
     <script>

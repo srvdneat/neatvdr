@@ -23,7 +23,7 @@ class ToolbarExtension {
         toolbar.id = 'toolbar-21st';
         toolbar.className = 'toolbar-21st';
         
-        // Create toolbar HTML with explicit text content
+        // Create toolbar HTML with FontAwesome icons
         toolbar.innerHTML = `
             <div class="toolbar-toggle">
                 <div class="hamburger-icon">
@@ -32,59 +32,42 @@ class ToolbarExtension {
                     <span></span>
                 </div>
             </div>
-            <div class="toolbar-content">
-                <div class="toolbar-section">
-                    <h4>Navigation</h4>
-                    <div class="toolbar-buttons">
-                        <button class="toolbar-btn" data-section="executive-summary">
-                            <span style="margin-right: 12px;">📊</span>
-                            <span>Summary</span>
-                        </button>
-                        <button class="toolbar-btn" data-section="market-opportunity">
-                            <span style="margin-right: 12px;">🌍</span>
-                            <span>Market</span>
-                        </button>
-                        <button class="toolbar-btn" data-section="financial-projections">
-                            <span style="margin-right: 12px;">💰</span>
-                            <span>Financials</span>
-                        </button>
-                        <button class="toolbar-btn" data-section="funding-ask">
-                            <span style="margin-right: 12px;">🚀</span>
-                            <span>Funding</span>
-                        </button>
+                            <div class="toolbar-content">
+                    <div class="toolbar-section">
+                        <h4>Navigation</h4>
+                        <div class="toolbar-buttons">
+                            <button class="toolbar-btn" data-section="executive-summary">
+                                <i class="fas fa-chart-bar" style="margin-right: 12px;"></i>
+                                <span>Summary</span>
+                            </button>
+                            <button class="toolbar-btn" data-section="market-opportunity">
+                                <i class="fas fa-globe" style="margin-right: 12px;"></i>
+                                <span>Market</span>
+                            </button>
+                            <button class="toolbar-btn" data-section="financial-projections">
+                                <i class="fas fa-calculator" style="margin-right: 12px;"></i>
+                                <span>Financials</span>
+                            </button>
+                            <button class="toolbar-btn" data-section="funding-ask">
+                                <i class="fas fa-rocket" style="margin-right: 12px;"></i>
+                                <span>Funding</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="toolbar-section">
+                        <h4>Actions</h4>
+                        <div class="toolbar-buttons">
+                            <button class="toolbar-btn" id="print-btn">
+                                <i class="fas fa-print" style="margin-right: 12px;"></i>
+                                <span>Print</span>
+                            </button>
+                            <button class="toolbar-btn" id="fullscreen-btn">
+                                <i class="fas fa-expand" style="margin-right: 12px;"></i>
+                                <span>Fullscreen</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="toolbar-section">
-                    <h4>Actions</h4>
-                    <div class="toolbar-buttons">
-                        <button class="toolbar-btn" id="print-btn">
-                            <span style="margin-right: 12px;">🖨️</span>
-                            <span>Print</span>
-                        </button>
-                        <button class="toolbar-btn" id="share-btn">
-                            <span style="margin-right: 12px;">📤</span>
-                            <span>Share</span>
-                        </button>
-                        <button class="toolbar-btn" id="fullscreen-btn">
-                            <span style="margin-right: 12px;">⛶</span>
-                            <span>Fullscreen</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="toolbar-section">
-                    <h4>View</h4>
-                    <div class="toolbar-buttons">
-                        <button class="toolbar-btn" id="theme-toggle">
-                            <span style="margin-right: 12px;">🌙</span>
-                            <span>Theme</span>
-                        </button>
-                        <button class="toolbar-btn" id="font-size-toggle">
-                            <span style="margin-right: 12px;">📏</span>
-                            <span>Font Size</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
         `;
         
         document.body.appendChild(toolbar);
@@ -202,17 +185,8 @@ class ToolbarExtension {
             case 'print-btn':
                 this.printDocument();
                 break;
-            case 'share-btn':
-                this.shareDocument();
-                break;
             case 'fullscreen-btn':
                 this.toggleFullscreen();
-                break;
-            case 'theme-toggle':
-                this.toggleTheme();
-                break;
-            case 'font-size-toggle':
-                this.toggleFontSize();
                 break;
         }
     }
@@ -244,12 +218,13 @@ class ToolbarExtension {
 
     toggleTheme() {
         document.body.classList.toggle('dark-theme');
-        const icon = document.querySelector('#theme-toggle span:first-child');
+        const icon = document.querySelector('#theme-toggle i');
         if (document.body.classList.contains('dark-theme')) {
-            icon.textContent = '☀️';
+            icon.className = 'fas fa-sun';
         } else {
-            icon.textContent = '🌙';
+            icon.className = 'fas fa-moon';
         }
+        this.showNotification('Theme toggled');
     }
 
     toggleFontSize() {

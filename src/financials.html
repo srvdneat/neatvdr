@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/toolbar.css">
+    <link rel="stylesheet" href="../assets/css/stackai-style.css">
     
     <!-- Meta Information -->
     <meta name="description" content="SrvdNeat Financial Projections - Seed Investment Package">
@@ -26,112 +27,129 @@
 </head>
 <body class="bg-white font-sans">
     <!-- Navigation -->
-    <nav class="nav-sticky bg-black text-white shadow-lg border-b-2 border-gray-300">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-4">
-                <div class="flex items-center">
-                    <i class="fas fa-rocket text-2xl mr-3 text-white icon-float"></i>
-                    <h1 class="text-2xl font-bold text-white">SrvdNeat VDR</h1>
-                </div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="enhanced.html" class="text-white hover:text-gray-300 transition-colors border-b border-transparent hover:border-white">Summary</a>
-                    <a href="financials.html" class="text-white hover:text-gray-300 transition-colors border-b border-white">Financials</a>
-                    <a href="index.html" class="text-white hover:text-gray-300 transition-colors border-b border-transparent hover:border-white">Overview</a>
-                </div>
-                <div class="text-sm text-white">
-                    <i class="fas fa-lock mr-2"></i>
-                    Confidential - Seed Investment Package
+    <nav class="nav-sticky">
+        <div class="nav-container">
+            <div class="nav-content">
+                <a href="enhanced.html" class="nav-brand">
+                    <i class="fas fa-chart-line mr-2"></i>
+                    SrvdNeat VDR
+                </a>
+                <div class="nav-links">
+                    <a href="enhanced.html" class="nav-link">Summary</a>
+                    <a href="#market-opportunity" class="nav-link">Market</a>
+                    <a href="financials.html" class="nav-link active">Financials</a>
+                    <a href="enhanced.html#funding-ask" class="nav-link">Funding</a>
+                    <a href="#" class="nav-cta" id="demo-btn">Get Demo</a>
                 </div>
             </div>
         </div>
     </nav>
 
+    <!-- Video Demo Modal -->
+    <div id="demo-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden flex items-center justify-center">
+        <div class="relative max-w-2xl w-full mx-4">
+            <button id="close-demo" class="absolute -top-8 right-0 text-white text-xl hover:text-gray-300 z-10">
+                <i class="fas fa-times"></i>
+            </button>
+            <video id="demo-video" class="w-full rounded-lg shadow-2xl" controls>
+                <source src="../demo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 border-2 border-black rounded-xl m-4">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
         <!-- Financial Overview -->
-        <section class="mb-16">
-            <div class="bg-white border-2 border-black p-8 rounded-xl shadow-lg mb-8">
-                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center text-black">
-                    <i class="fas fa-chart-line mr-3 text-black"></i>Financial Projections
-                </h2>
-                <p class="text-xl text-center text-black mb-6">Comprehensive financial model and unit economics</p>
+        <section class="section">
+            <div class="hero-section">
+                <h1 class="hero-title">Financial Projections</h1>
+                <p class="hero-subtitle">Comprehensive financial model and unit economics</p>
             </div>
 
             <!-- Key Metrics Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <div class="bg-white border-2 border-black p-6 rounded-xl shadow-lg text-center">
-                    <i class="fas fa-dollar-sign text-3xl mb-4 text-black"></i>
-                    <h3 class="text-3xl font-bold text-black">$4.5M</h3>
-                    <p class="text-sm font-medium text-black">ARR Target (24 months)</p>
-                    <div class="mt-3 text-xs font-medium text-black">Seed to Series A</div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="metric-value">$4.5M</div>
+                    <div class="metric-label">ARR Target (24 months)</div>
+                    <div class="text-xs text-gray-500 mt-2">Seed to Series A</div>
                 </div>
-                <div class="bg-white border-2 border-black p-6 rounded-xl shadow-lg text-center">
-                    <i class="fas fa-users text-3xl mb-4 text-black"></i>
-                    <h3 class="text-3xl font-bold text-black">135</h3>
-                    <p class="text-sm font-medium text-black">Clients at Month 24</p>
-                    <div class="mt-3 text-xs font-medium text-black">Target client base</div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="metric-value">135</div>
+                    <div class="metric-label">Clients at Month 24</div>
+                    <div class="text-xs text-gray-500 mt-2">Target client base</div>
                 </div>
-                <div class="bg-white border-2 border-black p-6 rounded-xl shadow-lg text-center">
-                    <i class="fas fa-chart-line text-3xl mb-4 text-black"></i>
-                    <h3 class="text-3xl font-bold text-black">11.1x</h3>
-                    <p class="text-sm font-medium text-black">LTV:CAC Ratio</p>
-                    <div class="mt-3 text-xs font-medium text-black">Unit economics</div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="metric-value">11.1x</div>
+                    <div class="metric-label">LTV:CAC Ratio</div>
+                    <div class="text-xs text-gray-500 mt-2">Unit economics</div>
                 </div>
-                <div class="bg-white border-2 border-black p-6 rounded-xl shadow-lg text-center">
-                    <i class="fas fa-clock text-3xl mb-4 text-black"></i>
-                    <h3 class="text-3xl font-bold text-black">4</h3>
-                    <p class="text-sm font-medium text-black">Month Payback</p>
-                    <div class="mt-3 text-xs font-medium text-black">CAC payback period</div>
+                <div class="metric-card">
+                    <div class="metric-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="metric-value">4</div>
+                    <div class="metric-label">Month Payback</div>
+                    <div class="text-xs text-gray-500 mt-2">CAC payback period</div>
                 </div>
             </div>
         </section>
 
         <!-- ARR and Client Growth -->
-        <section class="mb-16">
-            <div class="bg-white border-2 border-black rounded-xl shadow-lg p-8">
-                <h3 class="text-2xl font-bold mb-6 text-black">
-                    <i class="fas fa-chart-area mr-3 text-black"></i>ARR and Client Growth
+        <section class="section-standard">
+            <div class="card card-large">
+                <h3 class="section-title text-left mb-6">
+                    <i class="fas fa-chart-area mr-3"></i>ARR and Client Growth
                 </h3>
-                <div class="overflow-x-auto">
-                    <table class="w-full border-2 border-black">
+                <div class="table-container">
+                    <table class="table">
                         <thead>
-                            <tr class="bg-gray-100 border-b-2 border-black">
-                                <th class="text-left p-4 font-bold text-black">Month</th>
-                                <th class="text-left p-4 font-bold text-black">ARR ($AUD)</th>
-                                <th class="text-left p-4 font-bold text-black">Clients (Est)</th>
+                            <tr>
+                                <th>Month</th>
+                                <th>ARR ($AUD)</th>
+                                <th>Clients (Est)</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="border-b border-black">
-                                <td class="p-4 text-black">0</td>
-                                <td class="p-4 text-black">$0</td>
-                                <td class="p-4 text-black">0</td>
+                            <tr>
+                                <td>0</td>
+                                <td>$0</td>
+                                <td>0</td>
                             </tr>
-                            <tr class="border-b border-black">
-                                <td class="p-4 text-black">6</td>
-                                <td class="p-4 text-black">$77,010</td>
-                                <td class="p-4 text-black">2</td>
+                            <tr>
+                                <td>6</td>
+                                <td>$77,010</td>
+                                <td>2</td>
                             </tr>
-                            <tr class="border-b border-black">
-                                <td class="p-4 text-black">12</td>
-                                <td class="p-4 text-black">$406,590</td>
-                                <td class="p-4 text-black">12</td>
+                            <tr>
+                                <td>12</td>
+                                <td>$406,590</td>
+                                <td>12</td>
                             </tr>
-                            <tr class="border-b border-black">
-                                <td class="p-4 text-black">18</td>
-                                <td class="p-4 text-black">$1,627,625</td>
-                                <td class="p-4 text-black">49</td>
+                            <tr>
+                                <td>18</td>
+                                <td>$1,627,625</td>
+                                <td>49</td>
                             </tr>
-                            <tr class="border-b border-black">
-                                <td class="p-4 text-black">24</td>
-                                <td class="p-4 text-black">$4,500,000</td>
-                                <td class="p-4 text-black">135</td>
+                            <tr>
+                                <td>24</td>
+                                <td>$4,500,000</td>
+                                <td>135</td>
                             </tr>
-                            <tr class="border-b border-black">
-                                <td class="p-4 text-black">36</td>
-                                <td class="p-4 text-black">$8,593,410</td>
-                                <td class="p-4 text-black">258</td>
+                            <tr>
+                                <td>36</td>
+                                <td>$8,593,410</td>
+                                <td>258</td>
                             </tr>
                         </tbody>
                     </table>
@@ -140,7 +158,7 @@
         </section>
 
         <!-- Unit Economics -->
-        <section class="mb-16">
+        <section class="section-standard">
             <div class="bg-white border-2 border-black rounded-xl shadow-lg p-8">
                 <h3 class="text-2xl font-bold mb-6 text-black">
                     <i class="fas fa-calculator mr-3 text-black"></i>Unit Economics & Payback Period
@@ -223,7 +241,7 @@
         </section>
 
         <!-- Comparable Companies -->
-        <section class="mb-16">
+        <section class="section-standard">
             <div class="bg-white border-2 border-black rounded-xl shadow-lg p-8">
                 <h3 class="text-2xl font-bold mb-6 text-black">
                     <i class="fas fa-building mr-3 text-black"></i>Comparable Companies: ARR Benchmarks
@@ -260,7 +278,7 @@
         </section>
 
         <!-- Financial Model -->
-        <section class="mb-16">
+        <section class="section-standard">
             <div class="bg-white border-2 border-black rounded-xl shadow-lg p-8">
                 <h3 class="text-2xl font-bold mb-6 text-black">
                     <i class="fas fa-chart-bar mr-3 text-black"></i>SrvdNeat Seed-Stage Financial Model (AUD)
@@ -337,7 +355,7 @@
         </section>
 
         <!-- Key Insights -->
-        <section class="mb-16">
+        <section class="section-standard">
             <div class="bg-white border-2 border-black rounded-xl shadow-lg p-8">
                 <h3 class="text-2xl font-bold mb-6 text-black">
                     <i class="fas fa-lightbulb mr-3 text-black"></i>Key Financial Insights
@@ -370,5 +388,46 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="../assets/js/main.js"></script>
     <script src="../assets/js/toolbar.js"></script>
+    
+    <!-- Demo Modal Functionality -->
+    <script>
+        // Demo modal functionality
+        const demoBtn = document.getElementById('demo-btn');
+        const demoModal = document.getElementById('demo-modal');
+        const closeDemo = document.getElementById('close-demo');
+        const demoVideo = document.getElementById('demo-video');
+
+        // Open demo modal
+        demoBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            demoModal.classList.remove('hidden');
+            demoModal.classList.add('flex');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+
+        // Close demo modal
+        function closeDemoModal() {
+            demoModal.classList.add('hidden');
+            demoModal.classList.remove('flex');
+            document.body.style.overflow = ''; // Restore scrolling
+            demoVideo.pause(); // Pause video when closing
+        }
+
+        closeDemo.addEventListener('click', closeDemoModal);
+
+        // Close modal when clicking outside
+        demoModal.addEventListener('click', (e) => {
+            if (e.target === demoModal) {
+                closeDemoModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !demoModal.classList.contains('hidden')) {
+                closeDemoModal();
+            }
+        });
+    </script>
 </body>
 </html> 
