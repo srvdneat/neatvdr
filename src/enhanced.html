@@ -62,6 +62,42 @@
         </div>
     </nav>
 
+    <!-- Fast Facts Banner -->
+    <div class="fast-facts-banner">
+        <div class="fast-facts-container">
+            <div class="fast-facts-grid">
+                <div class="fast-fact">
+                    <span class="fast-fact-label">$3M</span>
+                    <span class="fast-fact-text">Seed</span>
+                </div>
+                <div class="fast-fact">
+                    <span class="fast-fact-label">$36K</span>
+                    <span class="fast-fact-text">ACV</span>
+                </div>
+                <div class="fast-fact">
+                    <span class="fast-fact-label">95%</span>
+                    <span class="fast-fact-text">Success Rate</span>
+                </div>
+                <div class="fast-fact">
+                    <span class="fast-fact-label">251%</span>
+                    <span class="fast-fact-text">ROI</span>
+                </div>
+                <div class="fast-fact">
+                    <span class="fast-fact-label">8</span>
+                    <span class="fast-fact-text">Month Payback</span>
+                </div>
+                <div class="fast-fact">
+                    <span class="fast-fact-label">3</span>
+                    <span class="fast-fact-text">Pilots Closed</span>
+                </div>
+                <div class="fast-fact">
+                    <span class="fast-fact-label">0%</span>
+                    <span class="fast-fact-text">Churn</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Video Demo Modal -->
     <div id="demo-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden flex items-center justify-center">
         <div class="relative max-w-2xl w-full mx-4">
@@ -128,6 +164,50 @@
                     <div class="metric-value">251%</div>
                     <div class="metric-label">ROI Average</div>
                     <div class="text-xs text-gray-500 mt-2">30-day validation</div>
+                </div>
+            </div>
+
+            <!-- Start Here Section -->
+            <div class="card card-large mb-8">
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-800">
+                        <i class="fas fa-play-circle mr-3"></i>Start Here: 60-Second Overview
+                    </h3>
+                    <p class="text-blue-700 mb-6">New to SrvdNeat? This is your quick guide to understanding our investment opportunity.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-white p-4 rounded-lg border border-blue-200">
+                            <h4 class="font-semibold text-blue-800 mb-3">What We Do</h4>
+                            <p class="text-blue-700 text-sm mb-3">We turn SME digital transformation failures into AI-powered success stories. Our behavioral AI platform reduces operational friction by 60% while increasing productivity by 251%.</p>
+                            <div class="flex items-center text-blue-600 text-xs">
+                                <i class="fas fa-clock mr-2"></i>
+                                <span>30-day implementation, 8-month payback</span>
+                            </div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-blue-200">
+                            <h4 class="font-semibold text-blue-800 mb-3">Why Invest Now</h4>
+                            <p class="text-blue-700 text-sm mb-3">$185B in SME enablement funding has created a massive execution gap. We're positioned to capture the $38.6B SME execution layer with proven unit economics.</p>
+                            <div class="flex items-center text-blue-600 text-xs">
+                                <i class="fas fa-chart-line mr-2"></i>
+                                <span>4.2x LTV:CAC, 95% success rate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4">
+                        <a href="../presentations/pitch-deck.html" class="btn btn-primary">
+                            <i class="fas fa-presentation mr-2"></i>
+                            View Full Pitch Deck
+                        </a>
+                        <a href="financials.html" class="btn btn-secondary">
+                            <i class="fas fa-chart-bar mr-2"></i>
+                            Financial Model
+                        </a>
+                        <a href="#" class="btn btn-secondary" id="demo-btn">
+                            <i class="fas fa-play mr-2"></i>
+                            Watch Demo
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -429,35 +509,122 @@
                     <i class="fas fa-globe mr-3 text-blue-500"></i>Market & Opportunity
                 </h2>
                 
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl border border-blue-200">
-                        <h3 class="text-3xl font-bold text-blue-600 mb-2">$38.6B</h3>
-                        <p class="text-sm text-gray-700 mb-2">TAM: Australian SMEs</p>
-                        <p class="text-xs text-gray-600">2.6M SMEs lose $38.6B/year to friction</p>
-                        <div class="mt-4">
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-blue-600 h-2 rounded-full" style="width: 100%"></div>
+                <!-- Market Overview -->
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border border-blue-200 mb-8">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-800">
+                        <i class="fas fa-chart-line mr-2"></i>The $38.6B Australian SME Friction Problem
+                    </h3>
+                    <p class="text-blue-700 mb-6">Australia's 2.6 million SMEs are losing $38.6 billion annually to operational friction. This isn't just inefficiency—it's a massive market opportunity waiting for the right solution.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div class="text-center p-6 bg-white rounded-xl border border-blue-200">
+                            <h4 class="text-3xl font-bold text-blue-600 mb-2">$38.6B</h4>
+                            <p class="text-sm text-gray-700 mb-2">Total Addressable Market</p>
+                            <p class="text-xs text-gray-600">Annual friction cost across all Australian SMEs</p>
+                            <div class="mt-4">
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full" style="width: 100%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center p-6 bg-white rounded-xl border border-green-200">
+                            <h4 class="text-3xl font-bold text-green-600 mb-2">1.2M</h4>
+                            <p class="text-sm text-gray-700 mb-2">Serviceable Market</p>
+                            <p class="text-xs text-gray-600">High-friction SMEs in target sectors</p>
+                            <div class="mt-4">
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-green-600 h-2 rounded-full" style="width: 46%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center p-6 bg-white rounded-xl border border-purple-200">
+                            <h4 class="text-3xl font-bold text-purple-600 mb-2">$10-15B</h4>
+                            <p class="text-sm text-gray-700 mb-2">Immediate Opportunity</p>
+                            <p class="text-xs text-gray-600">Digitally-ready firms with 30% capacity loss</p>
+                            <div class="mt-4">
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-purple-600 h-2 rounded-full" style="width: 26%"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-xl border border-green-200">
-                        <h3 class="text-3xl font-bold text-green-600 mb-2">1.2M</h3>
-                        <p class="text-sm text-gray-700 mb-2">SAM: High-friction SMEs</p>
-                        <p class="text-xs text-gray-600">Legal, finance, admin-heavy sectors</p>
-                        <div class="mt-4">
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-green-600 h-2 rounded-full" style="width: 46%"></div>
+                </div>
+
+                <!-- Market Dynamics -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-exclamation-triangle mr-2 text-red-500"></i>The Problem: Why SMEs Fail at Digital
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                                <h4 class="font-semibold text-red-700 mb-2">70% Failure Rate</h4>
+                                <p class="text-red-600 text-sm">Digital transformation projects fail due to poor change management and lack of behavioral understanding.</p>
+                            </div>
+                            <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                                <h4 class="font-semibold text-red-700 mb-2">$14,857 Annual Waste</h4>
+                                <p class="text-red-600 text-sm">Average SME wastes this amount on failed digital initiatives and inefficient processes.</p>
+                            </div>
+                            <div class="bg-red-50 p-4 rounded-lg border border-red-200">
+                                <h4 class="font-semibold text-red-700 mb-2">531 Hours Lost</h4>
+                                <p class="text-red-600 text-sm">Annual time waste on manual processes that could be automated with proper AI deployment.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl border border-purple-200">
-                        <h3 class="text-3xl font-bold text-purple-600 mb-2">$10-15B</h3>
-                        <p class="text-sm text-gray-700 mb-2">SOM: Immediate Opportunity</p>
-                        <p class="text-xs text-gray-600">420K digitally-ready firms, 30% capacity loss</p>
-                        <div class="mt-4">
-                            <div class="w-full bg-gray-200 rounded-full h-2">
-                                <div class="bg-purple-600 h-2 rounded-full" style="width: 26%"></div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-lightbulb mr-2 text-green-500"></i>The Opportunity: Behavioral AI Solution
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                <h4 class="font-semibold text-green-700 mb-2">251% ROI Average</h4>
+                                <p class="text-green-600 text-sm">Our behavioral approach delivers consistent returns across all pilot clients.</p>
                             </div>
+                            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                <h4 class="font-semibold text-green-700 mb-2">8-Month Payback</h4>
+                                <p class="text-green-600 text-sm">Fast time-to-value with our friction-first methodology.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                <h4 class="font-semibold text-green-700 mb-2">95% Success Rate</h4>
+                                <p class="text-green-600 text-sm">Academic foundation ensures sustainable behavioral change.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Competitive Landscape -->
+                <div class="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-xl border border-purple-200 mb-8">
+                    <h3 class="text-xl font-semibold mb-4 text-purple-800">
+                        <i class="fas fa-chess mr-2"></i>Competitive Landscape: Why We Win
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white p-4 rounded-lg border border-purple-200">
+                            <h4 class="font-semibold text-purple-700 mb-2">Big Tech (OpenAI, Google)</h4>
+                            <p class="text-purple-600 text-sm mb-3">Provide tools but no execution layer</p>
+                            <ul class="text-purple-600 text-xs space-y-1">
+                                <li>• No behavioral understanding</li>
+                                <li>• No SME-specific solutions</li>
+                                <li>• No implementation support</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-purple-200">
+                            <h4 class="font-semibold text-purple-700 mb-2">Traditional Consultants</h4>
+                            <p class="text-purple-600 text-sm mb-3">Expensive, slow, no scalability</p>
+                            <ul class="text-purple-600 text-xs space-y-1">
+                                <li>• $500+/hour rates</li>
+                                <li>• 6-12 month timelines</li>
+                                <li>• No technology integration</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg border border-purple-200">
+                            <h4 class="font-semibold text-purple-700 mb-2">SrvdNeat Advantage</h4>
+                            <p class="text-purple-600 text-sm mb-3">Academic foundation + scalable technology</p>
+                            <ul class="text-purple-600 text-xs space-y-1">
+                                <li>• Peer-reviewed behavioral science</li>
+                                <li>• 30-day implementation</li>
+                                <li>• $36K ACV, 4.2x LTV:CAC</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -1427,45 +1594,137 @@
         <section id="funding-ask" class="section-standard opacity-0 transform translate-y-8 transition-all duration-1000">
             <div class="card-enhanced p-8 rounded-xl">
                 <h2 class="text-3xl font-bold mb-6 text-gray-800">
-                    <i class="fas fa-hand-holding-usd mr-3 text-green-500"></i>The Ask
+                    <i class="fas fa-hand-holding-usd mr-3 text-green-500"></i>Investment Opportunity
                 </h2>
 
+                <!-- Investment Overview -->
                 <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-xl border border-green-200 mb-8">
                     <h3 class="text-xl font-semibold mb-4 text-green-800">
-                        <i class="fas fa-target mr-2"></i>Raising $2M Seed to reach $4.5M ARR in 24m
+                        <i class="fas fa-target mr-2"></i>Raising $3M Seed to Capture $38.6B Market
                     </h3>
-                    <p class="text-green-700 mb-4">Achieve sustainable growth metrics by series A.</p>
+                    <p class="text-green-700 mb-6">We're seeking strategic partners to help us scale our proven behavioral AI platform and capture the massive SME execution layer opportunity.</p>
                     
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                        <div class="text-center p-4 bg-white rounded-lg border border-green-200">
+                            <h4 class="text-2xl font-bold text-green-600 mb-2">$3M</h4>
+                            <p class="text-sm text-gray-700 mb-2">Seed Round</p>
+                            <p class="text-xs text-gray-600">24-month runway to Series A</p>
+                        </div>
+                        <div class="text-center p-4 bg-white rounded-lg border border-blue-200">
+                            <h4 class="text-2xl font-bold text-blue-600 mb-2">$4.5M</h4>
+                            <p class="text-sm text-gray-700 mb-2">ARR Target</p>
+                            <p class="text-xs text-gray-600">By Month 24</p>
+                        </div>
+                        <div class="text-center p-4 bg-white rounded-lg border border-purple-200">
+                            <h4 class="text-2xl font-bold text-purple-600 mb-2">135</h4>
+                            <p class="text-sm text-gray-700 mb-2">Clients Target</p>
+                            <p class="text-xs text-gray-600">By Month 24</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investment Highlights -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-chart-line mr-2 text-green-500"></i>Why Invest in SrvdNeat
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                <h4 class="font-semibold text-green-700 mb-2">Proven Unit Economics</h4>
+                                <p class="text-green-600 text-sm">4.2x LTV:CAC ratio with $36K ACV and 8-month payback period.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                <h4 class="font-semibold text-green-700 mb-2">Massive Market Opportunity</h4>
+                                <p class="text-green-600 text-sm">$38.6B TAM with 70% failure rate creating urgent need for solutions.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                <h4 class="font-semibold text-green-700 mb-2">Academic Foundation</h4>
+                                <p class="text-green-600 text-sm">Peer-reviewed behavioral science provides sustainable competitive advantage.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                                <h4 class="font-semibold text-green-700 mb-2">Validation Ready</h4>
+                                <p class="text-green-600 text-sm">$75K in pilot revenue with 251% ROI and 95% success rate.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl shadow-lg p-6">
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-users mr-2 text-blue-500"></i>Team & Execution
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h4 class="font-semibold text-blue-700 mb-2">Founder Track Record</h4>
+                                <p class="text-blue-600 text-sm">Deep SME domain expertise with proven ability to execute complex behavioral change.</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h4 class="font-semibold text-blue-700 mb-2">Scalable Model</h4>
+                                <p class="text-blue-600 text-sm">Zero-touch revenue machine with referral-driven growth and automated onboarding.</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h4 class="font-semibold text-blue-700 mb-2">First-Mover Advantage</h4>
+                                <p class="text-blue-600 text-sm">Only company applying academic behavioral science to SME AI execution.</p>
+                            </div>
+                            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h4 class="font-semibold text-blue-700 mb-2">Series A Ready</h4>
+                                <p class="text-blue-600 text-sm">Clear path to $4.5M ARR with sustainable unit economics for next round.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Use of Funds -->
+                <div class="bg-gradient-to-r from-purple-50 to-blue-50 p-6 rounded-xl border border-purple-200 mb-8">
+                    <h3 class="text-xl font-semibold mb-4 text-purple-800">
+                        <i class="fas fa-chart-pie mr-2"></i>Use of Funds: Strategic Growth Investment
+                    </h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <h4 class="font-semibold text-green-700 mb-3">Capital Allocation</h4>
+                            <h4 class="font-semibold text-purple-700 mb-3">Capital Allocation</h4>
                             <div class="space-y-3">
                                 <div class="flex justify-between items-center p-3 bg-white rounded-lg">
-                                    <span class="text-green-700">Go-to-Market:</span>
-                                    <span class="font-semibold text-green-600">50%</span>
+                                    <span class="flex items-center">
+                                        <i class="fas fa-bullhorn mr-2 text-purple-500"></i>Go-to-Market (50%):
+                                    </span>
+                                    <span class="font-semibold text-purple-600">$1.5M</span>
                                 </div>
                                 <div class="flex justify-between items-center p-3 bg-white rounded-lg">
-                                    <span class="text-green-700">Infrastructure:</span>
-                                    <span class="font-semibold text-green-600">20%</span>
+                                    <span class="flex items-center">
+                                        <i class="fas fa-server mr-2 text-purple-500"></i>Infrastructure (20%):
+                                    </span>
+                                    <span class="font-semibold text-purple-600">$600K</span>
                                 </div>
                                 <div class="flex justify-between items-center p-3 bg-white rounded-lg">
-                                    <span class="text-green-700">Team (CTO, Growth Lead):</span>
-                                    <span class="font-semibold text-green-600">20%</span>
+                                    <span class="flex items-center">
+                                        <i class="fas fa-users mr-2 text-purple-500"></i>Team (20%):
+                                    </span>
+                                    <span class="font-semibold text-purple-600">$600K</span>
                                 </div>
                                 <div class="flex justify-between items-center p-3 bg-white rounded-lg">
-                                    <span class="text-green-700">Operational Buffer:</span>
-                                    <span class="font-semibold text-green-600">10%</span>
+                                    <span class="flex items-center">
+                                        <i class="fas fa-shield-alt mr-2 text-purple-500"></i>Operational Buffer (10%):
+                                    </span>
+                                    <span class="font-semibold text-purple-600">$300K</span>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <h4 class="font-semibold text-green-700 mb-3">Key Milestones</h4>
-                            <ul class="text-green-600 text-sm space-y-2">
-                                <li>• $4.5M ARR by Month 24</li>
-                                <li>• 135 clients by Month 24</li>
-                                <li>• Sustainable unit economics</li>
-                                <li>• Series A ready metrics</li>
-                            </ul>
+                            <h4 class="font-semibold text-purple-700 mb-3">Key Milestones</h4>
+                            <div class="space-y-3">
+                                <div class="p-3 bg-white rounded-lg border-l-4 border-green-500">
+                                    <h5 class="font-semibold text-green-700">Month 6</h5>
+                                    <p class="text-sm text-green-600">$250K ARR from 10-12 clients</p>
+                                </div>
+                                <div class="p-3 bg-white rounded-lg border-l-4 border-blue-500">
+                                    <h5 class="font-semibold text-blue-700">Month 12</h5>
+                                    <p class="text-sm text-blue-600">$1M ARR run-rate, established playbook</p>
+                                </div>
+                                <div class="p-3 bg-white rounded-lg border-l-4 border-purple-500">
+                                    <h5 class="font-semibold text-purple-700">Month 24</h5>
+                                    <p class="text-sm text-purple-600">$4.5M ARR, Series A ready</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
