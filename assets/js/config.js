@@ -3,7 +3,7 @@
 
 window.VDRConfig = {
     // Password settings
-    password: 'SrvdNeat2025!', // Change this to your desired password
+    password: 'YourNewPassword123!', // Change this to your desired password
     maxAttempts: 3, // Maximum login attempts before lockout
     
     // Session settings
