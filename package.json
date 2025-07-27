@@ -1,0 +1,64 @@
+{
+  "name": "srvdneat-vdr",
+  "version": "1.3.0",
+  "description": "SrvdNeat Virtual Data Room - Series A Investment Package",
+  "main": "src/index.html",
+  "scripts": {
+    "start": "npx live-server --host=localhost --port=8080 --open=src/enhanced.html",
+    "serve": "python -m http.server 8000",
+    "build": "npm run optimize && npm run generate-pdf",
+    "optimize": "echo 'Optimizing assets...' && npm run minify-css && npm run optimize-images",
+    "minify-css": "npx postcss assets/css/styles.css --use autoprefixer --use cssnano --output dist/styles.min.css",
+    "optimize-images": "echo 'Image optimization would run here'",
+    "generate-pdf": "echo 'PDF generation via headless Chrome would run here'",
+    "lint": "npx htmlhint src/*.html",
+    "test": "npm run lint && npm run validate-links",
+    "validate-links": "echo 'Link validation would run here'",
+    "deploy": "npm run build && echo 'Deployment scripts would run here'"
+  },
+  "keywords": [
+    "virtual-data-room",
+    "vdr",
+    "investment",
+    "pitch-deck",
+    "series-a",
+    "srvdneat",
+    "ai-orchestration",
+    "sme"
+  ],
+  "author": {
+    "name": "SrvdNeat",
+    "email": "contact@srvdneat.com",
+    "url": "https://srvdneat.com"
+  },
+  "license": "PROPRIETARY",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "private-repository"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.1",
+    "htmlhint": "^1.1.4",
+    "live-server": "^1.2.2",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0"
+  },
+  "dependencies": {
+    "chart.js": "^4.4.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "config": {
+    "port": 8080,
+    "host": "localhost"
+  }
+}

@@ -1,0 +1,288 @@
+/* 21st Extension Toolbar Styles */
+
+/* Toolbar Container */
+.toolbar-21st {
+    position: fixed !important;
+    top: 50% !important;
+    right: 20px !important;
+    transform: translateY(-50%) !important;
+    z-index: 9999 !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: auto !important;
+}
+
+/* Toggle Button */
+.toolbar-toggle {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.toolbar-toggle:hover {
+    background: rgba(0, 0, 0, 1);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: scale(1.1);
+}
+
+.toolbar-toggle span {
+    color: white;
+    font-size: 18px;
+    transition: transform 0.3s ease;
+}
+
+.toolbar-toggle:hover span {
+    transform: rotate(90deg);
+}
+
+/* Toolbar Content */
+.toolbar-content {
+    position: absolute !important;
+    right: 60px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    min-width: 280px !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: auto !important;
+}
+
+.toolbar-visible .toolbar-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+/* Toolbar Sections */
+.toolbar-section {
+    margin-bottom: 20px;
+}
+
+.toolbar-section:last-child {
+    margin-bottom: 0;
+}
+
+.toolbar-section h4 {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 8px;
+}
+
+/* Toolbar Buttons */
+.toolbar-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+}
+
+.toolbar-btn {
+    display: flex !important;
+    align-items: center !important;
+    padding: 12px 16px !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 8px !important;
+    color: white !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    text-align: left !important;
+    min-height: 44px !important;
+    position: relative !important;
+    overflow: visible !important;
+}
+
+.toolbar-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateX(4px);
+}
+
+.toolbar-btn.active {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.toolbar-btn span:first-child {
+    width: 20px;
+    margin-right: 12px;
+    font-size: 16px;
+    opacity: 0.8;
+    transition: opacity 0.2s ease;
+    display: inline-block;
+}
+
+.toolbar-btn:hover span:first-child {
+    opacity: 1;
+}
+
+.toolbar-btn span {
+    flex: 1;
+    font-weight: 500;
+    color: white !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-block !important;
+}
+
+/* Notification */
+.toolbar-notification {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 1001;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.toolbar-notification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Dark Theme Support */
+.dark-theme .toolbar-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .toolbar-content {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .toolbar-btn {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.dark-theme .toolbar-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .toolbar-21st {
+        right: 10px;
+    }
+    
+    .toolbar-content {
+        right: 50px;
+        min-width: 240px;
+        padding: 16px;
+    }
+    
+    .toolbar-btn {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+    
+    .toolbar-btn i {
+        width: 18px;
+        margin-right: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .toolbar-content {
+        right: 45px;
+        min-width: 200px;
+        padding: 12px;
+    }
+    
+    .toolbar-section h4 {
+        font-size: 11px;
+    }
+    
+    .toolbar-btn {
+        padding: 8px 10px;
+        font-size: 12px;
+        min-height: 40px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .toolbar-21st {
+        display: none;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .toolbar-21st,
+    .toolbar-content,
+    .toolbar-btn,
+    .toolbar-toggle,
+    .toolbar-notification {
+        transition: none;
+    }
+    
+    .toolbar-toggle:hover {
+        transform: none;
+    }
+    
+    .toolbar-btn:hover {
+        transform: none;
+    }
+}
+
+/* Focus Styles for Accessibility */
+.toolbar-btn:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+.toolbar-toggle:focus {
+    outline: 2px solid rgba(255, 255, 255, 0.5);
+    outline-offset: 2px;
+}
+
+/* Loading State */
+.toolbar-21st.loading .toolbar-toggle {
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.toolbar-21st.loading .toolbar-toggle span {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+} 
