@@ -6,6 +6,19 @@ class ToolbarExtension {
         this.init();
     }
 
+    // Static setup method for external initialization
+    static setupToolbar() {
+        console.log('Setting up 21st extension toolbar...');
+        try {
+            const toolbar = new ToolbarExtension();
+            console.log('21st extension toolbar setup complete');
+            return toolbar;
+        } catch (error) {
+            console.error('Error setting up 21st extension toolbar:', error);
+            return null;
+        }
+    }
+
     init() {
         this.createToolbar();
         this.setupEventListeners();
@@ -278,3 +291,8 @@ if (document.readyState === 'loading') {
         console.error('Error initializing toolbar (immediate):', error);
     }
 } 
+
+// Global function for external toolbar setup
+window.setup21stToolbar = function() {
+    return ToolbarExtension.setupToolbar();
+}; 

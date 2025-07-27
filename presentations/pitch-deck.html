@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SrvdNeat Series A Pitch Deck</title>
     <style>
+        /* Vercel-inspired monochrome styling */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #ffffff;
             overflow: hidden;
+            color: #000000;
         }
         
         .slide-container {
@@ -28,10 +30,10 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 60px;
+            padding: 80px;
             box-sizing: border-box;
             text-align: center;
-            background: white;
+            background: #ffffff;
         }
         
         .slide.active {
@@ -39,82 +41,103 @@
         }
         
         .slide h1 {
-            font-size: 3.5em;
-            margin-bottom: 30px;
-            color: #1a1a1a;
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #000000;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
         }
         
         .slide h2 {
-            font-size: 2.5em;
-            margin-bottom: 40px;
-            color: #333;
+            font-size: 3em;
+            font-weight: 600;
+            margin-bottom: 50px;
+            color: #000000;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
         }
         
         .slide h3 {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #555;
+            font-size: 2em;
+            font-weight: 500;
+            margin-bottom: 30px;
+            color: #000000;
+            letter-spacing: -0.01em;
         }
         
         .slide p {
-            font-size: 1.3em;
+            font-size: 1.4em;
             line-height: 1.6;
-            color: #666;
-            max-width: 800px;
-            margin: 0 auto 30px auto;
+            color: #666666;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            font-weight: 400;
         }
         
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin: 50px 0;
             width: 100%;
-            max-width: 1000px;
+            max-width: 1200px;
         }
         
         .metric-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: #f8f9fa;
+            color: #000000;
+            padding: 40px 30px;
+            border-radius: 12px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+        
+        .metric-card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
         }
         
         .metric-number {
-            font-size: 2.5em;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #000000;
+            letter-spacing: -0.02em;
         }
         
         .metric-label {
-            font-size: 1em;
-            opacity: 0.9;
+            font-size: 1.1em;
+            color: #666666;
+            font-weight: 500;
         }
         
         .two-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 60px;
             width: 100%;
-            max-width: 1200px;
-            margin: 40px 0;
+            max-width: 1400px;
+            margin: 50px 0;
         }
         
         .problem-box, .solution-box {
-            padding: 30px;
-            border-radius: 15px;
+            padding: 40px;
+            border-radius: 12px;
             text-align: left;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .problem-box {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
-            color: white;
+            background: #f8f9fa;
+            color: #000000;
         }
         
         .solution-box {
-            background: linear-gradient(135deg, #51cf66 0%, #40c057 100%);
-            color: white;
+            background: #f8f9fa;
+            color: #000000;
         }
         
         .navigation {
@@ -131,13 +154,13 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.5);
+            background: #d1d5db;
             cursor: pointer;
             transition: all 0.3s;
         }
         
         .nav-dot.active {
-            background: white;
+            background: #000000;
             transform: scale(1.2);
         }
         
@@ -145,8 +168,9 @@
             position: absolute;
             top: 30px;
             right: 30px;
-            color: #666;
+            color: #666666;
             font-size: 1em;
+            font-weight: 500;
         }
         
         .logo {
@@ -154,74 +178,119 @@
             top: 30px;
             left: 30px;
             font-size: 1.5em;
-            font-weight: bold;
-            color: #667eea;
+            font-weight: 700;
+            color: #000000;
         }
         
         ul {
             text-align: left;
             font-size: 1.2em;
             line-height: 1.8;
-            color: #333;
+            color: #333333;
         }
         
         .highlight {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
+            background: #f8f9fa;
+            color: #000000;
             padding: 40px;
-            border-radius: 20px;
+            border-radius: 12px;
             margin: 30px 0;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
         
         .chart-placeholder {
             width: 100%;
             height: 400px;
-            background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 15px;
+            background: #f8f9fa;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.2em;
-            color: #666;
+            color: #666666;
             margin: 30px 0;
+            border: 1px solid #e9ecef;
         }
         
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 30px 0;
-            background: white;
-            border-radius: 10px;
+            background: #ffffff;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e9ecef;
         }
         
         th, td {
-            padding: 15px;
+            padding: 20px;
             text-align: left;
-            border-bottom: 1px solid #eee;
+            border-bottom: 1px solid #e9ecef;
         }
         
         th {
             background: #f8f9fa;
-            font-weight: bold;
-            color: #333;
+            font-weight: 600;
+            color: #000000;
         }
         
-        .funding-amount {
-            font-size: 4em;
-            font-weight: bold;
-            color: #51cf66;
-            margin: 30px 0;
+        td {
+            color: #333333;
         }
         
-        .contact-slide {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 20px;
+            }
+            
+            .slide h1 {
+                font-size: 2.5em;
+            }
+            
+            .slide h2 {
+                font-size: 2em;
+            }
+            
+            .slide h3 {
+                font-size: 1.5em;
+            }
+            
+            .slide p {
+                font-size: 1.1em;
+            }
+            
+            .metrics-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .metric-card {
+                padding: 30px 20px;
+            }
+            
+            .metric-number {
+                font-size: 2.5em;
+            }
         }
         
-        .contact-slide h2 {
-            color: white;
+        /* Print styles */
+        @media print {
+            .navigation {
+                display: none;
+            }
+            
+            .slide {
+                display: flex !important;
+                page-break-after: always;
+            }
         }
     </style>
 </head>
@@ -232,281 +301,248 @@
             <div class="logo">🚀 SrvdNeat</div>
             <h1>SrvdNeat</h1>
             <div class="highlight">
-                <h2>AI Orchestration for SMEs</h2>
-                <p>Enterprise-grade AI outcomes, zero config</p>
+                <h2>Seed Deck | 2025</h2>
+                <p>Turning a $15K drag into $47K upside—AI that works for SMEs</p>
+                <p>Owning the $38.6B execution layer while big tech sleeps</p>
             </div>
-            <h3>Series A Investment Opportunity</h3>
-            <p>Confidential - 2024</p>
         </div>
 
-        <!-- Slide 2: The Problem -->
+        <!-- Slide 2: The Blind Spot -->
         <div class="slide">
             <div class="slide-number">2 / 12</div>
-            <h2>The Problem</h2>
+            <h2>The Blind Spot</h2>
             <div class="problem-box">
-                <h3>AI's Execution Gap is Lethal for SMEs</h3>
+                <h3>2024 saw a record number of insolvencies in Australian SMEs</h3>
                 <ul>
-                    <li><strong>70%</strong> of digital projects fail</li>
-                    <li><strong>17% YoY</strong> SME closures hit record high in 2024</li>
-                    <li>Tools need experts; consultants price out SMEs</li>
-                    <li>SMEs struggle with operational chaos blocking AI deployment</li>
+                    <li>Digital should be their way out, but <strong>70% of projects drown</strong></li>
+                    <li><strong>65% of Australian SMEs</strong> are currently wasting away in AI jail</li>
+                    <li>They bought the tools but weren't taught how they worked</li>
+                    <li>Now they're manually digging their competitive graves—wasting <strong>$14,857 and 531 hours a year</strong></li>
                 </ul>
+                <p><strong>Still unsolved?</strong> Traditional models guarantee CAC > SME LTV. Our friction index flips the script.</p>
             </div>
         </div>
 
-        <!-- Slide 3: The Solution -->
+        <!-- Slide 3: Why Now? -->
         <div class="slide">
             <div class="slide-number">3 / 12</div>
-            <h2>The Solution</h2>
+            <h2>Why Now?</h2>
             <div class="solution-box">
-                <h3>Programmed Inevitability</h3>
+                <h3>$185B in national SME enablement via OpenAI and Big Tech</h3>
                 <ul>
-                    <li>Codified execution into deployable behavior logic</li>
-                    <li><strong>5-minute Q&A</strong> finds friction, deploys fixes</li>
-                    <li>AI engine maps paths and learns with every loop</li>
-                    <li><strong>No setup, no consultants</strong> required</li>
+                    <li>The window is closing</li>
+                    <li>Execution—not access—is now the bottleneck</li>
+                    <li>The platform that captures the SME execution layer today will define the next decade of SME AI</li>
                 </ul>
             </div>
         </div>
 
-        <!-- Slide 4: Market Opportunity -->
+        <!-- Slide 4: Secret Sauce -->
         <div class="slide">
             <div class="slide-number">4 / 12</div>
-            <h2>Market Opportunity</h2>
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-number">$18B</div>
-                    <div class="metric-label">Total Addressable Market</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">$9B</div>
-                    <div class="metric-label">Serviceable Addressable Market</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">$705M</div>
-                    <div class="metric-label">Serviceable Obtainable Market</div>
-                </div>
-            </div>
-            <div class="highlight">
-                <h3>Perfect Storm: 280× compute deflation meets execution crisis</h3>
+            <h2>Secret Sauce</h2>
+            <div class="solution-box">
+                <h3>We've distilled 17 proven transformation barriers into a 5-minute diagnostic</h3>
+                <ul>
+                    <li>Each audit reveals <strong>60+ friction patterns</strong> directly linked to business outcomes</li>
+                    <li>This precision is how we deliver enterprise-grade AI to SMEs—profitably and at scale</li>
+                </ul>
             </div>
         </div>
 
-        <!-- Slide 5: Product Flywheel -->
+        <!-- Slide 5: Zero-Touch Revenue Machine -->
         <div class="slide">
             <div class="slide-number">5 / 12</div>
-            <h2>Product Flywheel</h2>
-            <h3>Behavioral Intelligence That Compounds</h3>
+            <h2>Zero-Touch Revenue Machine</h2>
             <div class="metrics-grid">
                 <div class="metric-card">
                     <h3>NeatAudit</h3>
-                    <p>Captures 60+ friction signals</p>
+                    <p>Instantly scores friction, triggers lead nurture, and delivers dynamic instructions</p>
                 </div>
                 <div class="metric-card">
                     <h3>NeatLM</h3>
-                    <p>Maps causal patterns, executes solutions</p>
+                    <p>Takes audit results and autonomously deploys tailored AI agents, selecting models pending client needs</p>
                 </div>
                 <div class="metric-card">
                     <h3>NeatPortal</h3>
-                    <p>Monitors and learns in real-time</p>
+                    <p>Self-monitors, adapts in real time, flags emerging bottlenecks, feeds flywheel data</p>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 6: Key Metrics -->
+        <!-- Slide 6: Validation: A $75k Accident -->
         <div class="slide">
             <div class="slide-number">6 / 12</div>
-            <h2>Key Metrics</h2>
+            <h2>Validation: A $75k Accident</h2>
+            <div class="solution-box">
+                <ul>
+                    <li>Friendly conversation turned lethal: <strong>$25K pilot</strong>. She said her lips were sealed.</li>
+                    <li><strong>$50K from pilot 2</strong> hit days later. A $10K gift sealed the deal. Pilot 3 emerged before we closed the window.</li>
+                    <li><strong>30-day averages: 251% ROI, time-to-value > 24 hours</strong></li>
+                    <li>All inbound growth: pull, no push.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 7: Market & Opportunity -->
+        <div class="slide">
+            <div class="slide-number">7 / 12</div>
+            <h2>Market & Opportunity</h2>
             <div class="metrics-grid">
                 <div class="metric-card">
-                    <div class="metric-number">$4.5M</div>
-                    <div class="metric-label">ARR Target (24 months)</div>
+                    <div class="metric-number">$38.6B</div>
+                    <div class="metric-label">TAM: 2.6M Australian SMEs lose $38.6B/year to friction</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-number">135</div>
-                    <div class="metric-label">Target Clients</div>
+                    <div class="metric-number">1.2M</div>
+                    <div class="metric-label">SAM: High-friction SMEs in legal, finance, admin-heavy sectors</div>
                 </div>
                 <div class="metric-card">
-                    <div class="metric-number">11.1x</div>
-                    <div class="metric-label">LTV:CAC Ratio</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">4 mo</div>
-                    <div class="metric-label">CAC Payback</div>
+                    <div class="metric-number">$10-15B</div>
+                    <div class="metric-label">SOM: 420K digitally-ready firms, each losing 30% capacity</div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 7: Financial Projections -->
+        <!-- Slide 8: GTM -->
         <div class="slide">
-            <div class="slide-number">7 / 12</div>
-            <h2>Financial Projections</h2>
+            <div class="slide-number">8 / 12</div>
+            <h2>GTM</h2>
+            <div class="solution-box">
+                <h3>Key Insight: SMEs don't buy AI tools—they buy solutions to problems they can measure</h3>
+                <p>Our audit quantifies their pain before selling the cure.</p>
+                <h4>Channel Stack:</h4>
+                <ul>
+                    <li><strong>Primary:</strong> Direct outbound to finance/ops managers via LinkedIn + email sequences triggered by friction indicators</li>
+                    <li><strong>Amplifier:</strong> Partnership referrals through accounting firms and business consultants who see audit value firsthand</li>
+                    <li><strong>Accelerator:</strong> Content-led inbound through search optimised on-site content and partnership work</li>
+                </ul>
+                <p><strong>Scalable Acquisition Loop:</strong> Each client audit generates 3-5 referrals within their industry network.</p>
+            </div>
+        </div>
+
+        <!-- Slide 9: Defensibility -->
+        <div class="slide">
+            <div class="slide-number">9 / 12</div>
+            <h2>Defensibility</h2>
+            <div class="solution-box">
+                <h3>Friction isn't noise—it's patterned, structural and solvable</h3>
+                <ul>
+                    <li>Each client adds <strong>60+ friction datapoints</strong>, providing system training and compounding intelligence</li>
+                    <li>We map interactions for the entire life-cycle of clients, running live and iteratively back into the entry point</li>
+                    <li>Causal patterns and strategic focus on KPIs and pairings that matter make our flywheel dangerously fast</li>
+                    <li>Our heavy R&D means embedded excellence. <strong>1.5 years, 10M tokens, and founder scar tissue embedded in code</strong></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 10: Competitive Edge -->
+        <div class="slide">
+            <div class="slide-number">10 / 12</div>
+            <h2>Competitive Edge</h2>
+            <div class="highlight">
+                <h3>Competitors patch chaos. We eliminate it.</h3>
+                <p>SrvdNeat is infrastructure—cross-vertical, self-improving, and built to last.</p>
+            </div>
+            <div class="two-column">
+                <div class="problem-box">
+                    <h4>Them</h4>
+                    <ul>
+                        <li>$50K+ projects</li>
+                        <li>6–12 month deployment</li>
+                        <li>70% failure rate</li>
+                        <li>Paid ongoing support</li>
+                    </ul>
+                </div>
+                <div class="solution-box">
+                    <h4>Us</h4>
+                    <ul>
+                        <li>$1.5K/month subscription</li>
+                        <li>< 1 month to value</li>
+                        <li>0% failure rate</li>
+                        <li>Baked-in support</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Economics & Model -->
+        <div class="slide">
+            <div class="slide-number">11 / 12</div>
+            <h2>Economics & Model</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Period</th>
-                        <th>ARR</th>
-                        <th>Clients</th>
-                        <th>ACV</th>
+                        <th>Product Tier</th>
+                        <th>Price/month</th>
+                        <th>Price/year</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Month 6</td>
-                        <td>$77K</td>
-                        <td>3</td>
-                        <td>$26K</td>
+                        <td>Workflow Optimisation</td>
+                        <td>$1,500 AUD</td>
+                        <td>$18k</td>
                     </tr>
                     <tr>
-                        <td>Month 12</td>
-                        <td>$407K</td>
-                        <td>15</td>
-                        <td>$27K</td>
+                        <td>Operational Dashboard</td>
+                        <td>$3,000 AUD</td>
+                        <td>$36k</td>
                     </tr>
                     <tr>
-                        <td>Month 18</td>
-                        <td>$1.6M</td>
-                        <td>54</td>
-                        <td>$30K</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Month 24</strong></td>
-                        <td><strong>$4.5M</strong></td>
-                        <td><strong>135</strong></td>
-                        <td><strong>$33K</strong></td>
+                        <td>Client-Facing Apps</td>
+                        <td>$4,500 AUD</td>
+                        <td>$54k</td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-
-        <!-- Slide 8: Traction -->
-        <div class="slide">
-            <div class="slide-number">8 / 12</div>
-            <h2>Traction & Validation</h2>
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-number">100%</div>
-                    <div class="metric-label">Pilot Conversion Rate</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">$75K</div>
-                    <div class="metric-label">Revenue from Pilot Cohort</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">48hrs</div>
-                    <div class="metric-label">Solutions Delivered</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">10+</div>
-                    <div class="metric-label">Hours/week Saved per User</div>
-                </div>
+            <div class="highlight">
+                <h3>Free audit → high-margin activation → sticky subscription flywheel</h3>
+                <p>85% gross margin, 4.2× LTV:CAC, 8-month payback</p>
+                <p>Finally: CAC-efficient AI for the SME economy.</p>
             </div>
         </div>
 
-        <!-- Slide 9: Team -->
+        <!-- Slide 12: Team & Ask -->
         <div class="slide">
-            <div class="slide-number">9 / 12</div>
-            <h2>Leadership Team</h2>
+            <div class="slide-number">12 / 12</div>
+            <h2>Team & The Ask</h2>
             <div class="two-column">
                 <div>
-                    <h3>Sam Attwood</h3>
-                    <p><strong>Founder & CEO</strong></p>
-                    <ul>
-                        <li>3× successful exits</li>
-                        <li>Prompt engineering expertise</li>
-                        <li>20M+ following in publishing</li>
-                        <li>International FMCG experience</li>
-                    </ul>
+                    <h3>Team</h3>
+                    <p><strong>Sam Attwood</strong> – 2× founder, rebuilt from collapse, 10+ years in SME automation and behavioral AI</p>
+                    <p><strong>Martyn Reeves</strong> – 40+ years scaling SaaS across US, EU, AU</p>
+                    <p>Tech lead roadmapped to arrive with raise.</p>
                 </div>
                 <div>
-                    <h3>Martyn Reeves</h3>
-                    <p><strong>Advisor</strong></p>
+                    <h3>The Ask</h3>
+                    <p>Raising <strong>$2M Seed</strong> to reach $4.5M ARR in 24m. Achieve sustainable growth metrics by series A.</p>
+                    <h4>Capital Allocation:</h4>
                     <ul>
-                        <li>40 years SaaS experience</li>
-                        <li>Multiple exits in sales/marketing</li>
-                        <li>Strategic advisory role</li>
+                        <li>50% Go-to-Market</li>
+                        <li>20% Infrastructure</li>
+                        <li>20% Team (CTO, Growth Lead)</li>
+                        <li>10% Operational Buffer</li>
                     </ul>
                 </div>
             </div>
-        </div>
-
-        <!-- Slide 10: Competitive Advantage -->
-        <div class="slide">
-            <div class="slide-number">10 / 12</div>
-            <h2>Competitive Advantage</h2>
-            <div class="highlight">
-                <h3>The Netflix Algorithm for Business</h3>
-                <p>Behavioral data moat strengthens with use</p>
-            </div>
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <h4>Behavioral Data Moat</h4>
-                    <p>60+ signals per client</p>
-                </div>
-                <div class="metric-card">
-                    <h4>Network Effects</h4>
-                    <p>Every audit trains all LMs</p>
-                </div>
-                <div class="metric-card">
-                    <h4>Cognitive Lock-in</h4>
-                    <p>SMEs offload judgment</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 11: Funding Ask -->
-        <div class="slide">
-            <div class="slide-number">11 / 12</div>
-            <h2>Funding Request</h2>
-            <div class="funding-amount">$3M</div>
-            <h3>Series A • 18-month runway</h3>
-            <div class="metrics-grid">
-                <div class="metric-card">
-                    <div class="metric-number">40%</div>
-                    <div class="metric-label">Product/Infrastructure</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">30%</div>
-                    <div class="metric-label">GTM Scaling</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">20%</div>
-                    <div class="metric-label">Key Hires</div>
-                </div>
-                <div class="metric-card">
-                    <div class="metric-number">10%</div>
-                    <div class="metric-label">Compliance/Buffer</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 12: Contact -->
-        <div class="slide contact-slide">
-            <div class="slide-number">12 / 12</div>
-            <h2>Let's Build the Future Together</h2>
-            <div class="highlight" style="background: rgba(255,255,255,0.2);">
-                <h3>Sam Attwood</h3>
-                <p>Founder & CEO</p>
-                <p>Ready to discuss partnership opportunities</p>
-            </div>
-            <p>Thank you for your time and consideration</p>
         </div>
     </div>
 
     <!-- Navigation -->
     <div class="navigation">
-        <div class="nav-dot active" onclick="currentSlide(1)"></div>
-        <div class="nav-dot" onclick="currentSlide(2)"></div>
-        <div class="nav-dot" onclick="currentSlide(3)"></div>
-        <div class="nav-dot" onclick="currentSlide(4)"></div>
-        <div class="nav-dot" onclick="currentSlide(5)"></div>
-        <div class="nav-dot" onclick="currentSlide(6)"></div>
-        <div class="nav-dot" onclick="currentSlide(7)"></div>
-        <div class="nav-dot" onclick="currentSlide(8)"></div>
-        <div class="nav-dot" onclick="currentSlide(9)"></div>
-        <div class="nav-dot" onclick="currentSlide(10)"></div>
-        <div class="nav-dot" onclick="currentSlide(11)"></div>
-        <div class="nav-dot" onclick="currentSlide(12)"></div>
+        <div class="nav-dot active" onclick="currentSlide(1)" title="Title"></div>
+        <div class="nav-dot" onclick="currentSlide(2)" title="Blind Spot"></div>
+        <div class="nav-dot" onclick="currentSlide(3)" title="Why Now"></div>
+        <div class="nav-dot" onclick="currentSlide(4)" title="Secret Sauce"></div>
+        <div class="nav-dot" onclick="currentSlide(5)" title="Revenue Machine"></div>
+        <div class="nav-dot" onclick="currentSlide(6)" title="Validation"></div>
+        <div class="nav-dot" onclick="currentSlide(7)" title="Market"></div>
+        <div class="nav-dot" onclick="currentSlide(8)" title="GTM"></div>
+        <div class="nav-dot" onclick="currentSlide(9)" title="Defensibility"></div>
+        <div class="nav-dot" onclick="currentSlide(10)" title="Competitive"></div>
+        <div class="nav-dot" onclick="currentSlide(11)" title="Economics"></div>
+        <div class="nav-dot" onclick="currentSlide(12)" title="Team & Ask"></div>
     </div>
 
     <script>
