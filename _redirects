@@ -1,0 +1,5 @@
+/ /src/enhanced.html
+/src/* /src/:splat
+/assets/* /assets/:splat
+/presentations/* /presentations/:splat
+/docs/* /docs/:splat 

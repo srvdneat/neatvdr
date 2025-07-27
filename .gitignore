@@ -68,3 +68,5 @@ private/
 
 # Generated documentation
 docs/generated/ 
+# Local Netlify folder
+.netlify
