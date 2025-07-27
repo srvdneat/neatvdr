@@ -21,6 +21,78 @@
             color: #000000;
         }
         
+        /* Navigation Styles */
+        .nav-sticky {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(20px);
+            background: #fff !important;
+            border-bottom: 1px solid #bbb !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .nav-brand {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #111 !important;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-link {
+            color: #111 !important;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+        }
+        
+        .nav-link:hover {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-link.active {
+            background: #111 !important;
+            color: #fff !important;
+        }
+        
+        .nav-cta {
+            background: #111 !important;
+            color: #fff !important;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        
+        .nav-cta:hover {
+            background: #333 !important;
+            transform: translateY(-1px);
+        }
+        
         .slide-container {
             position: relative;
             width: 100vw;
@@ -301,6 +373,26 @@
     </style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="nav-sticky">
+        <div class="nav-container">
+            <div class="nav-content">
+                <a href="../src/enhanced.html" class="nav-brand">
+                    <i class="fas fa-chart-line mr-2"></i>
+                    SrvdNeat VDR
+                </a>
+                <div class="nav-links">
+                    <a href="../src/enhanced.html" class="nav-link">Summary</a>
+                    <a href="../src/enhanced.html#market-opportunity" class="nav-link">Market</a>
+                    <a href="../src/financials.html" class="nav-link">Financials</a>
+                    <a href="../src/enhanced.html#funding-ask" class="nav-link">Funding</a>
+                    <a href="pitch-deck.html" class="nav-link active">Pitch Deck</a>
+                    <a href="#" class="nav-cta" id="demo-btn">Get Demo</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
     <div class="slide-container">
         <!-- Slide 1: Title -->
         <div class="slide active">
