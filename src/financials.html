@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SrvdNeat VDR - Financial Projections</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/toolbar.css">
+    
+    <!-- Meta Information -->
+    <meta name="description" content="SrvdNeat Financial Projections - Seed Investment Package">
+    <meta name="keywords" content="SrvdNeat, Financials, Investment, ARR, Unit Economics">
+    <meta name="author" content="SrvdNeat">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+</head>
+<body class="bg-white font-sans">
+    <!-- Navigation -->
+    <nav class="nav-sticky bg-black text-white shadow-lg border-b-2 border-gray-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <i class="fas fa-rocket text-2xl mr-3 text-white icon-float"></i>
+                    <h1 class="text-2xl font-bold text-white">SrvdNeat VDR</h1>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="enhanced.html" class="text-white hover:text-gray-300 transition-colors border-b border-transparent hover:border-white">Summary</a>
+                    <a href="financials.html" class="text-white hover:text-gray-300 transition-colors border-b border-white">Financials</a>
+                    <a href="index.html" class="text-white hover:text-gray-300 transition-colors border-b border-transparent hover:border-white">Overview</a>
+                </div>
+                <div class="text-sm text-white">
+                    <i class="fas fa-lock mr-2"></i>
+                    Confidential - Seed Investment Package
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 border-2 border-black rounded-xl m-4">
+        
+        <!-- Financial Overview -->
+        <section class="mb-16">
+            <div class="bg-white border-2 border-black p-8 rounded-xl shadow-lg mb-8">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 text-center text-black">
+                    <i class="fas fa-chart-line mr-3 text-black"></i>Financial Projections
+                </h2>
+                <p class="text-xl text-center text-black mb-6">Comprehensive financial model and unit economics</p>
+            </div>
+
+            <!-- Key Metrics Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white border-2 border-black p-6 rounded-xl shadow-lg text-center">
+                    <i class="fas fa-dollar-sign text-3xl mb-4 text-black"></i>
+                    <h3 class="text-3xl font-bold text-black">$4.5M</h3>
+                    <p class="text-sm font-medium text-black">ARR Target (24 months)</p>
+                    <div class="mt-3 text-xs font-medium text-black">Seed to Series A</div>
+                </div>
+                <div class="bg-white border-2 border-black p-6 rounded-xl shadow-lg text-center">
+                    <i class="fas fa-users text-3xl mb-4 text-black"></i>
+                    <h3 class="text-3xl font-bold text-black">135</h3>
+                    <p class="text-sm font-medium text-black">Clients at Month 24</p>
+                    <div class="mt-3 text-xs font-medium text-black">Target client base</div>
+                </div>
+                <div class="bg-white border-2 border-black p-6 rounded-xl shadow-lg text-center">
+                    <i class="fas fa-chart-line text-3xl mb-4 text-black"></i>
+                    <h3 class="text-3xl font-bold text-black">11.1x</h3>
+                    <p class="text-sm font-medium text-black">LTV:CAC Ratio</p>
+                    <div class="mt-3 text-xs font-medium text-black">Unit economics</div>
+                </div>
+                <div class="bg-white border-2 border-black p-6 rounded-xl shadow-lg text-center">
+                    <i class="fas fa-clock text-3xl mb-4 text-black"></i>
+                    <h3 class="text-3xl font-bold text-black">4</h3>
+                    <p class="text-sm font-medium text-black">Month Payback</p>
+                    <div class="mt-3 text-xs font-medium text-black">CAC payback period</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ARR and Client Growth -->
+        <section class="mb-16">
+            <div class="bg-white border-2 border-black rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold mb-6 text-black">
+                    <i class="fas fa-chart-area mr-3 text-black"></i>ARR and Client Growth
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-2 border-black">
+                        <thead>
+                            <tr class="bg-gray-100 border-b-2 border-black">
+                                <th class="text-left p-4 font-bold text-black">Month</th>
+                                <th class="text-left p-4 font-bold text-black">ARR ($AUD)</th>
+                                <th class="text-left p-4 font-bold text-black">Clients (Est)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-black">
+                                <td class="p-4 text-black">0</td>
+                                <td class="p-4 text-black">$0</td>
+                                <td class="p-4 text-black">0</td>
+                            </tr>
+                            <tr class="border-b border-black">
+                                <td class="p-4 text-black">6</td>
+                                <td class="p-4 text-black">$77,010</td>
+                                <td class="p-4 text-black">2</td>
+                            </tr>
+                            <tr class="border-b border-black">
+                                <td class="p-4 text-black">12</td>
+                                <td class="p-4 text-black">$406,590</td>
+                                <td class="p-4 text-black">12</td>
+                            </tr>
+                            <tr class="border-b border-black">
+                                <td class="p-4 text-black">18</td>
+                                <td class="p-4 text-black">$1,627,625</td>
+                                <td class="p-4 text-black">49</td>
+                            </tr>
+                            <tr class="border-b border-black">
+                                <td class="p-4 text-black">24</td>
+                                <td class="p-4 text-black">$4,500,000</td>
+                                <td class="p-4 text-black">135</td>
+                            </tr>
+                            <tr class="border-b border-black">
+                                <td class="p-4 text-black">36</td>
+                                <td class="p-4 text-black">$8,593,410</td>
+                                <td class="p-4 text-black">258</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Unit Economics -->
+        <section class="mb-16">
+            <div class="bg-white border-2 border-black rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold mb-6 text-black">
+                    <i class="fas fa-calculator mr-3 text-black"></i>Unit Economics & Payback Period
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-2 border-black">
+                            <thead>
+                                <tr class="bg-gray-100 border-b-2 border-black">
+                                    <th class="text-left p-4 font-bold text-black">Metric</th>
+                                    <th class="text-left p-4 font-bold text-black">Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-black">
+                                    <td class="p-4 text-black">Gross Margin</td>
+                                    <td class="p-4 text-black">85%</td>
+                                </tr>
+                                <tr class="border-b border-black">
+                                    <td class="p-4 text-black">CAC (est. Year 1)</td>
+                                    <td class="p-4 text-black">$7.9K</td>
+                                </tr>
+                                <tr class="border-b border-black">
+                                    <td class="p-4 text-black">LTV</td>
+                                    <td class="p-4 text-black">$100K+</td>
+                                </tr>
+                                <tr class="border-b border-black">
+                                    <td class="p-4 text-black">LTV:CAC</td>
+                                    <td class="p-4 text-black">12.6x</td>
+                                </tr>
+                                <tr class="border-b border-black">
+                                    <td class="p-4 text-black">Payback Period</td>
+                                    <td class="p-4 text-black">4 months</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-2 border-black">
+                            <thead>
+                                <tr class="bg-gray-100 border-b-2 border-black">
+                                    <th class="text-left p-4 font-bold text-black">Metric</th>
+                                    <th class="text-left p-4 font-bold text-black">Value</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-black">
+                                    <td class="p-4 text-black">ARR @ Month 24</td>
+                                    <td class="p-4 text-black">$4,500,000</td>
+                                </tr>
+                                <tr class="border-b border-black">
+                                    <td class="p-4 text-black">Clients @ Month 24</td>
+                                    <td class="p-4 text-black">135</td>
+                                </tr>
+                                <tr class="border-b border-black">
+                                    <td class="p-4 text-black">ACV per Client</td>
+                                    <td class="p-4 text-black">$33,300</td>
+                                </tr>
+                                <tr class="border-b border-black">
+                                    <td class="p-4 text-black">CAC per Client</td>
+                                    <td class="p-4 text-black">$9,000</td>
+                                </tr>
+                                <tr class="border-b border-black">
+                                    <td class="p-4 text-black">LTV per Client</td>
+                                    <td class="p-4 text-black">$99,900</td>
+                                </tr>
+                                <tr class="border-b border-black">
+                                    <td class="p-4 text-black">LTV:CAC Ratio</td>
+                                    <td class="p-4 text-black">11.1</td>
+                                </tr>
+                                <tr class="border-b border-black">
+                                    <td class="p-4 text-black">CAC Payback Period</td>
+                                    <td class="p-4 text-black">4.0 months</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparable Companies -->
+        <section class="mb-16">
+            <div class="bg-white border-2 border-black rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold mb-6 text-black">
+                    <i class="fas fa-building mr-3 text-black"></i>Comparable Companies: ARR Benchmarks
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-2 border-black">
+                        <thead>
+                            <tr class="bg-gray-100 border-b-2 border-black">
+                                <th class="text-left p-4 font-bold text-black">Company</th>
+                                <th class="text-left p-4 font-bold text-black">Series A ARR</th>
+                                <th class="text-left p-4 font-bold text-black">Relevance to SrvdNeat</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-black">
+                                <td class="p-4 text-black font-semibold">Deputy</td>
+                                <td class="p-4 text-black">~$3M</td>
+                                <td class="p-4 text-black">Aussie-built SME Ops SaaS that scaled via workflow ownership.</td>
+                            </tr>
+                            <tr class="border-b border-black">
+                                <td class="p-4 text-black font-semibold">Vanta</td>
+                                <td class="p-4 text-black">$7-10M</td>
+                                <td class="p-4 text-black">Closest peer; used a friction-first wedge to build automation infra moat.</td>
+                            </tr>
+                            <tr class="border-b border-black">
+                                <td class="p-4 text-black font-semibold">Lambda</td>
+                                <td class="p-4 text-black">~$3M</td>
+                                <td class="p-4 text-black">Capital-heavy, infra-first proof anchored on deep-tech demand.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Financial Model -->
+        <section class="mb-16">
+            <div class="bg-white border-2 border-black rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold mb-6 text-black">
+                    <i class="fas fa-chart-bar mr-3 text-black"></i>SrvdNeat Seed-Stage Financial Model (AUD)
+                </h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full border-2 border-black text-sm">
+                        <thead>
+                            <tr class="bg-gray-100 border-b-2 border-black">
+                                <th class="text-left p-3 font-bold text-black">Month</th>
+                                <th class="text-left p-3 font-bold text-black">Clients</th>
+                                <th class="text-left p-3 font-bold text-black">MRR</th>
+                                <th class="text-left p-3 font-bold text-black">COGS</th>
+                                <th class="text-left p-3 font-bold text-black">Gross Profit</th>
+                                <th class="text-left p-3 font-bold text-black">Expenses</th>
+                                <th class="text-left p-3 font-bold text-black">Net Profit</th>
+                                <th class="text-left p-3 font-bold text-black">Cash Build</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-black">
+                                <td class="p-3 text-black">1</td>
+                                <td class="p-3 text-black">0</td>
+                                <td class="p-3 text-black">$0</td>
+                                <td class="p-3 text-black">$0</td>
+                                <td class="p-3 text-black">$0</td>
+                                <td class="p-3 text-black">$12,500</td>
+                                <td class="p-3 text-black">-$12,500</td>
+                                <td class="p-3 text-black">-$12,500</td>
+                            </tr>
+                            <tr class="border-b border-black">
+                                <td class="p-3 text-black">6</td>
+                                <td class="p-3 text-black">2</td>
+                                <td class="p-3 text-black">$6,418</td>
+                                <td class="p-3 text-black">$963</td>
+                                <td class="p-3 text-black">$5,455</td>
+                                <td class="p-3 text-black">$15,000</td>
+                                <td class="p-3 text-black">-$9,545</td>
+                                <td class="p-3 text-black">-$22,045</td>
+                            </tr>
+                            <tr class="border-b border-black">
+                                <td class="p-3 text-black">12</td>
+                                <td class="p-3 text-black">12</td>
+                                <td class="p-3 text-black">$33,883</td>
+                                <td class="p-3 text-black">$5,082</td>
+                                <td class="p-3 text-black">$28,801</td>
+                                <td class="p-3 text-black">$25,000</td>
+                                <td class="p-3 text-black">$3,801</td>
+                                <td class="p-3 text-black">-$18,244</td>
+                            </tr>
+                            <tr class="border-b border-black">
+                                <td class="p-3 text-black">18</td>
+                                <td class="p-3 text-black">49</td>
+                                <td class="p-3 text-black">$135,635</td>
+                                <td class="p-3 text-black">$20,345</td>
+                                <td class="p-3 text-black">$115,290</td>
+                                <td class="p-3 text-black">$45,000</td>
+                                <td class="p-3 text-black">$70,290</td>
+                                <td class="p-3 text-black">$52,046</td>
+                            </tr>
+                            <tr class="border-b border-black">
+                                <td class="p-3 text-black">24</td>
+                                <td class="p-3 text-black">135</td>
+                                <td class="p-3 text-black">$375,000</td>
+                                <td class="p-3 text-black">$56,250</td>
+                                <td class="p-3 text-black">$318,750</td>
+                                <td class="p-3 text-black">$75,000</td>
+                                <td class="p-3 text-black">$243,750</td>
+                                <td class="p-3 text-black">$295,796</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Insights -->
+        <section class="mb-16">
+            <div class="bg-white border-2 border-black rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold mb-6 text-black">
+                    <i class="fas fa-lightbulb mr-3 text-black"></i>Key Financial Insights
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 text-black">Strong Unit Economics</h4>
+                        <ul class="space-y-2 text-black">
+                            <li>• 11.1x LTV:CAC ratio demonstrates efficient customer acquisition</li>
+                            <li>• 4-month CAC payback period shows rapid ROI</li>
+                            <li>• 85% gross margin enables significant reinvestment</li>
+                            <li>• $33,300 ACV supports sustainable growth</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4 text-black">Path to Profitability</h4>
+                        <ul class="space-y-2 text-black">
+                            <li>• Break-even achieved by Month 12</li>
+                            <li>• Positive cash flow from Month 18</li>
+                            <li>• $295K cash build by Month 24</li>
+                            <li>• Scalable model with proven benchmarks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/toolbar.js"></script>
+</body>
+</html> 
